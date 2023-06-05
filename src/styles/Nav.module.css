@@ -88,18 +88,18 @@
   gap: 33vw;
   list-style: none;
   text-decoration: none;
-  cursor: pointer;
   font-family: Montserrat;
   padding: 0 0; /* Add some horizontal padding */
+  margin: auto;
   display: flex;
-  justify-content: flex-start;
-    align-items: center;
+  justify-content: center;
 }
 
 .linkContainer {
   gap: 30px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .imgContainer {
@@ -114,10 +114,12 @@
 .navbarContainer {
   width: 100%;
   margin: auto;
-  padding: 0 0; /* Add some horizontal padding */
+  margin-bottom: 2vh;
+  padding: auto; /* Add some horizontal padding */
   box-sizing: border-box; /* Include padding and border in width calculation */
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .navbarContainer > div {
   display: flex;
