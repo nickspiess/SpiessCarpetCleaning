@@ -1,19 +1,13 @@
 import ImageSlider from "./ImageSlider";
 import styles from "../styles/ThirdLanding.module.css";
-import Angie2013 from "../../public/images/angie_2013.jpeg"
-import Angie2014 from "../../public/images/angie_2014.jpeg"
-import Angie2015 from "../../public/images/angie_2015.jpeg"
-import Angie2016 from "../../public/images/angie_2016.jpeg"
-import Angie2017 from "../../public/images/angie_2017.jpeg"
-
 
 const ThirdLanding = () => {
   const images = [    
-      require({Angie2013}).default,    
-      require({Angie2014}).default,    
-      require({Angie2015}).default,    
-      require({Angie2016}).default,    
-      require({Angie2017}).default,  ];
+      require("../../public/images/angie_2013.jpeg").default,    
+      require("../../public/images/angie_2014.jpeg").default,    
+      require("../../public/images/angie_2015.jpeg").default,    
+      require("../../public/images/angie_2016.jpeg").default,    
+      require("../../public/images/angie_2017.jpeg").default,  ];
 
   return (
     <>

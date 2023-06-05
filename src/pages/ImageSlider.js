@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "../styles/carousel.module.scss";
-import Angie2013 from "../../public/images/angie_2013.jpeg"
-import Angie2014 from "../../public/images/angie_2014.jpeg"
-import Angie2015 from "../../public/images/angie_2015.jpeg"
-import Angie2016 from "../../public/images/angie_2016.jpeg"
-import Angie2017 from "../../public/images/angie_2017.jpeg"
 
 const ImageSlider = () => {
   const [index, setIndex] = useState(0);
 
   const images = [
-    {Angie2013},
-    {Angie2014},
-    {Angie2015},
-    {Angie2016},
-    {Angie2017},
+    "/images/angie_2012.jpeg",
+    "/images/angie_2013.jpeg",
+    "/images/angie_2014.jpeg",
+    "/images/angie_2015.jpeg",
+    "/images/angie_2016.jpeg",
+    "/images/angie_2017.jpeg",
   ];
 
   useEffect(() => {
