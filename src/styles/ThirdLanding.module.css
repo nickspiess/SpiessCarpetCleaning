@@ -1,0 +1,181 @@
+/* Style for the header */
+.awarded-header {
+    text-align: center;
+    background-color: #2b2d42;
+    height: 85px;
+    font-size: 2em;
+    font-style: oblique;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0vh;
+  }
+  
+  /* Style for the Angie container */
+  .angie-container {
+    padding: 100px;
+    margin-top: -5vh;
+    background-color: #f0f4f8;
+    margin-left: 8vw;
+    border-radius: 10px;
+    box-shadow: 6px 6px 6px 4px rgba(0, 0, 0, 0.15);
+    height: 55vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .angie-container img {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  /* Style for the Angie header */
+  .angie-head {
+    background-color: #e63946;
+    text-align: center;
+    height: 14vh;
+    width: 100%;
+    border: solid lightgrey 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .image {
+    height: 100%;
+  }
+  
+  /* Style for the carousel container */
+  .carousel-container {
+    height: 60vh;
+    width: 100%;
+    text-align: center;
+    margin-top: 0vh;
+  }
+  
+  /* Style for the landing container */
+  .landing-container {
+    background-color: #dcdee0;
+    min-height: 90vh; /* Use min-height instead of height */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Style for the lower container */
+  .lower-container {
+    margin-top: 0vh;
+    flex: 1; /* Use flex: 1 to allow the container to grow and take available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style for the review container */
+  .review-container {
+    margin-top: 2vh;
+    margin-right: -3vw;
+    width: 100%;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    margin-top: 2vh; /* Adjust margin-top as needed */
+    margin-bottom: 2vh; /* Add margin-bottom to create spacing between components */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 67%;
+  }
+  
+  .containerTwo {
+    width: 70%;
+  }
+  
+  /* Media Queries */
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .angie-container {
+    margin: 0;
+    width: 500px;
+  }
+
+  .awarded-header {
+    padding: 10px;
+  }
+
+  .review-container {
+    margin-right: 0;
+  }
+
+  .containerTwo {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .angie-container {
+    margin: 0;
+    margin-top: 8vh;
+    margin-bottom: 3vh;
+    width: 400px;
+  }
+
+  .angie-head {
+    padding: 10px;
+  }
+
+  .awarded-header {
+    height: 15vh;
+  }
+
+  .landing-container {
+    min-height: 100vh;
+    overflow: hidden; /* Add overflow: hidden to hide overflowing content */
+  }
+
+  .lower-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .review-container {
+    width: 100%;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    max-height: calc(100% - 4vh); /* Set max-height to fit within the available space */
+    overflow-y: auto; /* Add overflow-y: auto to enable vertical scrolling if needed */
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .angie-container {
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 80px;
+  }
+
+  .awarded-header { 
+    margin-bottom: 50px;
+  }
+  .landing-container {
+    min-height: 130vh;
+  }
+
+
+
+  .review-container {
+    margin-bottom: 50px;
+  }
+
+}

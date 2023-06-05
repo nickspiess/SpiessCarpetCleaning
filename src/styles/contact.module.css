@@ -1,0 +1,212 @@
+#message {
+    width: 33vw !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .amex {
+    width: 40px;
+    height: 55px;
+  }
+  
+  .mastercard {
+    margin: 0 0.5vw;
+    width: 40px;
+    height: 55px;
+  }
+
+  .visa {
+    margin-right: 0.5vw;
+    width: 40px;
+    height: 55px;
+  }
+
+  .discover {
+    margin-left: 0.5vw;
+    width: 40px;
+    height: 55px;
+  }
+  
+  .topPay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    margin-bottom: -2.7vh;
+  }
+  
+  .bottomPay {
+    gap: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cash {
+    display: flex;
+  }
+  
+  .cardLineOne {
+    width: 20vw;
+    text-align: center;
+  }
+  
+  .cardLineTwo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .contactCont {
+    margin-top: 10vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    display: flex;
+    justify-content: center;
+    gap: 18vw;
+    margin-bottom: 22vh;
+  }
+  
+  .container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20vh;
+  }
+  
+  .contactHeadTop,
+  .contactHead {
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+
+  .contactHead {
+    margin-top: 2vh;
+  }
+
+  .hours {
+      margin-top: 4vh; 
+  }
+
+  .serviceArea {
+      margin-top: 4vh;
+  }
+
+  .payments {
+      margin-top: 4vh;
+      text-align: center;
+  }
+  
+  .contactBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 140px;
+    margin-top: 4vh;
+  }
+  
+  .checkIcon {
+    background: url('../../public/images/cheque.png');
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-size: cover;
+  }
+  
+  @media screen and (max-width: 800px) {
+    #message {
+      width: 100% !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .amex {
+      font-size: 1.5em;
+    }
+    .mastercard {
+      margin: 0 2%;
+    }
+
+    .topPay {
+        display: flex;
+        text-align: center;
+      }
+
+      .cardLineOne {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+      .cardLineTwo {
+        width: 100%;
+      }
+      
+      .bottomPay {
+        gap: 1vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    .cash {
+      display: flex;
+      flex-direction: column;
+    }
+    .contactCont {
+      margin-top: 10vh;
+      margin-left: 2vw;
+      margin-right: 2vw;
+      display: flex;
+      flex-direction: column;
+      gap: 5vh;
+      margin-bottom: 15vh;
+    }
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 10vh;
+    }
+    .contactHead {
+      text-align: center;
+      margin-bottom: 5vh;
+    }
+    .contactInfo {
+      margin-top: 5vh;
+      margin-bottom: 10vh;
+    }
+    .contactBtn {
+      margin-top: 30px;
+    }
+    .checkIcon {
+      background: url('../../public/images/cheque.png');
+      top: 0;
+      right: 0;
+      height: 100%;
+      background-size: cover;
+    }
+
+    .contactParagraphs {
+        text-align: center;
+    }
+    .contactBox {
+        text-align: center;
+        margin-top: 15vh;
+
+    }
+  }
+  

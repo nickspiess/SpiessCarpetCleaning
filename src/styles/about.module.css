@@ -1,0 +1,220 @@
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #f4a31c !important;
+  transition: 0.4s !important;
+}
+
+.aboutContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.butt {
+    border: none;
+    border-radius: 50px;
+    border: solid black 1px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 40vw;
+    padding: 12px 24px;
+    background-color: #f4a31c;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .butt:hover {
+    background-color: #e29300;
+  }
+
+.buttonHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8vh;
+}
+
+.aboutTop {
+  width: 100%;
+  margin-top: 11vh;
+  margin-right: 2vw;
+  display: flex;
+  gap: 10vw;
+}
+
+    .aboutBottom {
+        display: block;
+        align-items: center;
+        text-align: center;
+        margin-top: 6vh;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+.missionStatement {
+  margin-top: 2vh;
+  margin-left: 5vw;
+  width: 40vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.missionHeader {
+  text-align: center;
+  padding-bottom: 8vh;
+  margin-bottom: 8vh;
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.mission {
+  margin-bottom: 0vh;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.founderInfo {
+    margin-top: 10vh;
+  width: 40vw;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.founderHeader {
+  margin-top: 5vh;
+  text-align: center;
+  margin-bottom: 5vh;
+  color: black;
+  border-bottom: 1px solid black;
+  padding-bottom: 7vh;
+  margin-bottom: 7vh;
+}
+
+.history {
+  text-align: center;
+  color: black;
+  font-size: 1.2em;
+}
+
+.landing {
+  width: 100vw;
+  display: inline-flex;
+  margin-bottom: 24vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+.picHead {
+  font-size: 0.95em;
+}
+
+.skyline {
+  width: 100vw;
+  background: black;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    url("../../public/images/skyline.jpeg");
+  height: 300px;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.videoHead {
+  color: white;
+  width: 100%;
+}
+
+.belowVid {
+  height: 50px;
+  width: 100%;
+  background: rgb(52, 116, 158);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+.responsiveIframe {
+  margin: auto;
+}
+
+@media only screen and (max-width: 800px) {
+.landing {
+  margin-top: 115px; /* Add this line */
+  margin-bottom: 22vh;
+}
+}
+
+@media only screen and (max-width: 900px) {
+.videoHead {
+  display: flex;
+  justify-content: center;
+
+}
+  .belowVid {
+    width: 80%;
+  }
+  .butt {
+    width: 80vw;
+  }
+
+  .aboutTop {
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutBottom {
+  margin-top: 0vh;
+}
+
+.landing {
+  margin-bottom: 40vh;
+}
+
+.vid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.responsiveIframe {
+  width: 60vw;
+  margin-bottom: 10vh;
+}
+
+.aboutTop {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.missionStatement,
+.founderInfo {
+width: 80vw;
+margin-bottom: 40px;
+}
+.skyline {
+  text-align: center;
+height: 200px;
+font-size: 1.8rem;
+margin-top: 0;
+}
+}
+

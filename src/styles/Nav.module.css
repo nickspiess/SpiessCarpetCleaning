@@ -1,0 +1,452 @@
+.navButton,
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: #f4a31c !important;
+  border: solid rgb(0, 0, 0) 1px !important;
+  transition: 0.4s !important;
+}
+
+.mobileImg {
+  display: none;
+}
+
+.navButton {
+  background-color: #05a9e2 !important;
+  border: solid rgb(0, 0, 0) 1px !important;
+  transition: 0.4s !important;
+  color: white;
+  height: 4.5vw;
+  font-weight: 650;
+  font-size: 1.4vw;
+  padding: 0.6em 1em; /* Responsive padding */
+  text-shadow: 0 0 2px black, 0 0 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  text-align: center;
+  font-family: Montserrat;
+  min-width: 0; /* Set a minimum width */
+  flex-shrink: 1; /* Allow the element to shrink if necessary */
+}
+
+.navButton:hover {
+  background-color: #14c4ff !important;
+  transform: translateY(-2px);
+}
+
+.link {
+  text-decoration: none;
+  color: #c31c4c;
+  text-shadow: 0 black;
+  font-weight: 500;
+  font-size: 1.05em;
+  font-family: Montserrat;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link:visited {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: white;
+  transition: 0.55s;
+  text-shadow: 0 0 2px white, 0 0 2px black;
+}
+
+.link:active {
+  text-decoration: underline;
+  color: blue;
+}
+
+.img {
+  width: 170px;
+  height: auto;
+}
+
+.imgLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 100;
+}
+
+.last {
+  margin-right: 2vw;
+}
+
+.navLinks {
+  gap: 33vw;
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Montserrat;
+  padding: 0 0; /* Add some horizontal padding */
+  display: flex;
+  justify-content: flex-start;
+    align-items: center;
+}
+
+.linkContainer {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.imgContainer {
+  display: flex;
+}
+
+
+.imgCont {
+  display: flex;
+}
+
+.navbarContainer {
+  width: 100%;
+  margin: auto;
+  padding: 0 0; /* Add some horizontal padding */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  display: flex;
+  align-items: center;
+}
+.navbarContainer > div {
+  display: flex;
+  align-items: center;
+}
+
+.navButton {
+  width: 130px;
+  height: 60px;
+  font-size: 1.2em;
+}
+
+.navbar {
+
+  margin: 0;
+  padding: 0;
+  height: 115px;
+  /* Other styles for the navbar */
+}
+
+@media (max-width: 1300px) {
+.navLinks {
+  gap: 25vw;
+}
+}
+
+@media (max-width: 1100px) {
+  .navLinks {
+    gap: 18vw;
+  }
+  }
+
+/* Mobile responsiveness */
+
+@media (max-width: 991px) {
+  .navbarContainer {
+    max-width: 90%; /* Reduce the maximum width on small desktop screens */
+    padding: 0 0.5rem; /* Adjusted: Reduce horizontal padding */
+  }
+  .navLinks {
+    gap: 14vw;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .navLinks {
+    gap: 8vw;
+  }
+}
+
+@media (max-width: 850px) {
+
+  .navLinks {
+    gap: 4vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .link {
+    text-align: center;
+  }
+
+  .navbarContainer {
+    max-width: 100%; /* Reduce the maximum width on small desktop screens */
+    padding: 0 0rem; /* Adjusted: Reduce horizontal padding */
+  }
+
+  .navLinks {
+    display: flex;
+    text-align: center;
+    
+    width: 100%;
+    height: 60vh;
+  }
+
+  .navbarContainer {
+    display: none; /* Changed: Hide the container */
+  }
+
+  .btnMd {
+    padding: 10px;
+  }
+
+  .navButton {
+    width: 80%;
+    height: auto;
+    margin: 0.5rem;
+    font-size: 1em;
+  }
+
+  .link {
+    font-size: 1.2em;
+    margin-right: 0.5rem;
+  }
+}
+
+/* Navbar Styles */
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: auto;
+}
+
+.navbar {
+  box-shadow: 0px 1px 10px 0px #aaa;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  z-index: 100;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar.visible {
+  transform: translateY(0);
+}
+
+.check {
+  opacity: 0;
+}
+
+.navbarContainer {
+  margin-top: 2.5vh;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuItems {
+  order: 2;
+  display: flex;
+}
+
+.logo {
+  order: 1;
+  font-size: 2.3rem;
+}
+
+.menuItems li {
+  width: 100%;
+  list-style: none;
+  font-size: 1.3rem;
+}
+
+.navbar a {
+  color: #444;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #117964;
+}
+
+@media (max-width: 800px) {
+  .linkContainer {
+    margin-top: 150px;
+    display: block;
+  }
+
+  .imgLink {
+    display: none;
+  }
+
+  .navbar {
+    opacity: 0.95;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .navbarContainer input[type="checkbox"],
+  .navbarContainer .hamburgerLines {
+    display: block;
+  }
+
+  .navbarContainer {
+    width: 100%;
+    height: 115px;
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+
+  .navbarContainer input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 30px;
+    top: 42px;
+    right: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .mobileImg {
+    display: inline;
+  }
+
+  .mobileImgLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img {
+    position: absolute;
+    top: 17px;
+    text-align: center;
+    width: 150px;
+    height: auto;
+    left: calc(50% - 75px);
+  }
+
+  .nav {
+    width: 100vw;
+  }
+
+  .mobileContainer {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .navbarContainer .hamburgerLines {
+    display: block;
+    height: 28px;
+    width: 35px;
+    position: absolute;
+    top: 42px;
+    right: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .navbarContainer .hamburgerLines .line {
+    display: block;
+    height: 5px;
+    width: 100%;
+    border-radius: 10px;
+    background: #333;
+  }
+
+  .navbarContainer .hamburgerLines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbarContainer .hamburgerLines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbarContainer .hamburgerLines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar .menuItems {
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    transform: translate(-150%);
+    display: block;
+    margin: auto;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 10px 0px 10px 0;
+    overflow: scroll;
+  }
+
+  .navButton {
+    display: inline;
+  }
+
+  /* CSS for hiding .img when input checkbox is checked */
+  input[type="checkbox"]:checked + .mobileImgLink {
+    display: none;
+  }
+  
+  .navbar .menuItems li {
+    margin-bottom: 60px;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .navbar a.logo {
+    display: none;
+  }
+
+  .navbar .logo {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5rem;
+  }
+
+  .navbarContainer input[type="checkbox"]:checked + .menuItems {
+    transform: translateX(0);
+  }
+
+  .navbarContainer input[type="checkbox"]:checked + .hamburgerLines .line1 {
+    transform: rotate(45deg);
+  }
+
+  .navbarContainer input[type="checkbox"]:checked + .hamburgerLines .line2 {
+    transform: translateX(100%);
+  }
+
+  .navbarContainer input[type="checkbox"]:checked + .hamburgerLines .line3 {
+    transform: rotate(-45deg);
+  }
+}
+

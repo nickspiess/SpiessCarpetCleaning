@@ -1,27 +1,200 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,400;1,500;1,700;1,800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/souvenir');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
   }
+
+  
+  .content-wrapper {
+    position: relative;
+    /* add any other styles you need */
+  }
+
+
+.main_container {
+    position: absolute;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+
+div.body div.wrapper {
+    margin: 0;
+    position:relative;
+    z-index:5;
+    color:white;
+    background-color: white;
+}
+
+.dot_container {
+    display: flex;
+}
+
+.help {
+    color: black;
+}
+
+.form-check {
+    display: flex;
+    margin-left: -5px;
+}
+
+
+.wrapper div {
+    padding: 0px;
+}
+
+.head {
+    margin-bottom: 0;
+    padding: 0;
+    height: 30px;
+}
+
+.founder-header {
+    text-align: center;
+    margin: 80px 0px 0px 0px;
+    color: black;
+}
+
+
+input {
+    text-align: center;
+}
+
+.rooms {
+    display: inline-block;
+}
+
+label {
+    color: black;
+    text-shadow: 0 0 4px white, 0 0 2px white;
+    margin-bottom: 0px;
+}
+
+.landing {
+    display: flex;
+}
+
+.prop_type {
+    text-align: left;
+    align-items: left;
+    margin-left: 40px;
+    width: 47%;
+}
+
+small {
+    color: black;
+    text-shadow: 0 0 4px white, 0 0 2px white;
+}
+
+
+#one {
+    margin-top: 80px;
+    margin-left: 60px;
+    width: 40%;
+}
+
+
+.quote_header {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.quote_row {
+    display: inline-block;
+    text-align: center;
+    margin: 0px 30px 0px 0px;
+    margin-top: 0;
+    margin-bottom: 0px;
+    padding: 0;
+    width: 100%;
+}
+
+
+.title_cont {
+    margin-bottom: -5px;
+}
+
+
+
+@media screen and (max-width: 1250px) {
+    .quote_row {
+        display: block;
+        text-align: center;
+        margin: 0px;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #one { 
+    float: none;
+    margin-right:0;
+    width:auto;
+    border:0;
+    border-bottom:2px solid #000;    
+    }
+}
+
+/* Second Landing */
+
+.columns {
+    display: flex;
+}
+
+.landing_body {
+
+}
+
+.landing_container {
+    display: inline; 
+    justify-content: center;
+}
+
+.info_one {
+    border: solid black .5px;
+    height: 350px;
+}
+
+.info_one_body {
+    border: solid black .5px;
+    color: black;
+    height: 325px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+.info_two {
+    border: solid black .5px;
+    height: 300px;
+}
+
+.info_two_body {
+    border: solid black .5px;
+    height: 275px;
+    color: black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info_three {
+    border: solid black .5px;
+    height: 300px;
+}
+
+.info_three_body {
+    border: solid black .5px;
+    height: 275px;
+    color: black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

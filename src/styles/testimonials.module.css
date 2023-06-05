@@ -1,0 +1,30 @@
+
+
+.header {
+    text-align: center;
+}
+
+.reviewContainer {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 230px;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        display: block;
+        margin: auto;
+        text-align: center;
+        margin-top: 40vh;
+    }
+    .reviewContainer {
+        text-align: center;
+    }
+    .header{
+        margin-bottom: 50px;
+    }
+}

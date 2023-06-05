@@ -1,0 +1,184 @@
+.aboutLanding {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 2px #cccccc;
+  border-radius: 10px;
+  height: 600px;
+  margin-bottom: 8vh;
+}
+
+.aboutInfo {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: black;
+  margin-right: 2vw;
+  flex: 1;
+  text-align: center;
+}
+
+.aboutVid {
+  flex: 1 0 40%;
+  margin-right: 50px;
+  margin-top: -40px;
+}
+
+.aboutVideoHead {
+  color: white;
+  width: 100%;
+  border: solid black 2px;
+}
+
+.aboutAboveVid {
+  width: 100%;
+  height: 70px;
+  font-size: 1.3em;
+  border: solid #fbfbfb 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fa930b; /* Add this line */
+}
+
+.aboutAboveVid h3 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.aboutResponsiveIframe {
+  margin: auto;
+}
+
+.fourthContainer {
+  flex: 1 0 35%;
+  margin-top: -40px;
+}
+
+.fourthHeader {
+  width: 100%;
+  background-color: #f6c026;
+  color: white;
+  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  font-style: oblique;
+
+  padding: 50px;
+  border-radius: 0 0 50px 50px;
+  border: solid black 1px;
+  background: linear-gradient(to right, #0063cd, #788fa4);
+  box-shadow: 0 5px 10px rgba(246, 192, 38, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.landingButton {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: 2px solid #003f5c;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #003f5c;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.landingButtonPrimary {
+  background-color: rgb(56,132,252);
+  color: #fff;
+  border: none;
+  width: 40%;
+  height: 35px;
+}
+
+.landingButtonSecondary {
+  width: 40%;
+  height: 35px;
+  background-color: transparent;
+  color: rgb(56,132,252);
+  margin-left: 10px;
+}
+
+.landingButtonPrimaryButton {
+  background-color: rgb(56,132,252);
+  color: #fff;
+  border: none;
+  height: 35px;
+  width: 100%;
+}
+
+.landingButtonSecondaryButton {
+  width: 100%;
+  height: 35px;
+  background-color: transparent;
+  border: 2px solid rgb(56,132,252);
+  color: rgb(56,132,252);
+}
+
+.landingButtonPrimaryButton:hover,
+.landingButtonPrimaryButton:focus {
+  transform: translateY(-2px);
+  background-color: #fff;
+  color: rgb(56,132,252);
+  border: solid rgb(56,132,252) 2px;
+}
+
+.landingButtonSecondaryButton:hover,
+.landingButtonSecondaryButton:focus {
+  transform: translateY(-2px);
+  background-color: rgb(56,132,252);
+  color: #fff;
+}
+
+@media (max-width: 1400px) {
+  .aboutLanding {
+    padding-left: 5vw;
+  }
+
+}
+
+@media (max-width: 870px) {
+  .aboutLanding {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    margin-top: 7.5vh;
+  }
+  
+
+  .aboutVid,
+  .aboutInfo {
+    margin: 0;
+    flex: none;
+    width: 100%;
+  }
+
+  .aboutInfo {
+    margin-top: 2em;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .fourthContainer {
+    margin-top: 60px;
+    padding-bottom: 20vh;
+  }
+}
