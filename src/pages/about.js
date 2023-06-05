@@ -80,7 +80,7 @@ export default function About() {
           </article>
           <div className={styles.buttonHolder}>
               <button
-                onClick={() => router.push("/quote")}
+                onClick={() => router.push("/contact")}
                 className={`${styles.butt}`}
                 kind="primary"
               >

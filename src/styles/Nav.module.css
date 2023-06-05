@@ -42,7 +42,7 @@
   color: #c31c4c;
   text-shadow: 0 black;
   font-weight: 500;
-  font-size: 1.05em;
+  font-size: 1.1em;
   font-family: Montserrat;
 }
 
@@ -140,9 +140,12 @@
   /* Other styles for the navbar */
 }
 
-@media (max-width: 1300px) {
+@media (min-width: 1300px) {
 .navLinks {
-  gap: 25vw;
+  gap: 33vw;
+}
+.link {
+  font-size: 1.2em;
 }
 }
 
@@ -291,7 +294,7 @@
 
 @media (max-width: 800px) {
   .linkContainer {
-    margin-top: 150px;
+    margin-top: 30vh;
     display: block;
   }
 

@@ -9,10 +9,13 @@
   align-items: center;
 }
 
+
 .listContainer {
+  margin-top: 12px;
   color: white;
-  gap: 80px;
+  gap: 170px;
   display: flex;
+  font-size: 1.2em;
 }
 
 .topContainer {
@@ -44,7 +47,7 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  margin-bottom: -80px;
+  margin-bottom: -120px;
 }
 
 .header {
@@ -67,7 +70,8 @@
   margin: auto;
   width: 85%;
   height: 100%;
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
+  margin-top: 10vh;
 }
 
 .box {
@@ -131,7 +135,7 @@
   height: 200px;
   width: 100%;
   position: relative;
-  bottom: 150px;
+  bottom: 140px;
   background: rgb(178, 55, 55);
   display: flex;
   flex-direction: column;
@@ -141,7 +145,7 @@
   height: 200px;
   width: 100%;
   position: relative;
-  bottom: 160px;
+  bottom: 140px;
   background: rgb(39, 147, 35);
   display: flex;
   flex-direction: column;
@@ -151,7 +155,7 @@
   height: 200px;
   width: 100%;
   position: relative;
-  bottom: 160px;
+  bottom: 140px;
   background: rgb(46, 82, 171);
   display: flex;
   flex-direction: column;
@@ -161,7 +165,7 @@
   height: 200px;
   width: 100%;
   position: relative;
-  bottom: 200px;
+  bottom: 160px;
   background: rgb(218, 188, 43);
   display: flex;
   flex-direction: column;
@@ -229,8 +233,9 @@
   position: absolute;
   font-family: 'Poppins', sans-serif;
   padding-left: 65px;
-  bottom: 55px;
-  font-size: 14px;
+  bottom: 85px;
+  padding-right: 10px;
+  font-size: 16px;
   font-weight: 400;
   color: #f6f6f6;
   opacity: 0;
@@ -238,11 +243,12 @@
 }
 
 .contentWrapperCarpet p {
-  bottom: 60px;
+  bottom: 85px;
 }
 
 .contentWrapperDucts p {
-  bottom: 52px;
+  bottom: 90px;
+  font-size: 16px;
 }
 
 .contentWrapperOther p {
@@ -337,6 +343,7 @@
   }
 
   .mobileContainer {
+    
     display: inline;
     text-align: center;
     justify-content: center;
@@ -345,7 +352,8 @@
   }
 
   .head {
-    margin-bottom: 8vh;
+    
+    margin-top: 20vh;
   }
 
   .image {
@@ -378,7 +386,6 @@
   }
 
   .lastMobileBox {
-    
     text-align: center;
     margin: auto;
     width: 95%;
@@ -421,11 +428,6 @@
   padding-right: 5px;
 }
 
-.listContainer {
-  text-align: center;
-  display: flex;
-}
-
 .contentWrapperDuctsMobile {
   padding-top: 20px;
   text-align: center;
@@ -439,14 +441,6 @@
   padding-bottom: 20px;
   padding-left: 5px;
   padding-right: 5px;
-}
-
-.listContainer {
-  margin-top: 20px;
-  font-size: 1.1em;
-  gap: 20vw;
-  display: flex;
-  justify-content: center;
 }
 
 .listContainer li {

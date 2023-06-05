@@ -227,6 +227,39 @@
   }
 }
 
+@media (min-width: 1600px) {
+  .menu__link p {
+    font-size: 1.3em;
+  }
+
+  .bottomContainer p {
+    font-size: 1.3em;
+  }
+
+  .navButton {
+    margin-top: 2vh;
+    width: 15vw;
+    height: 6vh;
+    font-size: 1.8em;
+  }
+
+  .contactContainer {
+    margin-left: 3vw;
+    font-size: 1.3em;
+  }
+
+  .contactContainer p {
+    font-size: 1.2em;
+    margin-bottom: 2vh;
+  }
+  .contactImg {
+    width: 40px;
+    height: auto;
+  }
+
+}
+
+
 @media (max-width: 768px) {
 
   .footer {

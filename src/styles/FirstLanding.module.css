@@ -80,28 +80,34 @@
   display: none;
 }
 
-@media (max-width: 1600px) {
+
+@media (min-width: 800px) {
   .head {
-    font-size: 3.1vw;
+    font-size: 3em;
   }
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 1200px) {
   .head {
-    font-size: 2.5vw;
+    font-size: 3.5em;
   }
 }
 
-@media (max-width: 1250px) {
-  .head {
-    font-size: 3.2vw;
+@media (min-width: 2000px) {
+  .btn_primary {
+    font-size: 2em;
   }
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1500px) {
   .head {
-    font-size: 4vw;
+    font-size: 3em;
   }
+
+  .btn_primary {
+    width: 500px;
+    height: 50px;
+}
 }
 
 @media (max-width: 700px) {
@@ -113,45 +119,18 @@
 }
 }
 
-@media (max-width: 500px) {
-  .head {
-    display: none;
-  }
-  .mobileHead {
-    display: flex;
-    font-size: 2em;
-  }
-}
-
-@media (max-width: 500px) {
-  .btn_primary {
-    font-size: 1.1em;
-}
-}
-
-@media (max-width: 350px) {
-  .landing_head {
-      
-    margin-top: 20vh;
-  }
-
-  .first_container {
-    height: 80vh;
-  }
-
-}
-
 
 @media (max-width: 800px) {
 
 
     .btn_primary {
-        height: 8vh;
+        height: 6vh;
         width: 50vw;
+        font-size: 1.8em;
     }
 
     .head {
-
+      font-size: 3em;
     }
 
 
@@ -172,5 +151,35 @@
         /* Add a semi-transparent dark overlay */
         background-color: rgba(0, 0, 0, 0.15);
       }
+
+}
+
+@media (max-width: 500px) {
+  .head {
+    display: none;
+  }
+  .mobileHead {
+    display: flex;
+    font-size: 2em;
+  }
+  .btn_primary {
+    font-size: 1.0em;
+}
+}
+
+@media (max-width: 350px) {
+  .landing_head {
+    margin-top: 30vh;
+  }
+
+  .first_container {
+    height: 100vh;
+  }
+
+  .btn_primary {
+    height: 8vh;
+    width: 70vw;
+    font-size: 1.1em;
+  }
 
 }

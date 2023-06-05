@@ -44,9 +44,10 @@
 .aboutTop {
   width: 100%;
   margin-top: 11vh;
-  margin-right: 2vw;
   display: flex;
-  gap: 10vw;
+  align-items: center;
+  justify-content: center;
+  gap: 12vw;
 }
 
     .aboutBottom {
@@ -60,11 +61,10 @@
 
 .missionStatement {
   margin-top: 2vh;
-  margin-left: 5vw;
+  margin-left: -7vw;
   width: 40vw;
   padding-left: 10px;
-  padding-right: 10px;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
 }
 

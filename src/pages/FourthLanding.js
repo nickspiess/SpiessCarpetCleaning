@@ -5,7 +5,7 @@ const FourthLanding = () => {
   return (
     <>
       <header className={styles.fourthHeader}>
-        <h2><strong>Experts in Carpet, Upholstery, and Air Duct Cleaning</strong></h2>
+        <h2 className={styles.head}><strong>Experts in Carpet, Upholstery, and Air Duct Cleaning</strong></h2>
       </header>
       <div className={styles.aboutLanding}>
         <div className={styles.aboutVid}>
@@ -28,9 +28,8 @@ const FourthLanding = () => {
             <Link className={styles.landingButtonPrimary} href='/quote'>
               <button className={styles.landingButtonPrimaryButton}><strong>Get a Free Quote</strong></button>
             </Link>
-            <Link className={styles.landingButtonSecondary}href='/contact'>
-              <button className={styles.landingButtonSecondaryButton}><strong>Contact Us</strong></button>
-
+            <Link className={styles.landingButtonSecondary} href='/contact'>
+              <button className={styles.landingButtonSecondaryButton}><strong>Contact Us</strong></button>z
             </Link>
           </div>
         </article>

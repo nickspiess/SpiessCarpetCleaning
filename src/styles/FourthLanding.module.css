@@ -8,6 +8,7 @@
   border-radius: 10px;
   height: 600px;
   margin-bottom: 8vh;
+  gap: 5vw;
 }
 
 .aboutInfo {
@@ -23,6 +24,7 @@
   flex: 1 0 40%;
   margin-right: 50px;
   margin-top: -40px;
+  margin-left: 3vw;
 }
 
 .aboutVideoHead {
@@ -59,6 +61,7 @@
 .fourthContainer {
   flex: 1 0 35%;
   margin-top: -40px;
+  margin-right: 5vw;
 }
 
 .fourthHeader {
@@ -66,7 +69,7 @@
   background-color: #f6c026;
   color: white;
   text-align: center;
-  height: 10vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,9 +156,55 @@
     padding-left: 5vw;
   }
 
+  .head {
+    font-size: 1.em;
+  }
+
 }
 
-@media (max-width: 870px) {
+@media (min-width: 1600px) {
+
+  .landingButtonPrimaryButton {
+    height: 4vh;
+    font-size: 1.3em;
+  }
+  .landingButtonSecondaryButton {
+    height: 4vh;
+    font-size: 1.3em;
+  }
+
+  .aboutLanding {
+    padding-left: 5vw;
+  }
+
+  .aboutAboveVid {
+    font-size: 1.6em;
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aboutResponsiveIframe {
+    width: 35vw;
+    display: flex;
+  }
+
+  .aboutVid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  .aboutInfo {
+    font-size: 1.4em;
+  }
+
+}
+
+@media (max-width: 800px) {
   .aboutLanding {
     flex-direction: column;
     height: auto;
@@ -180,5 +229,12 @@
   .fourthContainer {
     margin-top: 60px;
     padding-bottom: 20vh;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .fourthHeader {
+    padding: 10px;
   }
 }

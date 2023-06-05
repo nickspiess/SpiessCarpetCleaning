@@ -15,7 +15,7 @@ const ThirdLanding = () => {
             <div className={styles["top-cont"]}>
                 <div className={styles["head"]}>
                     <header className={styles["awarded-header"]}>
-                        <h2><strong>The Most Awarded Carpet Cleaner in the Midwest</strong></h2>
+                        <h2 className={styles.headText}><strong>The Most Awarded Carpet Cleaner in the Midwest</strong></h2>
                     </header>
                 </div>
             </div>

@@ -174,7 +174,7 @@
 
 /* UPDATED MEDIA QUERIES */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     .card {
     flex-direction: column;
     width: 90%;
