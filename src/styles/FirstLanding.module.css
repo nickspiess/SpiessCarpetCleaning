@@ -4,7 +4,8 @@
     background-color: #f4a31c !important;
     border-radius: 50px;
     color: white;
-    width: 400px;
+    padding-left: 40px;
+    padding-right: 40px;
     height: 55px;
     border: solid rgb(0, 0, 0) 1px !important;
     transition: 0.4s !important;
@@ -81,15 +82,17 @@
 }
 
 
-@media (min-width: 800px) {
-  .head {
-    font-size: 3em;
-  }
-}
+
 
 @media (min-width: 1200px) {
   .head {
-    font-size: 3.5em;
+    font-size: 2.8em;
+  }
+}
+
+@media (min-width: 1000px) {
+  .head {
+    font-size: 2.8em;
   }
 }
 
@@ -110,27 +113,22 @@
 }
 }
 
-@media (max-width: 700px) {
-  .head {
-    font-size: 2.5em;
-  }
-  .btn_primary {
-    font-size: 3.4vw;
-}
-}
-
 
 @media (max-width: 800px) {
 
+  .head {
+    display: none;
+  }
 
     .btn_primary {
-        height: 6vh;
-        width: 50vw;
+        height: 50px;
         font-size: 1.8em;
     }
 
-    .head {
-      font-size: 3em;
+    .mobileHead {
+      display:  flex;
+      line-height: 50px;
+      font-size: 2.4em;
     }
 
 
@@ -154,16 +152,10 @@
 
 }
 
-@media (max-width: 500px) {
-  .head {
-    display: none;
-  }
-  .mobileHead {
-    display: flex;
-    font-size: 2em;
-  }
+@media (max-width: 600px) {
+
   .btn_primary {
-    font-size: 1.0em;
+    font-size: 1.6em;
 }
 }
 
@@ -177,7 +169,7 @@
   }
 
   .btn_primary {
-    height: 8vh;
+    height: 80px;
     width: 70vw;
     font-size: 1.1em;
   }

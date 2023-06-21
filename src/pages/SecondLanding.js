@@ -5,6 +5,7 @@ import CarpetLogo from '../../public/images/final_carpet.png';
 import AirVent from '../../public/images/final_vent.png';
 import Couch from '../../public/images/couch.png';
 import Dots from '../../public/images/dots1.png';
+import Link from 'next/link';
 
 const SecondLanding = () => {
     return (
@@ -61,6 +62,44 @@ const SecondLanding = () => {
                         Upholstery cleaning available with the most advanced cleaning technologies.
                     </p>
                 </div>
+                </div>
+            </div>
+            <div className={styles.specialsContainer}>
+                <header className={styles.specialsHeader}>
+                    <h4 className={styles.specialsHeaderText}>
+                        <strong>
+                            Our Current Specials
+                        </strong>
+                    </h4>
+                </header>
+                <div className={styles.clippingContainer}>
+                    <article className={`${styles.clipping} ${styles.box}`}>
+                    <Link className={styles.link} href='/quote'>
+                        <h5>
+                            <strong>
+                            15% Off All Carpet Cleaning
+                            </strong>
+                        </h5>
+                        </Link>
+                    </article>
+                    <article className={`${styles.clipping} ${styles.box}`}>
+                    <Link className={styles.link} href='/quote'>
+                        <h5>
+                            <strong>
+                            30% Off All Upholstery Cleaning
+                            </strong>
+                        </h5>
+                        </Link>
+                    </article>
+                    <article className={`${styles.clipping} ${styles.box}`}>
+                    <Link className={styles.link} href='/quote'>
+                        <h5>
+                        <strong>
+                            50% Off Pet Odor Neutralizers
+                            </strong>
+                        </h5>
+                        </Link>
+                    </article>
                 </div>
             </div>
         </div>

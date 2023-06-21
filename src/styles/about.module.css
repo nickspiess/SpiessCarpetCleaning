@@ -61,7 +61,6 @@
 
 .missionStatement {
   margin-top: 2vh;
-  margin-left: -7vw;
   width: 40vw;
   padding-left: 10px;
   display: flex;
@@ -160,10 +159,11 @@
 }
 
 @media only screen and (max-width: 900px) {
+
 .videoHead {
   display: flex;
   justify-content: center;
-
+  width: 100vw;
 }
   .belowVid {
     width: 80%;
@@ -186,7 +186,6 @@
 }
 
 .vid {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,8 +194,8 @@
 }
 
 .responsiveIframe {
-  width: 60vw;
-  margin-bottom: 10vh;
+  width: 80vw;
+  margin-bottom: 7vh;
 }
 
 .aboutTop {

@@ -3,6 +3,8 @@ import { useRef, useState } from "react"; // REVISED
 import quoteCalculator from '../js/quoteCalculator'
 import Swal from "sweetalert2";
 import Head from 'next/head'
+import icon from '../../public/images/icon.png';
+import StructuredData from 'src/pages/StructuredData';
 
 const QuoteCard = () => {
 
@@ -107,6 +109,29 @@ const QuoteCard = () => {
                 text: await res.text(),
               });
             }
+
+                    // Get a reference to the input element
+                const roomsInput = document.getElementById('num_input');
+
+                // Add event listener for input change
+                roomsInput.addEventListener('input', handleInputChange);
+
+                // Function to handle input change
+                function handleInputChange(event) {
+                const inputValue = parseInt(event.target.value);
+                
+                // Check if the input value is a number
+                if (!isNaN(inputValue)) {
+                    // Check if the input value is less than 0
+                    if (inputValue < 0) {
+                    // Set the input value to 0 if it is less than 0
+                    event.target.value = 0;
+                    }
+                } else {
+                    // Set the input value to an empty string if it is not a number
+                    event.target.value = '';
+                }
+                }
             
             const form = document.getElementById('input'); // Replace 'yourFormId' with the actual ID of your form
             form.reset();
@@ -255,11 +280,47 @@ const QuoteCard = () => {
 
     const ref = useRef();
 
+    const structuredData =  {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Quote | Spiess Carpet Cleaning",
+        "url": "https://www.spiesscarpet.com/quote",
+        "description": "We are the most experienced carpet cleaner in the Twin Cities, providing expert-level carpet cleaning services.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "301 Quentin Ave N",
+            "addressLocality": "Lakeland",
+            "addressRegion": "MN",
+            "postalCode": "55043",
+            "addressCountry": "US",
+        },
+        "telephone": "+1-651-472-2736",
+        "openingHours": "Mo-Fr 07:00-17:00",
+        "sameAs": [
+            "https://www.facebook.com/SpiessCarpetCleaning",
+        ]
+    };
+
+
     return (
         <>
         <Head>
             <title>Quote | Spiess Carpet Cleaning</title>
+            <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
+            <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service, quote" />
+            <meta property="og:title" content="Quote | Spiess Carpet Cleaning" />
+            <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
+            <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <meta property="og:url" content="https://www.spiesscarpet.com/quote" />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content="Quote | Spiess Carpet Cleaning" />
+            <meta name="twitter:description" content="Get an instant quote for the Most Experienced Carpet Cleaner in the Twin Cities Area." />
+            <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <link rel="icon" type="image/png" href={icon} />
         </Head>
+
+
+        <StructuredData data={structuredData} />
         <div className={styles.quoteCardContainer}>
             <div className={styles.card}>
                 <div className={styles.cardBody}>
@@ -274,7 +335,7 @@ const QuoteCard = () => {
                                 <div className={styles.rooms}>
                                     <label className='test' htmlFor="rooms"><strong>Rooms:</strong></label>
                                     <input
-                                        id='input'
+                                        id='num_input'
                                         type="number"
                                         min='0'
                                         className="form-control border border-dark"
@@ -288,7 +349,7 @@ const QuoteCard = () => {
                                         type="number"
                                         min='0'
                                         className="form-control border border-dark"
-                                        id="input"
+                                        id="num_input"
                                         value={steps}
                                         onChange={(event) => setSteps(event.target.value)}
                                     />
@@ -303,7 +364,7 @@ const QuoteCard = () => {
                                         type="number"
                                         min='0'
                                         className="form-control border border-dark"
-                                        id="input"
+                                        id="num_input"
                                         value={chairs}
                                         onChange={(event) => setChairs(event.target.value)}
                                     />
@@ -311,7 +372,7 @@ const QuoteCard = () => {
                                 <div className={styles.loveseats}>
                                     <label htmlFor="loveseats"><strong>Loveseats:</strong></label>
                                     <input
-                                        type="number"
+                                        type="num_input"
                                         min='0'
                                         className="form-control border border-dark"
                                         id="input"
@@ -322,7 +383,7 @@ const QuoteCard = () => {
                                 <div className={styles.upholstery}>
                                     <label htmlFor="upholstery"><strong>Couches:</strong></label>
                                     <input
-                                        type="number"
+                                        type="num_input"
                                         min='0'
                                         className="form-control border border-dark"
                                         id="input"
@@ -406,6 +467,9 @@ const QuoteCard = () => {
                                         <button className={styles.btnLg} kind="primary" onClick={handleSubmit}>
                                         <strong>Get a Quote!</strong></button>
                                     </div>
+                                </div>
+                                <div className={styles.lowerText}>
+                                    <p className={styles.lowText}><strong>Above pricing may not have a 15% discount of savings.  Please follow up on your quote for additional specials.</strong></p>
                                 </div>
                             </div>
                             </form>

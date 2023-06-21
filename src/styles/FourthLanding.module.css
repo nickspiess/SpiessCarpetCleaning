@@ -7,12 +7,11 @@
   border: solid 2px #cccccc;
   border-radius: 10px;
   height: 600px;
-  margin-bottom: 8vh;
   gap: 5vw;
 }
 
 .aboutInfo {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 500;
   color: black;
   margin-right: 2vw;
@@ -36,19 +35,18 @@
 .aboutAboveVid {
   width: 100%;
   height: 70px;
-  font-size: 1.3em;
-  border: solid #fbfbfb 2px;
+  font-size: 1.4em;
+  border: solid black 1px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   text-align: center;
-  background-color: #fa930b; /* Add this line */
+  background-color: #c3130a; /* Add this line */
 }
 
 .aboutAboveVid h3 {
   color: #fff;
-  font-size: 24px;
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -69,11 +67,10 @@
   background-color: #f6c026;
   color: white;
   text-align: center;
-
+  font-size: 2.3em;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3em;
   font-style: oblique;
 
   padding: 50px;
@@ -88,6 +85,10 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+.head {
+  font-size: .9em;
 }
 
 .landingButton {
@@ -109,31 +110,38 @@
   color: #fff;
   border: none;
   width: 40%;
-  height: 35px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landingButtonSecondary {
   width: 40%;
-  height: 35px;
+  height: 45px;
   background-color: transparent;
   color: rgb(56,132,252);
   margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landingButtonPrimaryButton {
   background-color: rgb(56,132,252);
   color: #fff;
   border: none;
-  height: 35px;
+  font-size: 1.2em;
   width: 100%;
 }
 
 .landingButtonSecondaryButton {
   width: 100%;
-  height: 35px;
+  height: 45px;
   background-color: transparent;
   border: 2px solid rgb(56,132,252);
   color: rgb(56,132,252);
+  font-size: 1.2em;
 }
 
 .landingButtonPrimaryButton:hover,
@@ -142,25 +150,17 @@
   background-color: #fff;
   color: rgb(56,132,252);
   border: solid rgb(56,132,252) 2px;
+  height: 45px;
 }
 
 .landingButtonSecondaryButton:hover,
 .landingButtonSecondaryButton:focus {
   transform: translateY(-2px);
+  height: 45px;
   background-color: rgb(56,132,252);
   color: #fff;
 }
 
-@media (max-width: 1400px) {
-  .aboutLanding {
-    padding-left: 5vw;
-  }
-
-  .head {
-    font-size: 1.em;
-  }
-
-}
 
 @media (min-width: 1600px) {
 
@@ -178,7 +178,7 @@
   }
 
   .aboutAboveVid {
-    font-size: 1.6em;
+
     width: 35vw;
     display: flex;
     justify-content: center;
@@ -202,6 +202,7 @@
     font-size: 1.4em;
   }
 
+
 }
 
 @media (max-width: 800px) {
@@ -209,7 +210,7 @@
     flex-direction: column;
     height: auto;
     padding: 20px;
-    margin-top: 7.5vh;
+    margin-top: 5vh;
   }
   
 
@@ -229,6 +230,16 @@
   .fourthContainer {
     margin-top: 60px;
     padding-bottom: 20vh;
+    text-align: center;
+
+  }
+
+  .fourthHeader {
+    height: 120px;
+  }
+
+  .head {
+    font-size: .85em;
   }
 }
 

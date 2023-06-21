@@ -3,7 +3,7 @@
     text-align: center;
     background-color: #2b2d42;
     height: 85px;
-    font-size: 2em;
+    font-size: 2.2em;
     font-style: oblique;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
     margin-left: 8vw;
     border-radius: 10px;
     box-shadow: 6px 6px 6px 4px rgba(0, 0, 0, 0.15);
-    height: 55vh;
+    height: 450px;
     width: 40vw;
     display: flex;
     flex-direction: column;
@@ -38,15 +38,16 @@
   .angie-head {
     background-color: #e63946;
     text-align: center;
-    height: 14vh;
     width: 100%;
     border: solid lightgrey 1.5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.35em;
+    font-size: 1.55em;
+    line-height: 30px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    padding: 20px;
   }
   
   .image {
@@ -64,14 +65,15 @@
   /* Style for the landing container */
   .landing-container {
     background-color: #dcdee0;
-    min-height: 90vh; /* Use min-height instead of height */
+    min-height: 100vh; /* Use min-height instead of height */
     display: flex;
     flex-direction: column;
+    margin-bottom: 8vh;
   }
   
   /* Style for the lower container */
   .lower-container {
-    margin-top: 0vh;
+    margin-top: -7vh;
     flex: 1; /* Use flex: 1 to allow the container to grow and take available space */
     display: flex;
     align-items: center;
@@ -138,22 +140,30 @@
 
 @media screen and (max-width: 992px) {
   .angie-container {
-    margin: 0;
-    margin-top: 8vh;
-    margin-bottom: 3vh;
-    width: 400px;
+    margin: auto;
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    width: 65vw;
+
   }
 
   .angie-head {
-    padding: 10px;
+    padding: 20px;
+    font-size: 1.5em;
   }
 
   .awarded-header {
-    height: 15vh;
+    height: auto;
+  }
+
+  .headText {
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .landing-container {
-    min-height: 100vh;
+    height: 170vh;
     overflow: hidden; /* Add overflow: hidden to hide overflowing content */
   }
 
@@ -166,37 +176,21 @@
   }
 
   .review-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     padding-right: 3vw;
     padding-left: 3vw;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 8vh;
     max-height: calc(100% - 4vh); /* Set max-height to fit within the available space */
     overflow-y: auto; /* Add overflow-y: auto to enable vertical scrolling if needed */
   }
 }
 
-@media screen and (max-width: 800px) {
-  .angie-container {
-    width: 80vw;
-    margin-bottom: 80px;
-    height: 400px;
-    margin-top: 80px;
-  }
 
-  .awarded-header { 
-    margin-bottom: 0px;
-  }
-  .landing-container {
-  }
-
-
-
-  .review-container {
-
-  }
-
-}
 
 @media screen and (max-width: 400px) {
   .awarded-header { 

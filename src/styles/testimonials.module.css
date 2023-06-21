@@ -2,29 +2,38 @@
 
 .header {
     text-align: center;
-}
-
-.reviewContainer {
+  }
+  
+  .reviewContainer {
     margin-left: 5vw;
     margin-right: 5vw;
     margin-bottom: 230px;
-}
-
-.container {
+    position: relative; /* Add this */
+  }
+  
+  .container {
     margin-top: 80px;
-}
+  }
+  
+  .loadingContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 @media screen and (max-width: 800px) {
     .container {
         display: block;
         margin: auto;
         text-align: center;
-        margin-top: 40vh;
+        margin-top: 20vh;
     }
     .reviewContainer {
         text-align: center;
+        margin-bottom: 10vh;
     }
     .header{
-        margin-bottom: 50px;
+        margin-bottom: 75px;
     }
 }

@@ -29,7 +29,7 @@ const FourthLanding = () => {
               <button className={styles.landingButtonPrimaryButton}><strong>Get a Free Quote</strong></button>
             </Link>
             <Link className={styles.landingButtonSecondary} href='/contact'>
-              <button className={styles.landingButtonSecondaryButton}><strong>Contact Us</strong></button>z
+              <button className={styles.landingButtonSecondaryButton}><strong>Contact Us</strong></button>
             </Link>
           </div>
         </article>

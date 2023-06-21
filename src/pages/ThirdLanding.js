@@ -30,7 +30,7 @@ const ThirdLanding = () => {
                 </div>
                 <div className={styles["review-container"]}>
                     <div className={styles.containerTwo}>
-                    <div className="elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0"></div>
+                    <div className="elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0" />
                     </div>
                 </div>
             </div>

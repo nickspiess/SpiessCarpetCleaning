@@ -9,9 +9,10 @@ import Check from '../../public/images/bankCheck.png'
 import Cash from '../../public/images/money.png'
 import emailjs from "emailjs-com";
 import Image from 'next/image';
-import { Form, Input, TextArea, Button } from "semantic-ui-react";
 import Swal from "sweetalert2";
 import Head from "next/head";
+import StructuredData from 'src/pages/StructuredData';
+import icon from '../../public/images/icon.png';
 
 
 const SERVICE_ID = "service_5e4f1be";
@@ -189,11 +190,49 @@ const Contact = () => {
 
     const ref = useRef();
 
+
+    const structuredData =  {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Contact Spiess Carpet Cleaning",
+        "url": "https://www.spiesscarpet.com/about",
+        "description": "Contact Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "301 Quentin Ave N",
+            "addressLocality": "Lakeland",
+            "addressRegion": "MN",
+            "postalCode": "55043",
+            "addressCountry": "US",
+        },
+        "telephone": "+1-651-472-2736",
+        "openingHours": "Mo-Fr 07:00-17:00",
+        "url": "https://www.spiesscarpet.com/about",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.spiesscarpet.com/about"
+        },
+    };
+
+
     return (
         <>
         <Head>
             <title>Contact | Spiess Carpet Cleaning</title>
+            <meta name="description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
+            <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, contact, booking" />
+            <meta property="og:title" content="Contact | Spiess Carpet Cleaning" />
+            <meta property="og:description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
+            <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <meta property="og:url" content="https://www.spiesscarpet.com/contact" />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:title" content="Contact | Spiess Carpet Cleaning" />
+            <meta name="twitter:description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
+            <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <link rel="icon" type="image/png" href={icon} />
         </Head>
+
+        <StructuredData data={structuredData} />
         <div className={styles.contactCont}>
             <article className={styles.contactBox}>
                 <h2 className={styles.contactHead}>Enter Your Info and We Will Message<br/>You Back As Soon As Possible</h2>

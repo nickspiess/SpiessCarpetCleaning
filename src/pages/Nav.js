@@ -23,17 +23,17 @@ const handleLinkClick = () => {
   };
 
 useEffect(() => {
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setVisible(prevScrollPos > currentScrollPos);
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  window.addEventListener('scroll', handleScroll);
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, [prevScrollPos]);
+    const handleScroll = () => {
+        const currentScrollPos = window.pageYOffset;
+        const isTopOfPage = currentScrollPos === 0;
+        setVisible(!isTopOfPage);
+      };
+    
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
 
 
 const handleMenuToggle = () => {

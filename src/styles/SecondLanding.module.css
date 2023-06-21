@@ -1,3 +1,15 @@
+.box {
+  background-image: repeating-linear-gradient(6deg, #d52a2a, #d52a2a 19px, transparent 19px, transparent 29px, #d52a2a 29px), repeating-linear-gradient(96deg, #d52a2a, #d52a2a 19px, transparent 19px, transparent 29px, #d52a2a 29px), repeating-linear-gradient(186deg, #d52a2a, #d52a2a 19px, transparent 19px, transparent 29px, #d52a2a 29px), repeating-linear-gradient(276deg, #d52a2a, #d52a2a 19px, transparent 19px, transparent 29px, #d52a2a 29px);
+  background-size: 3px calc(100% + 29.16px), calc(100% + 29.16px) 3px, 3px calc(100% + 29.16px) , calc(100% + 29.16px) 3px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  animation: borderAnimation 1s infinite linear;
+  }
+  
+  @keyframes borderAnimation {
+  from { background-position: 0 0, -29.16px 0, 100% -29.16px, 0 100%; }
+  to { background-position: 0 -29.16px, 0 0, 100% 0, -29.16px 100%; }
+  }
 
     .head {
     text-align: center;
@@ -8,6 +20,28 @@
 
     .headText {
         font-size: 1.5em;
+    }
+
+    .box {
+      border-radius: 10px;
+    }
+
+    .clipping {
+      border-radius: 10px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+      width: 25vw;
+    }
+
+    .clipping h5 {
+      font-weight: 400;
+      font-size: 1.2em;
+      color: white;
+      text-shadow: 0 0 4px black, 0 0 4px black;
     }
     
     .carpet_image {
@@ -56,13 +90,14 @@
     .second_ban {
         font-size: 2.1em;
         font-style: oblique;
+        letter-spacing: .7px;
     }
     
     .second_banner {
         text-align: center;
         background: linear-gradient(to right bottom, #555555, #000000);
         padding: 2rem;
-        height: 75px; /* Change the height to auto */
+        height: 95px; /* Change the height to auto */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,14 +105,56 @@
       }
       
     .landing_body {
-        background-color: #dcdee0;
+      background-color: #e0e0e0;
         margin-top: -28px;
         width: 100vw;
-        height: 550px; /* Change the height to 100% */
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         
+    }
+
+    .specialsContainer {
+      display: inline;
+      text-align: center;
+      margin-bottom: 15vh;
+      margin-left: 10vw;
+      margin-right: 10vw;
+      width: 90%;
+    }
+
+    .link {
+      text-decoration: none;
+    }
+
+    .specialsHeader {
+      background: linear-gradient(to right bottom, rgb(210, 102, 102), rgb(195, 24, 24), rgb(210, 102, 102));
+      border: solid white 2px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+    }
+
+    .specialsHeaderText {
+      font-size: 1.6em;
+      font-weight: 400;
+      padding: 10px;
+    }
+
+    .clippingContainer {
+      margin-top: 8vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .clipping {
+      border-style: dashed;
+      width: 60vw;
     }
     
     .landing_header {
@@ -88,6 +165,8 @@
     }
     
     .service_container {
+      margin-top: 10vh;
+      margin-bottom: 15vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -100,6 +179,7 @@
         color: #333333;
         font-weight:600;
         overflow: hidden;
+        margin-bottom: 20px;
     }
     
     .service {
@@ -137,7 +217,9 @@
 
     @media only screen and (max-width: 800px) {
       .service_container {
+        margin-top: 30px;
         flex-direction: column;
+        margin-bottom: 30px;
 
         width:70%;
       }
@@ -149,6 +231,38 @@
     }
     
     @media only screen and (max-width: 800px) {
+
+      .specialsContainer {
+        margin-bottom: 10vh;
+      }
+      .clippingContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .specialsHeader {
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vh;
+        margin-bottom: 7.5vh;
+
+      }
+      .specialsHeaderText {
+        display:  flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .clipping {
+        margin-bottom: 5vh;
+      }
+
+      .clipping h5{
+        font-size: 1.2em;
+
+      }
         .service_container {
           flex-direction: column;
           width:70%;

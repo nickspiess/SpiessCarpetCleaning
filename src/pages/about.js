@@ -2,8 +2,35 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "../styles/about.module.css";
+import StructuredData from 'src/pages/StructuredData';
+import icon from '../../public/images/icon.png';
 
 export default function About() {
+
+  const structuredData =  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "About Spiess Carpet Cleaning",
+    "url": "https://www.spiesscarpet.com/about",
+    "description": "Learn about Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972.",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "301 Quentin Ave N",
+        "addressLocality": "Lakeland",
+        "addressRegion": "MN",
+        "postalCode": "55043",
+        "addressCountry": "US",
+    },
+    "telephone": "+1-651-472-2736",
+    "openingHours": "Mo-Fr 07:00-17:00",
+    "url": "https://www.spiesscarpet.com/about",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.spiesscarpet.com/about"
+    },
+};
+
+
   const router = useRouter();
 
 
@@ -11,7 +38,20 @@ export default function About() {
     <>
       <Head>
         <title>About | Spiess Carpet Cleaning</title>
+        <meta name="description" content="Learn about Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972." />
+        <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service" />
+        <meta property="og:title" content="About | Spiess Carpet Cleaning" />
+        <meta property="og:description" content="Learn about Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972." />
+        <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+        <meta property="og:url" content="https://www.spiesscarpet.com/about" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="About | Spiess Carpet Cleaning" />
+        <meta name="twitter:description" content="Learn about Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972." />
+        <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+        <link rel="icon" type="image/png" href={icon} />
       </Head>
+      
+      <StructuredData data={structuredData} />
       <div className={styles.landing}>
         <header className={styles.head}>
           <div className={styles.skyline}>
