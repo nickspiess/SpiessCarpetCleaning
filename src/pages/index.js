@@ -5,7 +5,6 @@ import FirstLanding from './FirstLanding'
 import ThirdLanding from './ThirdLanding'
 import FourthLanding from './FourthLanding'
 import Head from 'next/head'
-import icon from '../../public/images/icon.png';
 import StructuredData from 'src/pages/StructuredData';
 
 export default class extends React.Component {
@@ -49,7 +48,6 @@ export default class extends React.Component {
                 <meta name="twitter:title" content="Spiess Carpet Cleaning" />
                 <meta name="twitter:description" content="Welcome to the #1 Carpet Cleaner Service in the Twin Cities. Get an instant quote and book our trusted cleaners today." />
                 <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-                <link rel="icon" type="image/png" href={icon} />
             </Head>
             
         <StructuredData data={structuredData} />

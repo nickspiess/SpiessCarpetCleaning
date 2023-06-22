@@ -3,7 +3,6 @@ import styles from '../styles/testimonials.module.css'
 //<div className="elfsight-app-d6a85cb1-597d-45da-a58c-4e8d1fd40337"></div>
 import Head from 'next/head'
 import {TailSpin} from "react-loader-spinner";
-import icon from '../../public/images/icon.png';
 import StructuredData from 'src/pages/StructuredData';
 
 const Testimonials = () => {
@@ -55,7 +54,6 @@ const Testimonials = () => {
             <meta name="twitter:title" content="Testimonials | Spiess Carpet Cleaning" />
             <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, see what our customers have to say." />
             <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-            <link rel="icon" type="image/png" href={icon} />
         </Head>
         <StructuredData data={structuredData} />
         <div className={styles.container}>

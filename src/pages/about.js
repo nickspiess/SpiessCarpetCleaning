@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "../styles/about.module.css";
 import StructuredData from 'src/pages/StructuredData';
-import icon from '../../public/images/icon.png';
 
 export default function About() {
 
@@ -48,7 +47,6 @@ export default function About() {
         <meta name="twitter:title" content="About | Spiess Carpet Cleaning" />
         <meta name="twitter:description" content="Learn about Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972." />
         <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-        <link rel="icon" type="image/png" href={icon} />
       </Head>
       
       <StructuredData data={structuredData} />

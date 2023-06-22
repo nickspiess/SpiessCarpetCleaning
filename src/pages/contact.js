@@ -12,7 +12,6 @@ import Image from 'next/image';
 import Swal from "sweetalert2";
 import Head from "next/head";
 import StructuredData from 'src/pages/StructuredData';
-import icon from '../../public/images/icon.png';
 
 
 const SERVICE_ID = "service_5e4f1be";
@@ -195,7 +194,7 @@ const Contact = () => {
         "@context": "https://schema.org",
         "@type": "HomeAndConstructionBusiness",
         "name": "Contact Spiess Carpet Cleaning",
-        "url": "https://www.spiesscarpet.com/about",
+        "url": "https://www.spiesscarpet.com/contact",
         "description": "Contact Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972.",
         "address": {
             "@type": "PostalAddress",
@@ -209,8 +208,8 @@ const Contact = () => {
         "openingHours": "Mo-Fr 07:00-17:00",
         "url": "https://www.spiesscarpet.com/about",
         "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://www.spiesscarpet.com/about"
+            "@type": "WebPage",
+            "@id": "https://www.spiesscarpet.com/contact"
         },
     };
 
@@ -229,7 +228,6 @@ const Contact = () => {
             <meta name="twitter:title" content="Contact | Spiess Carpet Cleaning" />
             <meta name="twitter:description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
             <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-            <link rel="icon" type="image/png" href={icon} />
         </Head>
 
         <StructuredData data={structuredData} />

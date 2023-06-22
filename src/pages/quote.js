@@ -3,7 +3,6 @@ import { useRef, useState } from "react"; // REVISED
 import quoteCalculator from '../js/quoteCalculator'
 import Swal from "sweetalert2";
 import Head from 'next/head'
-import icon from '../../public/images/icon.png';
 import StructuredData from 'src/pages/StructuredData';
 
 const QuoteCard = () => {
@@ -316,7 +315,6 @@ const QuoteCard = () => {
             <meta name="twitter:title" content="Quote | Spiess Carpet Cleaning" />
             <meta name="twitter:description" content="Get an instant quote for the Most Experienced Carpet Cleaner in the Twin Cities Area." />
             <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-            <link rel="icon" type="image/png" href={icon} />
         </Head>
 
 

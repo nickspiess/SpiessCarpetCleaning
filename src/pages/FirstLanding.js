@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import React from 'react';
 import { getServerSideProps } from "./getServerSideProps";
 import StructuredData from 'src/pages/StructuredData';
-import icon from '../../public/images/icon.png';
 
 import Head from 'next/head';
 

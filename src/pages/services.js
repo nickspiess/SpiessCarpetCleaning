@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Vent from '../../public/images/vents.jpeg';
 import Carpet from '../../public/images/carpet.jpeg';
 import Other from '../../public/images/upholstery.jpeg';
-import icon from '../../public/images/icon.png';
 import StructuredData from 'src/pages/StructuredData';
 
 const Services = () => {
@@ -67,7 +66,6 @@ const Services = () => {
           <meta name="twitter:title" content="Services | Spiess Carpet Cleaning" />
           <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, see our expert-provided services." />
           <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-          <link rel="icon" type="image/png" href={icon} />
       </Head>
 
       <StructuredData data={structuredData} />
