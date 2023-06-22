@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/Footer.module.scss';
+import styles from '../styles/Footer.module.css';
 import { router } from "next/router";
 import Contact from '../../public/images/contact.png'
 import Image from 'next/image';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "../styles/carousel.module.scss";
+import styles from "../styles/carousel.module.css";
 
 const ImageSlider = () => {
   const [index, setIndex] = useState(0);
@@ -10,7 +10,7 @@ const ImageSlider = () => {
     "/images/angie_2013.jpeg",
     "/images/angie_2014.jpeg",
     "/images/angie_2015.jpeg",
-    "/images/angie_2016.jpeg",
+    //"/images/angie_2016.jpeg",
     "/images/angie_2017.jpeg",
   ];
 

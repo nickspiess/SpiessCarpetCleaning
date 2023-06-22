@@ -6,7 +6,7 @@ const ThirdLanding = () => {
       require("../../public/images/angie_2013.jpeg").default,    
       require("../../public/images/angie_2014.jpeg").default,    
       require("../../public/images/angie_2015.jpeg").default,    
-      require("../../public/images/angie_2016.jpeg").default,    
+      //require("../../public/images/angie_2016.jpeg").default,    
       require("../../public/images/angie_2017.jpeg").default,  ];
 
   return (
@@ -30,7 +30,7 @@ const ThirdLanding = () => {
                 </div>
                 <div className={styles["review-container"]}>
                     <div className={styles.containerTwo}>
-                    <div className="elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0" />
+                    <div className="elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0" />n
                     </div>
                 </div>
             </div>
