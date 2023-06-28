@@ -216,18 +216,24 @@
 
   .aboutVid,
   .aboutInfo {
+    text-align: center;
     margin: 0;
     flex: none;
     width: 100%;
   }
 
   .aboutInfo {
+    text-align: center;
     margin-top: 2em;
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .fourthContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 60px;
     padding-bottom: 20vh;
     text-align: center;
