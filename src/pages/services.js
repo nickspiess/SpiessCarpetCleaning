@@ -175,9 +175,9 @@ const Services = () => {
           <div className={styles.contentWrapperDuctsMobile}>
           <h2 className={styles.mobileHead}><strong>Air Duct and Dryer Vent Cleaning</strong></h2>
           <p className={styles.text}>
-            Spiess Carpet Cleaning offers two different levels for cleaning your air ducts, and advanced 
-            and maintenance cleaning.  Our process uses industrial vaccuums and high-pressure air wands and snakes to clean
-            all your vents, branch, and trunk lines, making the air in your home cleaner than ever before. 
+            Spiess Carpet Cleaning offers two different levels for cleaning your air ducts, advanced and
+            maintenance cleanings.  Our process uses industrial vaccuums, high-pressure air wands, and snakes to clean
+            all your vents, branches, and trunk lines, making the air in your home cleaner than ever before. 
           </p>
           </div>
           <i className="fa-solid fa-tree"></i>

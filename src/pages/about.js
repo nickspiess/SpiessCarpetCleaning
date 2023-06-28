@@ -103,10 +103,9 @@ export default function About() {
               <br />
               <br />
               At Spiess Carpet Cleaning, honesty, integrity, and
-              quality are the backbone of this business. Most businesses fail
-              With over 30,000+ homes cleaned and a 99% ‘A’ rating on Angie’s
-              List, our thousands of satisfied customers call back time and time
-              again.
+              quality are the backbone of this business. With over 30,000+ homes 
+              cleaned and a 99% ‘A’ rating on Angie’s List, our thousands of satisfied 
+              customers call back time and time again.
               <br />
               <br />
               Jeff makes sure our team is always professional,

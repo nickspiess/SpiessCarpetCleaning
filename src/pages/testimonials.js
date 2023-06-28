@@ -57,7 +57,7 @@ const Testimonials = () => {
         </Head>
         <StructuredData data={structuredData} />
         <div className={styles.container}>
-            <h2 className={styles.header}><strong>At Spiess Carpet Cleaning, Our Customers Are Always Come First</strong></h2>
+            <h2 className={styles.header}><strong>At Spiess Carpet Cleaning, Our Customers Always Come First</strong></h2>
             <div className={styles.reviewContainer}>
                     <div className={`elfsight-app-d6a85cb1-597d-45da-a58c-4e8d1fd40337 ${styles.reviewDiv}`} />
             <iframe
