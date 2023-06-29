@@ -38,7 +38,7 @@ export default class extends React.Component {
         <>
             <Head>
                 <title>Spiess Carpet Cleaning</title>
-                <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
+                <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Metro and Western Wisconsin Areas. Get an instant quote and book our trusted cleaners today." />
                 <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service, 
                                               Hudson carpet cleaner, twin cities carpet cleaner, oakdale carpet cleaner
                                               Eden prairie carpet cleaner, woodbury carpet cleaner, saint paul carpet cleaner,
@@ -48,6 +48,7 @@ export default class extends React.Component {
                                               Eden prairie air duct cleaner, woodbury air duct cleaner, saint paul air duct cleaner,
                                               Hudson steam cleaner, twin cities steam cleaner, oakdale steam cleaner
                                               Eden prairie steaam cleaner, woodbury steam cleaner, saint paul steam cleaner." />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <meta property="og:title" content="Spiess Carpet Cleaning" />
                 <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
                 <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />

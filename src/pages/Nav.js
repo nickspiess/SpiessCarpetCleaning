@@ -4,6 +4,7 @@ import logo from '../../public/images/logo.png';
 import styles from '../styles/Nav.module.css';
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from 'react';
+import PhoneIcon from './PhoneIcon';
 
 
 const Navbar = () => {
@@ -43,10 +44,14 @@ const handleMenuToggle = () => {
   const closeMenu = () => {
     setIsOpen(false);
   };
+  
 
   return (
     <nav ref={navbarRef} className={`${styles.navbar} ${styles.nav} ${visible ? '' : styles.hidden}`} id='navbar'>
         <div className={`${styles.navbarContainer}`}>
+            <div className={styles.phoneIcon}>
+                <PhoneIcon phoneNumber="+1234567890" />
+            </div>
             <input type="checkbox" 
             name="" 
             className={styles.check} 

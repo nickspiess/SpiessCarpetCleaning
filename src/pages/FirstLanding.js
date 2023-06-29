@@ -20,6 +20,9 @@ const FirstLanding = () => {
         <>
 
             <div className={`${styles.first_container}`}>
+                <header className={styles.callHeader}>
+                    <h3><a className={styles.link} href="tel:6514722736">651-472-2736</a></h3><h3> | </h3><h3>Call Today for a FREE QUOTE</h3>
+                </header>
                 <div className={styles.landing_head}>
                     <h1 className={styles['head']}><strong><u>The Twin Cities' Most</u></strong></h1>
                     <h1 className={styles['head']}><strong><u>Experienced Carpet Cleaner</u></strong></h1>
