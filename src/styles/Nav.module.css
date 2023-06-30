@@ -227,18 +227,18 @@
   .phone {
       display: block;
   position: absolute;
-  left: 45px; /* Adjust the left positioning as needed */
-  top: -14px;
+  left: 27px; /* Adjust the left positioning as needed */
+  top: -12px;
   transform: translateY(-50%);
   }
   
   .phoneCall {
     display: block;
     position: absolute;
-    left: 15px; /* Adjust the left positioning as needed */
-    top: 10px;
+    left: -5px; /* Adjust the left positioning as needed */
+    top: 12px;
     width: 100px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
   }
 
@@ -403,7 +403,7 @@
     text-align: center;
     width: 150px;
     height: auto;
-    left: calc(50% - 130px);
+    left: calc(50% - 70px);
   }
 
   .nav {
