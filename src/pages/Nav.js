@@ -106,7 +106,7 @@ const handleMenuToggle = () => {
         </ul>
         <div className={styles.mobileContainer}>
             <div className={styles.phoneIcon}>
-                <a href="tel:6514722736" class="phoneIcon">
+                <a href="tel:6514722736" className="phoneIcon">
                     <FontAwesomeIcon onClick={handlePhoneClick} className={styles.phone} icon={faPhone} size="2xl" />
                 </a>
                 <p className={styles.phoneCall}>Call Today!</p>
