@@ -22,7 +22,8 @@ const navbarRef = useRef(null); // Add a ref for the navbar element
 
 const handleLinkClick = () => {
     setIsOpen(false);
-  };
+    };
+
 
 useEffect(() => {
     const handleScroll = () => {

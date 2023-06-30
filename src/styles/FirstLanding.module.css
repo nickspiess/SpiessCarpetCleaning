@@ -139,7 +139,13 @@
 
   .callHeader {
     margin-top: 115px;
+    height: 80px;
   }
+
+  .h3One {
+    width: 50%;
+  }
+
   .head {
     display: none;
   }
