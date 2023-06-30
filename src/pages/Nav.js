@@ -4,7 +4,6 @@ import logo from '../../public/images/logo.png';
 import styles from '../styles/Nav.module.css';
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from 'react';
-import PhoneIcon from './PhoneIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
