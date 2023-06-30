@@ -71,7 +71,7 @@
 .img {
   width: 170px;
   height: auto;
-  margin-left: 40px;
+  margin-left: 0px;
 }
 
 .imgLink {
@@ -86,7 +86,7 @@
 }
 
 .navLinks {
-  gap: 25vw;
+  gap: 17vw;
   list-style: none;
   text-decoration: none;
   font-family: Montserrat;
@@ -130,41 +130,34 @@
   width: 130px;
   height: 60px;
   font-size: 1.1em;
-  margin-right: 40px;
+  margin-right: 0px;
 }
 
 .navbar {
-
+  width: 100%;
   margin: 0;
   padding: 0;
   height: 115px;
   /* Other styles for the navbar */
 }
 
-@media (min-width: 1300px) {
-.navLinks {
-  gap: 28vw;
-}
-.link {
-  font-size: 1.1em;
-}
+.phoneIcon {
+  display: none;
 }
 
-@media (max-width: 1200px) {
-  .navLinks {
-    gap: 17vw;
-  }
-  }
+.phone {
+  display: none;
+}
 
 /* Mobile responsiveness */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
   .navbarContainer {
     max-width: 90%; /* Reduce the maximum width on small desktop screens */
     padding: 0 0.5rem; /* Adjusted: Reduce horizontal padding */
   }
   .navLinks {
-    gap: 12vw;
+    gap: 10vw;
   }
   .linkContainer {
     gap: 40px;
@@ -179,19 +172,77 @@
   .linkContainer {
     gap: 30px;
   }
+  .img {
+    width: 170px;
+    height: auto;
+    margin-left: -20px;
+  }
 }
 
 @media (max-width: 875px) {
 
   .navLinks {
-    gap: 4vw;
+    gap: 8vw;
   }
   .linkContainer {
-    gap: 25px;
+    gap: 20px;
+  }
+  .img {
+    width: 170px;
+    height: auto;
+    margin-left: -10px;
+  }
+}
+
+@media (max-width: 825px) {
+
+  .navLinks {
+    gap: 5vw;
+  }
+  .linkContainer {
+    gap:15px;
+  }
+  .img {
+    width: 170px;
+    height: auto;
+    margin-left: -10px;
+  }
+  .navButton {
+    width: 90%;
+    height: auto;
+    margin: 0.5rem;
+    font-size: 0.9em;
   }
 }
 
 @media only screen and (max-width: 800px) {
+
+  .phoneIcon {
+    display: block;
+    position: absolute;
+    left: 10px; /* Adjust the left positioning as needed */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .phone {
+      display: block;
+  position: absolute;
+  left: 45px; /* Adjust the left positioning as needed */
+  top: -14px;
+  transform: translateY(-50%);
+  }
+  
+  .phoneCall {
+    display: block;
+    position: absolute;
+    left: 15px; /* Adjust the left positioning as needed */
+    top: 10px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+
   .link {
     text-align: center;
   }
@@ -278,7 +329,6 @@
 }
 
 .menuItems li {
-  width: 100%;
   list-style: none;
   font-size: 1.3rem;
 }
@@ -293,6 +343,7 @@
 .navbar a:hover {
   color: #117964;
 }
+
 
 @media (max-width: 800px) {
   .linkContainer {
@@ -454,6 +505,14 @@
 
   .navbarContainer input[type="checkbox"]:checked + .hamburgerLines .line3 {
     transform: rotate(-45deg);
+  }
+
+  .phoneIcon {
+    display:block;
+    position: left;
+  }
+  .phone {
+    display: block;
   }
 }
 

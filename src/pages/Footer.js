@@ -13,9 +13,10 @@ const Footer = () => {
                         <div className={styles.contactContainer}>
                             <Image className={styles.contactImg} src={Contact} width={32} height={32} alt='cash' />
                             <Link className={styles.contactLink}href="/contact"><h3 className={styles.contactHeader}><strong>Contact Us!</strong></h3></Link>
-                            <p className={styles.contactInfo}>
-                                (651)472-2736<br/>
-                                sales@spiesscarpet.com</p>
+                            <div className={styles.contactInfo}>
+                                <p><a className={styles.link} href="tel:6514722736">(651)472-2736</a></p>
+                                <p><a className={styles.link} href="mailto:sales@spiesscarpet.com">sales@spiesscarpet.com</a></p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.infoContainer}>

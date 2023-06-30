@@ -6,14 +6,19 @@
   align-items: center;
 }
 
+.link {
+  color: white;
+  text-decoration: underline;
+}
+
 .mobileFooter {
   display: none;
 }
 
 .contactHeader {
-
-  font-size: 1.3em;
+  font-size: 1.4em;
   color: white;
+  margin-bottom: 2vh;
 }
 
 .infoContainer {
@@ -34,7 +39,7 @@
 }
 
 .contactImg {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .contactContainer {
@@ -44,10 +49,19 @@
 
 .contactInfo {
   text-align: center;
-  display:flex;
+  display: inline-block;
   align-items: center;
-  width: 90%;
+  text-align: center;
+}
 
+.link { 
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.link:hover {
+  color: lightgrey;
+  text-align: center;
 }
 
 .firstContainer {
@@ -259,11 +273,15 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
-  .footer {
+  .link { 
+    font-size: 1em;
+  }
 
-}
+  .contactHeader {
+    font-size: 1.2em;
+  }
 
 .firstContainer {
   width: 25%;

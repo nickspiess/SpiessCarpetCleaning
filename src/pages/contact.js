@@ -309,8 +309,8 @@ const Contact = () => {
             <div className={styles.contactInfo}>
                 <article className={styles.directContact}>
                     <h2 className={styles.contactHeadTop}>Contact Us Directly</h2>
-                    <p className={styles.contactParagraphs}>(651)-472-2736</p>
-                    <p className={styles.contactParagraphs}><u>sales@spiesscarpet.com</u></p>
+                    <p className={styles.contactParagraphs}><a className={styles.link} href="tel:6514722736">(651)-472-2736</a></p>
+                    <p className={styles.contactParagraphs}><u><a className={styles.link} href="mailto:sales@spiesscarpet.com">sales@spiesscarpet.com</a></u></p>
                 </article>
                 <article className={styles.hours}>
                     <h2 className={styles.contactHead}>Business Hours</h2>

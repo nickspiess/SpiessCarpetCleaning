@@ -4,6 +4,9 @@ import logo from '../../public/images/logo.png';
 import styles from '../styles/Nav.module.css';
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from 'react';
+import PhoneIcon from './PhoneIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 
 const Navbar = () => {
@@ -43,6 +46,11 @@ const handleMenuToggle = () => {
   const closeMenu = () => {
     setIsOpen(false);
   };
+  const handlePhoneClick = () => {
+    // Perform phone call action here
+    console.log('Calling', '6512169512');
+  };
+  
 
   return (
     <nav ref={navbarRef} className={`${styles.navbar} ${styles.nav} ${visible ? '' : styles.hidden}`} id='navbar'>
@@ -97,6 +105,12 @@ const handleMenuToggle = () => {
             </div>
         </ul>
         <div className={styles.mobileContainer}>
+            <div className={styles.phoneIcon}>
+                <a href="tel:6514722736" class="phoneIcon">
+                    <FontAwesomeIcon onClick={handlePhoneClick} className={styles.phone} icon={faPhone} size="2xl" />
+                </a>
+                <p className={styles.phoneCall}>Call Today!</p>
+            </div>
             <Link href='/' className={styles.mobileImg} passHref onClick={handleLinkClick}>
                 <div className={styles.mobileImgLink}>
                 <Image

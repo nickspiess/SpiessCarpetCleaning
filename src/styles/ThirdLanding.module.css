@@ -141,7 +141,7 @@
 @media screen and (max-width: 992px) {
   .angie-container {
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 0vh;
     margin-bottom: 10vh;
     width: 65vw;
 

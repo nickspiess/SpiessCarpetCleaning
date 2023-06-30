@@ -58,6 +58,21 @@
     align-items: center;
     text-align: center;
   }
+
+  .directContact {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .link {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .link:hover {
+    color: blue;
+  }
   
   .contactCont {
     margin-top: 10vh;
@@ -82,6 +97,7 @@
   .contactHead {
     text-align: center;
     margin-bottom: 2vh;
+    text-decoration: underline;
   }
 
 
@@ -90,11 +106,17 @@
   }
 
   .hours {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
       margin-top: 4vh; 
   }
 
   .serviceArea {
       margin-top: 4vh;
+      font-size: 16px;
+    font-weight: 500;
+    text-align: center;
   }
 
   .payments {
