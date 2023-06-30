@@ -251,6 +251,33 @@
 
 @media (max-width: 800px) {
 
+  .fourthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttonContainer {
+    margin-top: 10vh;
+    margin-bottom: -5vh;
+  }
+
+  .landingButtonPrimary {
+    width: 30vw;
+  }
+  .landingButtonSecondary {
+    width: 30vw;
+  }
+
+  .aboutVid {
+    margin-top: 5vh;
+    padding-top: 5vh;
+  }
+
+  .aboutLanding {
+    padding-top: 5vh;
+  }
+
   .fourthHeader {
     padding: 10px;
   }

@@ -78,7 +78,10 @@
 .mission {
   margin-bottom: 0vh;
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  font-family: 'Lato', sans-serif; /* Replace with desired font family */
+  line-height: 1.6; /* Adjust line height as needed */
+  color: black; /* Set desired text color */
 }
 
 .founderInfo {
@@ -103,7 +106,9 @@
 .history {
   text-align: center;
   color: black;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-family: 'Lato', sans-serif; /* Replace with desired font family */
+  line-height: 1.6; /* Adjust line height as needed */
 }
 
 .landing {
