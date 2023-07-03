@@ -6,7 +6,7 @@ var chairPrice;
 var couchPrice;
 var sectionalPrice;
 
-function quoteCalculator(roomCount, flightsOfSteps, chairCount, couchCount, sectionalCount) {
+function quoteCalculator(roomCount, numOfSteps, chairCount, couchCount, sectionalCount) {
     totalPrice = 0.00
     stepPrice = 0.00
     chairPrice = 0.00
@@ -37,7 +37,7 @@ function quoteCalculator(roomCount, flightsOfSteps, chairCount, couchCount, sect
     // Loveseat : $139.99
     // Kitchen Chair : $19.99
     // Lazy Boy $89.99
-    totalPrice = totalPrice + (75.00 * parseFloat(flightsOfSteps)) + (parseFloat(chairCount) * 89.99) + (parseFloat(couchCount) * 179.00) + (parseFloat(sectionalCount) * 279.00);
+    totalPrice = totalPrice + (4.50 * parseFloat(numOfSteps)) + (parseFloat(chairCount) * 89.99) + (parseFloat(couchCount) * 179.00) + (parseFloat(sectionalCount) * 279.00);
     return [totalPrice, quoteNum];
 }
 

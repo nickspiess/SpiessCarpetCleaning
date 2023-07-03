@@ -342,7 +342,7 @@ const QuoteCard = () => {
                                     />
                                 </div>
                                 <div className={styles.steps}>
-                                    <label htmlFor="steps"><strong>Flights of Steps:</strong></label>
+                                    <label htmlFor="steps"><strong>Number of Steps:</strong></label>
                                     <input
                                         type="number"
                                         min='0'
