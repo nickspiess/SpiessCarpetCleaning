@@ -60,7 +60,7 @@ export default class extends React.Component {
             </Head>
             
         <StructuredData data={structuredData} />
-            <div className="body">
+            <div className="">
               <div className="wrapper">
                     <FirstLanding />
                     <FourthLanding />
