@@ -80,7 +80,7 @@ const QuoteCard = () => {
                   rooms +
                   ' rooms, ' +
                   steps +
-                  ' flights of steps, ' +
+                  ' Number of steps, ' +
                   chairs +
                   ' chairs, ' +
                   loveseats +
