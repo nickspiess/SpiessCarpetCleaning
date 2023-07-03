@@ -47,7 +47,7 @@ export default class extends React.Component {
                                               Hudson air duct cleaner, twin cities air duct cleaner, oakdale air duct cleaner
                                               Eden prairie air duct cleaner, woodbury air duct cleaner, saint paul air duct cleaner,
                                               Hudson steam cleaner, twin cities steam cleaner, oakdale steam cleaner
-                                              Eden prairie steaam cleaner, woodbury steam cleaner, saint paul steam cleaner." />
+                                              Eden prairie steam cleaner, woodbury steam cleaner, saint paul steam cleaner." />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <meta property="og:title" content="Spiess Carpet Cleaning" />
                 <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />

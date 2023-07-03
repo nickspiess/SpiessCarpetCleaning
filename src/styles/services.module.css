@@ -69,14 +69,18 @@
   border: solid white 1px;
 }
 
+.listContainer {
+  display: flex;
+}
+
 .mainContainer {
   border-radius: 25px;
   display: block;
   margin: auto;
   width: 85%;
   height: 100%;
-  margin-bottom: 10vh;
-  margin-top: 10vh;
+  margin-bottom: 20vh;
+  margin-top: 7vh;
 }
 
 .box {
@@ -346,7 +350,8 @@
 @media (max-width: 800px) {
 
   .mainContainer {
-    display: none;
+    margin-top: 80px;
+
   }
 
   .mobileContainer {
@@ -381,8 +386,8 @@
     display: inline-block;
     text-align: center;
     margin: auto;
-    margin-top: 15vh;
-    margin-bottom: 50vh;
+    margin-top: 10vh;
+    margin-bottom: 0vh;
     width: 100vw;
   }
 
