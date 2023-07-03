@@ -18,7 +18,6 @@
 .contactHeader {
   font-size: 1.4em;
   color: white;
-  margin-bottom: 2vh;
 }
 
 .infoContainer {
@@ -44,7 +43,7 @@
 
 .contactContainer {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .contactInfo {
@@ -52,6 +51,7 @@
   display: inline-block;
   align-items: center;
   text-align: center;
+  margin-top: 12px;
 }
 
 .link { 
@@ -259,7 +259,7 @@
 
   .contactContainer p {
     font-size: 1.2em;
-    margin-bottom: 2vh;
+    margin-bottom: -1vh;
   }
   .contactImg {
     width: 40px;
