@@ -18,9 +18,11 @@
 .contactHeader {
   font-size: 1.4em;
   color: white;
+  text-shadow: 0px 0px 2px black, 0px 0px 4px black;
 }
 
 .infoContainer {
+  color: white;
   margin-left: 50px;
     margin-right: 50px;
   align-items: center;
@@ -29,6 +31,7 @@
   flex-grow: 1;
   display: inline; /* Add display flex */
   justify-content: center; /* Center horizontally */
+  text-shadow: 0px 0px 2px black, 0px 0px 4px black;
 }
 
 .buttonContainer {
@@ -57,6 +60,8 @@
 .link { 
   font-weight: 600;
   font-size: 1em;
+  transition: color 0.4s;
+  text-shadow: 0px 0px 2px black, 0px 0px 4px black;
 }
 
 .link:hover {
@@ -120,6 +125,9 @@
 }
 
 .navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
   background-color: #fff;
   color: black;
@@ -128,7 +136,7 @@
   font-size: 1.35rem;
   font-family: Montserrat;
   font-weight: 400;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
   cursor: pointer;
 }
 
@@ -149,6 +157,7 @@
 
 .link {
   text-align: center;
+  transition: transform 0.3s;
 }
 
 .link:hover {
@@ -248,7 +257,6 @@
 
   .navButton {
     margin-top: 2vh;
-    height: 6vh;
     font-size: 1.8em;
   }
 

@@ -28,6 +28,9 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-shadow: 0px 0px 4px black, 0px 0px 6px black;
+    letter-spacing: .5px;
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.3);
   }
   
   .butt:hover {
@@ -54,7 +57,7 @@
         display: block;
         align-items: center;
         text-align: center;
-        margin-top: 6vh;
+        margin-top: 10vh;
         margin-left: auto;
         margin-right: auto;
       }
@@ -73,12 +76,14 @@
   margin-bottom: 8vh;
   color: black;
   border-bottom: 2px solid black;
+  font-size: 1.9em;
 }
 
 .mission {
   margin-bottom: 0vh;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  letter-spacing: 0.3px;
   font-family: 'Lato', sans-serif; /* Replace with desired font family */
   line-height: 1.6; /* Adjust line height as needed */
   color: black; /* Set desired text color */
@@ -101,12 +106,14 @@
   border-bottom: 1px solid black;
   padding-bottom: 7vh;
   margin-bottom: 7vh;
+  font-size: 1.9em;
 }
 
 .history {
   text-align: center;
   color: black;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  letter-spacing: 0.3px;
   font-family: 'Lato', sans-serif; /* Replace with desired font family */
   line-height: 1.6; /* Adjust line height as needed */
 }
@@ -121,6 +128,7 @@
 
 .picHead {
   font-size: 0.95em;
+  text-shadow: 0px 0px 4px black, 0px 0px 6px black;
 }
 
 .skyline {
@@ -140,6 +148,9 @@
 .videoHead {
   color: white;
   width: 100%;
+  text-shadow: 0px 0px 4px black, 0px 0px 6px black;
+  font-size: 1.2em;
+  letter-spacing: .4px;
 }
 
 .belowVid {
@@ -150,10 +161,12 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2em;
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .responsiveIframe {
   margin: auto;
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 800px) {
@@ -216,8 +229,8 @@ margin-bottom: 40px;
 }
 .skyline {
   text-align: center;
-height: 200px;
-font-size: 1.8rem;
+height: 250px;
+font-size: 2.25em;
 margin-top: 0;
 background-position: center;
 }

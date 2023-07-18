@@ -11,7 +11,7 @@ const SecondLanding = () => {
     return (
         <>
         <div className={styles.second_banner}>
-            <span><h3 className={styles.second_ban}><strong>Services Provided</strong></h3></span>
+            <span><h3 className={styles.second_ban}><strong>Services & Specials</strong></h3></span>
         </div>
         <div className={styles.landing_body}>
             <div className={styles.service_container}>
@@ -29,6 +29,18 @@ const SecondLanding = () => {
                         <p>
                         State-of-the-Art Steam Cleaning machines designed to make your carpet as clean and dry as fast as possible.
                         </p>
+                        <div className={styles.buttonContainer}>
+                        <Link className={styles.landingButtonPrimary} href='/services'>
+                            <button className={styles.learnButton}>
+                                Learn More
+                            </button>
+                        </Link>
+                        <Link className={styles.landingButtonPrimary} href='/contact'>
+                                <button className={styles.scheduleButton}>
+                                    Schedule Today
+                                </button>
+                        </Link>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.service}>
@@ -45,6 +57,18 @@ const SecondLanding = () => {
                     <p>
                         Innovative Air Duct and Dryer Vent cleaning technologies to keep you and your home healthy.
                     </p>
+                    <div className={styles.buttonContainer}>
+                    <Link className={styles.landingButtonPrimary} href='/services'>
+                            <button className={styles.learnButton}>
+                                Learn More
+                            </button>
+                        </Link>
+                        <Link className={styles.landingButtonPrimary} href='/contact'>
+                                <button className={styles.scheduleButton}>
+                                    Schedule Today
+                                </button>
+                        </Link>
+                        </div>
                 </div>
                 </div>
                 <div className={`${styles.service} ${styles['rounded-border-gradient']}`}>
@@ -61,6 +85,18 @@ const SecondLanding = () => {
                     <p>
                         Upholstery cleaning available with the most advanced cleaning technologies.
                     </p>
+                    <div className={styles.buttonContainer}>
+                        <Link className={styles.landingButtonPrimary} href='/services'>
+                            <button className={styles.learnButton}>
+                                Learn More
+                            </button>
+                        </Link>
+                        <Link className={styles.landingButtonPrimary} href='/contact'>
+                                <button className={styles.scheduleButton}>
+                                    Schedule Today
+                                </button>
+                        </Link>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -74,31 +110,61 @@ const SecondLanding = () => {
                 </header>
                 <div className={styles.clippingContainer}>
                     <article className={`${styles.clipping} ${styles.box}`}>
-                    <Link className={styles.link} href='/quote'>
                         <h5>
                             <strong>
                             15% Off All Carpet Cleaning
                             </strong>
                         </h5>
-                        </Link>
+                        <div className={styles.specialButtonContainer}>
+                            <Link className={styles.landingButtonPrimary} href='/services'>
+                                <button className={styles.quoteButton}>
+                                    Get a Quote
+                                </button>
+                            </Link>
+                            <Link className={styles.landingButtonPrimary} href='/contact'>
+                                    <button className={styles.specialScheduleButton}>
+                                        Schedule Today
+                                    </button>
+                            </Link>
+                        </div>
                     </article>
                     <article className={`${styles.clipping} ${styles.box}`}>
-                    <Link className={styles.link} href='/quote'>
                         <h5>
                             <strong>
                             30% Off All Upholstery Cleaning
                             </strong>
                         </h5>
-                        </Link>
+                        <div className={styles.specialButtonContainer}>
+                            <Link className={styles.landingButtonPrimary} href='/services'>
+                                <button className={styles.quoteButton}>
+                                    Get a Quote
+                                </button>
+                            </Link>
+                            <Link className={styles.landingButtonPrimary} href='/contact'>
+                                    <button className={styles.specialScheduleButton}>
+                                        Schedule Today
+                                    </button>
+                            </Link>
+                        </div>
                     </article>
                     <article className={`${styles.clipping} ${styles.box}`}>
-                    <Link className={styles.link} href='/quote'>
                         <h5>
                         <strong>
                             50% Off Pet Odor Neutralizers
                             </strong>
                         </h5>
-                        </Link>
+                        <div className={styles.specialButtonContainer}>
+                            <Link className={styles.landingButtonPrimary} href='/services'>
+                                <button className={styles.quoteButton}>
+                                    Get a Quote
+                                </button>
+                            </Link>
+                            <Link className={styles.landingButtonPrimary} href='/contact'>
+                                    <button className={styles.specialScheduleButton}>
+                                        Schedule Today
+                                    </button>
+                            </Link>
+                        </div>
                     </article>
                 </div>
             </div>

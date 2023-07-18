@@ -18,6 +18,7 @@
   margin: 0;
   padding: 0;
   font-size: 1.5em;
+  text-shadow: 2px 2px 12px rgb(131, 131, 131);
 }
   
 
@@ -33,7 +34,8 @@
     transition: 0.4s !important;
     font-size: 1.5rem;
     margin-top: 40px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .6);
+    text-shadow: 0 0 4px black, 0 0 4px black;
   }
   .mobileHead {
     display: none;
@@ -88,7 +90,7 @@
     margin-top: 20vh;
     margin-bottom: 10px;
     font-weight: 400;
-    text-shadow: 0 0 4px black, 0 0 2px black;
+    text-shadow: 0px 0px 4px black, 0px 0px 4px black;
   }
   
 

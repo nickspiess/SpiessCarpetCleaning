@@ -6,6 +6,7 @@
   background-color: #f4a31c !important;
   border: solid rgb(0, 0, 0) 1px !important;
   transition: 0.4s !important;
+  box-shadow: 0px 0px 4px 1px rgb(57, 57, 57);
 }
 
 .mobileImg {
@@ -40,7 +41,6 @@
 .link {
   text-decoration: none;
   color: #c31c4c;
-  text-shadow: 0 black;
   font-weight: 500;
   font-size: 1.05em;
   font-family: Montserrat;
@@ -60,7 +60,7 @@
   text-decoration: none;
   color: white;
   transition: 0.55s;
-  text-shadow: 0 0 2px white, 0 0 2px black;
+  text-shadow: 0 0 2px black, 0 0 2px black;
 }
 
 .link:active {
