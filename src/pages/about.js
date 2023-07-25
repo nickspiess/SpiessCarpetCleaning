@@ -80,8 +80,8 @@ export default function About() {
             <div className={styles.vidBody}>
               <iframe
                 className={styles.responsiveIframe}
-                width="560"
-                height="315"
+                width="650"
+                height="305"
                 src="https://www.youtube.com/embed/RRZq3E61kFY"
                 title="About Spiess Carpet Cleaning"
                 frameBorder="0"

@@ -49,6 +49,11 @@ const Contact = () => {
             icon: 'success',
             title: 'Message Sent Successfully'
             })
+            // Reset form fields
+            setName('');
+            setEmail('');
+            setPhone('');
+            setMessage('');
         }, (error) => {
             console.log(error.text);
             Swal.fire({
