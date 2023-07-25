@@ -116,7 +116,7 @@ const SecondLanding = () => {
                             </strong>
                         </h5>
                         <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/services'>
+                            <Link className={styles.landingButtonPrimary} href='/quote'>
                                 <button className={styles.quoteButton}>
                                     Get a Quote
                                 </button>
@@ -135,7 +135,7 @@ const SecondLanding = () => {
                             </strong>
                         </h5>
                         <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/services'>
+                            <Link className={styles.landingButtonPrimary} href='/quote'>
                                 <button className={styles.quoteButton}>
                                     Get a Quote
                                 </button>
@@ -154,7 +154,7 @@ const SecondLanding = () => {
                             </strong>
                         </h5>
                         <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/services'>
+                            <Link className={styles.landingButtonPrimary} href='/quote'>
                                 <button className={styles.quoteButton}>
                                     Get a Quote
                                 </button>
