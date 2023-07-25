@@ -230,4 +230,19 @@
     padding-bottom: 10px;
     font-size: 1.5em;
   }
+
+  .angie-container {
+    margin-top: 0vh;
+    margin-bottom: 5vh;
+    width: 75vw;
+
+  }
+  .reviewHead {
+    margin-bottom: 0;
+    width: 75%;
+  }
+
+  .awarded-header {
+    margin-bottom: 0vh;
+  }
 }

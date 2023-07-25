@@ -321,7 +321,8 @@
         align-items: center;
         margin-top: 5vh;
         margin-bottom: 7.5vh;
-
+        height: auto;
+        padding: 10px;
       }
       .specialsHeaderText {
         display:  flex;
