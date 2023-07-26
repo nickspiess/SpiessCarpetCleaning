@@ -7,7 +7,7 @@ import Script from 'next/script';
 import { useEffect, useRef } from "react";
 
 // Import the Sequelize configuration and model definition
-import { sequelize } from '../database/db';
+import { sequelize } from './database/db';
 
 // Set a flag to track if the migration has been performed
 let migrationPerformed = false;
