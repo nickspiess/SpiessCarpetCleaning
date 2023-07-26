@@ -5,7 +5,7 @@ const { PotentialCustomers } = require('../config/database/db');
 // Function to send email using SendGrid API
 const sendEmail = async (quoteData) => {
   try {
-    const res = await fetch('/api/sendgrid', {
+    const res = await fetch('../pages/api/sendgrid', {
       body: JSON.stringify({
         email: quoteData.email,
         firstName: quoteData.firstName,
