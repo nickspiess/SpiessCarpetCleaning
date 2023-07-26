@@ -96,48 +96,117 @@ const QuoteCard = () => {
   // The handleSubmit function with separated SendGrid and database calls
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Check if the required fields are filled out
+        // Check if the required fields are filled out
     if (!firstName || !lastName || !email || !phone) {
-      alert('Please fill out all required fields.');
-      return;
-    }
+        alert('Please fill out all required fields.');
+        return;
+    }else {
+      const [totalPrice, quoteNumber] = quoteCalculator(
+        rooms,
+        steps,
+        chairs,
+        loveseats,
+        couches
+      );
+      const quoteData = {
+        rooms,
+        steps,
+        chairs,
+        loveseats,
+        couches,
+        firstName,
+        lastName,
+        email,
+        phone,
+        totalPrice,
+        quoteNumber,
+      };
+      const jsonQuoteData = JSON.stringify(quoteData);
+  
+      try {
+        const res = await fetch('/api/sendgrid', {
+          body: JSON.stringify({
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            roomCount: rooms,
+            stepCount: steps,
+            chairCount: chairs,
+            loveseatCount: loveseats,
+            couchCount: couches,
+            totalPrice: totalPrice,
+            quoteNumber: quoteNumber,
+            subject: 'Your Quote from Spiess Carpet!',
+            message:
+              'Here is your quote for ' +
+              rooms +
+              ' rooms, ' +
+              steps +
+              ' flights of steps, ' +
+              chairs +
+              ' chairs, ' +
+              loveseats +
+              ' loveseats, and ' +
+              couches +
+              ' couches.',
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+        });
+  
+        if (res.ok) {
+          console.log(await res.text());
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent Successfully',
+          });
+        } else {
+          console.log(await res.text());
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops, something went wrong',
+            text: await res.text(),
+          });
+        }
 
-    // Calculate total price and quote number
-    const [totalPrice, quoteNumber] = quoteCalculator(rooms, steps, chairs, loveseats, couches);
+                // Get a reference to the input element
+            const roomsInput = document.getElementById('num_input');
 
-    // Construct the quote data object
-    const quoteData = {
-      rooms,
-      steps,
-      chairs,
-      loveseats,
-      couches,
-      firstName,
-      lastName,
-      email,
-      phone,
-      totalPrice,
-      quoteNumber,
-    };
+            // Add event listener for input change
+            roomsInput.addEventListener('input', handleInputChange);
 
-    console.log('Sending quoteData to the API:', quoteData);
-
-    // Send email using SendGrid API
-    const emailSent = await sendEmail(quoteData);
-
-    // If email was sent successfully, insert data into the database
-    if (emailSent) {
-      const dataInserted = await insertIntoDatabase(quoteData);
-
-      // Reset the form inputs if data was inserted into the database successfully
-      if (dataInserted) {
-        setRooms(0);
-        setSteps(0);
-        setChairs(0);
-        setLoveseats(0);
-        setCouches(0);
+            // Function to handle input change
+            function handleInputChange(event) {
+            const inputValue = parseInt(event.target.value);
+            
+            // Check if the input value is a number
+            if (!isNaN(inputValue)) {
+                // Check if the input value is less than 0
+                if (inputValue < 0) {
+                // Set the input value to 0 if it is less than 0
+                event.target.value = 0;
+                }
+            } else {
+                // Set the input value to an empty string if it is not a number
+                event.target.value = '';
+            }
+            }
+        
+        const form = document.getElementById('input'); // Replace 'yourFormId' with the actual ID of your form
+        form.reset();
+      } catch (error) {
+        console.log(error);
       }
+          // Reset the form inputs
+          setRooms(0);
+          setSteps(0);
+          setChairs(0);
+          setLoveseats(0);
+          setCouches(0);
+
+      console.log(firstName, lastName, email, email, phone);
     }
   };
       
