@@ -4,6 +4,8 @@ import quoteCalculator from '../js/quoteCalculator'
 import Swal from "sweetalert2";
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
+import { PotentialCustomers } from '../config/database/db'; // Import the PotentialCustomers model from db.js
+
 
 const QuoteCard = () => {
 
@@ -34,11 +36,12 @@ const QuoteCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-            // Check if the required fields are filled out
+      
+        // Check if the required fields are filled out
         if (!firstName || !lastName || !email || !phone) {
-            alert('Please fill out all required fields.');
-            return;
-        }else {
+          alert('Please fill out all required fields.');
+          return;
+        } else {
           const [totalPrice, quoteNumber] = quoteCalculator(
             rooms,
             steps,
@@ -100,6 +103,21 @@ const QuoteCard = () => {
                 icon: 'success',
                 title: 'Message Sent Successfully',
               });
+      
+              // Insert the data into the database
+              try {
+                await PotentialCustomers.create(quoteData);
+                console.log('Data inserted into the database successfully.');
+              } catch (error) {
+                console.log('Database insertion error:', error);
+              }
+      
+              // Reset the form inputs
+              setRooms(0);
+              setSteps(0);
+              setChairs(0);
+              setLoveseats(0);
+              setCouches(0);
             } else {
               console.log(await res.text());
               Swal.fire({
@@ -108,43 +126,37 @@ const QuoteCard = () => {
                 text: await res.text(),
               });
             }
-
-                    // Get a reference to the input element
-                const roomsInput = document.getElementById('num_input');
-
-                // Add event listener for input change
-                roomsInput.addEventListener('input', handleInputChange);
-
-                // Function to handle input change
-                function handleInputChange(event) {
-                const inputValue = parseInt(event.target.value);
-                
-                // Check if the input value is a number
-                if (!isNaN(inputValue)) {
-                    // Check if the input value is less than 0
-                    if (inputValue < 0) {
-                    // Set the input value to 0 if it is less than 0
-                    event.target.value = 0;
-                    }
-                } else {
-                    // Set the input value to an empty string if it is not a number
-                    event.target.value = '';
+      
+            // Get a reference to the input element
+            const roomsInput = document.getElementById('num_input');
+      
+            // Add event listener for input change
+            roomsInput.addEventListener('input', handleInputChange);
+      
+            // Function to handle input change
+            function handleInputChange(event) {
+              const inputValue = parseInt(event.target.value);
+      
+              // Check if the input value is a number
+              if (!isNaN(inputValue)) {
+                // Check if the input value is less than 0
+                if (inputValue < 0) {
+                  // Set the input value to 0 if it is less than 0
+                  event.target.value = 0;
                 }
-                }
-            
+              } else {
+                // Set the input value to an empty string if it is not a number
+                event.target.value = '';
+              }
+            }
+      
             const form = document.getElementById('input'); // Replace 'yourFormId' with the actual ID of your form
             form.reset();
+      
+            console.log(firstName, lastName, email, email, phone);
           } catch (error) {
             console.log(error);
           }
-              // Reset the form inputs
-              setRooms(0);
-              setSteps(0);
-              setChairs(0);
-              setLoveseats(0);
-              setCouches(0);
-    
-          console.log(firstName, lastName, email, email, phone);
         }
       };
       
