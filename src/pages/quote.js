@@ -125,28 +125,21 @@ const QuoteCard = () => {
 
     // Send email using SendGrid API
     const emailSent = await sendEmail(quoteData);
+
+    // If email was sent successfully, insert data into the database
     if (emailSent) {
-                setRooms(0);
-                setSteps(0);
-                setChairs(0);
-                setLoveseats(0);
-                setCouches(0);
-              }
+      const dataInserted = await insertIntoDatabase(quoteData);
 
-//     // If email was sent successfully, insert data into the database
-//     if (emailSent) {
-//       const dataInserted = await insertIntoDatabase(quoteData);
-
-//       // Reset the form inputs if data was inserted into the database successfully
-//       if (dataInserted) {
-//         setRooms(0);
-//         setSteps(0);
-//         setChairs(0);
-//         setLoveseats(0);
-//         setCouches(0);
-//       }
-//     }
-   };
+      // Reset the form inputs if data was inserted into the database successfully
+      if (dataInserted) {
+        setRooms(0);
+        setSteps(0);
+        setChairs(0);
+        setLoveseats(0);
+        setCouches(0);
+      }
+    }
+  };
       
 
 
