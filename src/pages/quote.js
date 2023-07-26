@@ -4,7 +4,7 @@ import quoteCalculator from '../js/quoteCalculator'
 import Swal from "sweetalert2";
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
-//import { PotentialCustomers } from '../config/database/db'; // Import the PotentialCustomers model from db.js
+import { PotentialCustomers } from '../config/database/db'; // Import the PotentialCustomers model from db.js
 
 
 const QuoteCard = () => {
