@@ -15,7 +15,7 @@ function quoteCalculator(roomCount, numOfSteps, chairCount, couchCount, sectiona
     roomCount = parseFloat(roomCount)
     quoteNum = Math.floor(Math.random() * (200 - 1 + 1)) + 1
     // Room Pricing
-    if (roomCount == 2) {
+    if (roomCount == 2 || roomCount == 1) {
         totalPrice = 125.00;
     } else if (roomCount == 3) {
         totalPrice = 148.00;
