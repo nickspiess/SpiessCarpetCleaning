@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 import { sequelize } from '../config/database/db';
 
 // Set a flag to track if the migration has been performed
-let migrationPerformed = false;
+//let migrationPerformed = false;
 
 export default function App({ Component, pageProps }) {
 
