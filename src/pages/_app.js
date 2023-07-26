@@ -29,7 +29,6 @@ export default function App({ Component, pageProps }) {
          // Handle the error or exit the application
        });
    }
-
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
   }, []);
 
