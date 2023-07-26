@@ -3,7 +3,7 @@ import { useRef, useState } from "react"; // REVISED
 import quoteCalculator from '../js/quoteCalculator'
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
-import { sendEmail, insertIntoDatabase } from '../config/database/db';
+import { sendEmail, insertIntoDatabase } from '../utils/databaseUtils';
 
 
 const QuoteCard = () => {
