@@ -3,6 +3,7 @@ import { useRef, useState } from "react"; // REVISED
 import quoteCalculator from '../js/quoteCalculator'
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
+import Swal from "sweetalert2";
 
 
 const QuoteCard = () => {
