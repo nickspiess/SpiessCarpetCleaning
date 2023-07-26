@@ -64,6 +64,8 @@ const QuoteCard = () => {
           };
           const jsonQuoteData = JSON.stringify(quoteData);
       
+          console.log('Sending quoteData to the API:', jsonQuoteData);
+      
           try {
             const res = await fetch('/api/sendgrid', {
               body: JSON.stringify({
@@ -97,8 +99,10 @@ const QuoteCard = () => {
               method: 'POST',
             });
       
+            console.log('API response status:', res.status);
+            console.log('API response body:', await res.text());
+      
             if (res.ok) {
-              console.log(await res.text());
               Swal.fire({
                 icon: 'success',
                 title: 'Message Sent Successfully',
@@ -119,7 +123,6 @@ const QuoteCard = () => {
               setLoveseats(0);
               setCouches(0);
             } else {
-              console.log(await res.text());
               Swal.fire({
                 icon: 'error',
                 title: 'Oops, something went wrong',
