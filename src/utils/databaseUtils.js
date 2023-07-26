@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 const { PotentialCustomers } = require('../config/database/db');
-const fetch = require('node-fetch'); // Import the 'node-fetch' library for making API requests
+import fetch from 'node-fetch';
 
 // Function to send email using SendGrid API
 const sendEmail = async (quoteData) => {
