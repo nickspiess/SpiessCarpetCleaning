@@ -18,23 +18,32 @@ const sendEmail = async (quoteData) => {
         totalPrice,
         quoteNumber,
       } = quoteData;
-  
-      const message = `Here is your quote for ${rooms} rooms, ${steps} flights of steps, ${chairs} chairs, ${loveseats} loveseats, and ${couches} couches.`;
-  
-      const res = await fetch('../pages/api/sendgrid', {
+    
+      const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
-          email,
-          firstName,
-          lastName,
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
           roomCount: rooms,
           stepCount: steps,
           chairCount: chairs,
           loveseatCount: loveseats,
           couchCount: couches,
-          totalPrice,
-          quoteNumber,
+          totalPrice: totalPrice,
+          quoteNumber: quoteNumber,
           subject: 'Your Quote from Spiess Carpet!',
-          message,
+          message:
+            'Here is your quote for ' +
+            rooms +
+            ' rooms, ' +
+            steps +
+            ' flights of steps, ' +
+            chairs +
+            ' chairs, ' +
+            loveseats +
+            ' loveseats, and ' +
+            couches +
+            ' couches.',
         }),
         headers: {
           'Content-Type': 'application/json',
