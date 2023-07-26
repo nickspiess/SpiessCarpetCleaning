@@ -36,7 +36,7 @@ const QuoteCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+        
         // Check if the required fields are filled out
         if (!firstName || !lastName || !email || !phone) {
           alert('Please fill out all required fields.');
@@ -108,14 +108,6 @@ const QuoteCard = () => {
                 title: 'Message Sent Successfully',
               });
       
-              // Insert the data into the database
-              try {
-                await PotentialCustomers.create(quoteData);
-                console.log('Data inserted into the database successfully.');
-              } catch (error) {
-                console.log('Database insertion error:', error);
-              }
-      
               // Reset the form inputs
               setRooms(0);
               setSteps(0);
@@ -128,6 +120,14 @@ const QuoteCard = () => {
                 title: 'Oops, something went wrong',
                 text: await res.text(),
               });
+            }
+      
+            // Insert the data into the database
+            try {
+              await PotentialCustomers.create(quoteData);
+              console.log('Data inserted into the database successfully.');
+            } catch (error) {
+              console.log('Database insertion error:', error);
             }
       
             // Get a reference to the input element
