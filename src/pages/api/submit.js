@@ -5,11 +5,12 @@ export default async function handler(req, res) {
     const quoteData = req.body;
 
     try {
+
+    // Send email using SendGrid API
+      const emailSent = await sendEmail(quoteData);
+
       // Insert data into the database
       await insertIntoDatabase(quoteData);
-
-      // Send email using SendGrid API
-      const emailSent = await sendEmail(quoteData);
 
       if (emailSent) {
         res.status(200).json({ success: true });
