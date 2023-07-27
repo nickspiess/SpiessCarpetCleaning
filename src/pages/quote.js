@@ -36,16 +36,22 @@ const QuoteCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+    
         // Check if the required fields are filled out
         if (!firstName || !lastName || !email || !phone) {
-          alert('Please fill out all required fields.');
+          alert("Please fill out all required fields.");
           return;
         }
-      
+    
         // Calculate total price and quote number
-        const [totalPrice, quoteNumber] = quoteCalculator(rooms, steps, chairs, loveseats, couches);
-      
+        const [totalPrice, quoteNumber] = quoteCalculator(
+          rooms,
+          steps,
+          chairs,
+          loveseats,
+          couches
+        );
+    
         // Construct the quote data object
         const quoteData = {
           rooms,
@@ -60,49 +66,49 @@ const QuoteCard = () => {
           totalPrice,
           quoteNumber,
         };
-      
-        console.log('Sending quoteData to the API:', quoteData);
-      
+    
+        console.log("Sending quoteData to the API:", quoteData);
+    
         try {
-          // Send the quote data to the API route for submission
-          const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(quoteData),
-          });
-      
-          const data = await response.json();
-      
-          if (response.ok) {
-            // Handle success
-            console.log('API response:', data);
-            Swal.fire({
-              icon: 'success',
-              title: 'Message Sent Successfully',
-            });
-            // Reset the form inputs if data was submitted successfully
-            setRooms(0);
-            setSteps(0);
-            setChairs(0);
-            setLoveseats(0);
-            setCouches(0);
+          // Send the quote data directly to the SendGrid API from quote.js
+          const emailResponse = await sendEmail(quoteData);
+    
+          if (emailResponse) {
+            // If the email is sent successfully, insert data into the database
+            const dbInsertionResponse = await insertDataIntoDatabase(quoteData);
+            if (dbInsertionResponse) {
+              Swal.fire({
+                icon: "success",
+                title: "Message Sent Successfully",
+              });
+              // Reset the form inputs if data was submitted successfully
+              setRooms(0);
+              setSteps(0);
+              setChairs(0);
+              setLoveseats(0);
+              setCouches(0);
+            } else {
+              // Handle error when database insertion fails
+              Swal.fire({
+                icon: "error",
+                title: "Oops, something went wrong",
+                text: "Failed to submit the quote. Please try again later.",
+              });
+            }
           } else {
-            // Handle error
-            console.error('API response:', data);
+            // Handle error when email sending fails
             Swal.fire({
-              icon: 'error',
-              title: 'Oops, something went wrong',
-              text: 'Failed to submit the quote. Please try again later.',
+              icon: "error",
+              title: "Oops, something went wrong",
+              text: "Failed to submit the quote. Please try again later.",
             });
           }
         } catch (error) {
-          console.error('Error submitting quote:', error);
+          console.error("Error submitting quote:", error);
           Swal.fire({
-            icon: 'error',
-            title: 'Oops, something went wrong',
-            text: 'Failed to submit the quote. Please try again later.',
+            icon: "error",
+            title: "Oops, something went wrong",
+            text: "Failed to submit the quote. Please try again later.",
           });
         }
       };
