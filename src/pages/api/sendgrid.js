@@ -7,7 +7,7 @@ require('dotenv').config();
       // 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
 
         try {
-            await sgMail.send({
+            await sgMail.sendMultiple({
             to: [`${req.body.email}`, 'nickspiess23@gmail.com'], // Your email where you'll receive emails
             from: "sales@spiesscarpet.com", // your website email address here
             subject: `${req.body.subject}`,
