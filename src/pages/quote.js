@@ -4,6 +4,7 @@ import quoteCalculator from '../js/quoteCalculator'
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
 import Swal from "sweetalert2";
+import { sendEmail, insertDataIntoDatabase } from "../utils/databaseUtils";
 
 
 const QuoteCard = () => {
