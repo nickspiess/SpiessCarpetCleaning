@@ -22,7 +22,7 @@ const emailSent = async (quoteData) => {
         quoteNumber,
       } = quoteData;
   
-      const res = await fetch("/api/sendgrid", {
+      const res = await fetch("sendgrid", {
         body: JSON.stringify({
           email: email,
           firstName: firstName,
