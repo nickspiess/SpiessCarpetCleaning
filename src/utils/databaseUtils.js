@@ -3,6 +3,8 @@ const { PotentialCustomers } = require("../config/database/db");
 
 // Function to insert data into the database
 const insertDataIntoDatabase = async (quoteData) => {
+  console.log('in the insert class');
+  console.log(quoteData);
   try {
     // Use Sequelize's create() method to insert data into the table
     const result = await PotentialCustomers.create(quoteData);
