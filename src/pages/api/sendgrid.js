@@ -8,7 +8,7 @@ require('dotenv').config();
 
         try {
             await sgMail.sendMultiple({
-            to: [`${req.body.email}`, 'nickspiess23@gmail.com'], // Your email where you'll receive emails
+            to: [`${req.body.email}`, 'sales@spiesscarpet.com'], // Your email where you'll receive emails
             from: "sales@spiesscarpet.com", // your website email address here
             subject: `${req.body.subject}`,
             html: `
