@@ -139,6 +139,19 @@ const QuoteCard = () => {
           } catch (error) {
             console.log(error);
           }
+
+          const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(quoteData),
+          });
+  
+          const data = await response.json();
+          console.log('submit data response : ' + data);
+
+
               // Reset the form inputs
               setRooms(0);
               setSteps(0);
