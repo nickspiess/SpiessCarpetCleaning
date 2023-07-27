@@ -147,7 +147,8 @@ const QuoteCard = () => {
             },
             body: JSON.stringify(quoteData),
           });
-  
+          console.log('our response ' + response);
+          console.log('our response ' + response.json());
           const data = await response.json();
           console.log('submit data response : ' + data);
 
