@@ -139,7 +139,7 @@ const QuoteCard = () => {
           } catch (error) {
             console.log(error);
           }
-
+          try {
           const response = await fetch('/api/submit', {
             method: 'POST',
             headers: {
@@ -149,8 +149,12 @@ const QuoteCard = () => {
           });
           console.log('our response ' + response);
           console.log('our response ' + response.json());
-          const data = await response.json();
-          console.log('submit data response : ' + data);
+          const data = await response.json(); // This will await the JSON data from the response
+
+          console.log('submit data response:', data); // This will log the JSON data
+        } catch (error) {
+          console.error('Error updating database:', error);
+        }
 
 
               // Reset the form inputs
