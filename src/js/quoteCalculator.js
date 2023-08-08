@@ -42,6 +42,7 @@ function quoteCalculator(roomCount, flightOfSteps, chairCount, couchCount, secti
     // Kitchen Chair : $19.99
     // Lazy Boy $89.99
     totalPrice = totalPrice + (57.99 * parseFloat(flightOfSteps)) + (parseFloat(chairCount) * 89.99) + (parseFloat(couchCount) * 179.00) + (parseFloat(sectionalCount) * 279.00);
+    console.log('TOTAL PRICE : ' + totalPrice)
     return [totalPrice, quoteNum];
 }
 
