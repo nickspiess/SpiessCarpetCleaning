@@ -48,6 +48,7 @@ const QuoteCard = () => {
             loveseats,
             couches
           );
+          console.log('TOTAL PRICEEE : ' + totalPrice);
           const quoteData = {
             rooms,
             steps,
