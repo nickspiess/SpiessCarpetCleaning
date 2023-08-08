@@ -1,0 +1,335 @@
+
+.background {
+  /* or replace 'body' with a className that selects a div covering the entire viewport */
+  background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.8)), url('../../public/images/quoteBackground.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* cover the entire viewport */
+  width: 100vw;
+  height: 175vh;
+  /* ensure the background covers the entire viewport even when the content exceeds the viewport height */
+  min-height: 100vh;
+  /* use a background color as a fallback */
+  background-color: #000;
+  /* make the background fixed */
+  background-attachment: fixed;
+  /* other styles */
+  z-index: 0;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  border-top: solid rgba(0, 0, 0, 0.15) 3px;
+}
+
+/* Dropdown Section Styles */
+.dropdownSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 2.5vh;
+    border-radius: 5px;
+    overflow: hidden; /* For the animation */
+    text-align: center;
+  }
+  
+  .dropdownHeader {
+      font-size: 16px;
+      letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(37, 119, 21);
+    transition: background-color .4s ease;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    width: 40vw;
+    text-shadow: 0px 0px 4px black, 0px 0px 4px black;
+    border-radius: 10px;
+  }
+
+  .dropdownHeader:hover {
+    background-color: rgb(17, 76, 186);
+  }
+  
+  .arrowUp, .arrowDown {
+    transition: transform 0.3s;
+  }
+  
+  .arrowUp {
+    transform: rotate(180deg);
+  }
+  
+  .dropdownContentClosed {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+    background-color: rgb(199, 199, 199);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+  
+  .dropdownContentOpen {
+    border-radius: 10px;
+    height: auto;
+    transition: height 0.8s ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    justify-items: center;
+    align-items: center;
+    width: 40vw;
+    background-color: rgb(245, 245, 245);
+    border: solid rgba(0, 0, 0, 0.35) 1px;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .input {
+    height: 35px;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .button {
+
+
+    padding: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: rgb(25, 95, 227);
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 20px;
+    border-radius: 15px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    box-shadow: 
+      0px 0px 5px 1px rgb(249, 248, 248);
+    transition: transform 0.6s ease-in-out;
+    transition: background-color 0.6s ease-in-out;
+    text-shadow: 0px 0px 4px black, 0px 0px 4px black;
+  }
+  
+  .button:hover {
+    background-color: rgb(3, 73, 149);
+  }
+
+  .infoContainer {
+      display: flex;
+      flex-direction: column;
+      width: 40vw;
+  }
+
+  .nameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+  }
+
+  .labelContainer {
+      width: 100%;
+  }
+
+  
+  .inputGroup {
+    display: inline;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    width: auto;
+    text-align: center;
+    margin: auto;
+  }
+
+  .subDetail {
+      
+  }
+
+  .inputGroupDetail {
+
+      display: inline-block;
+        width: 20vw;
+      margin: auto;
+      padding: 15px;
+      border-top: solid black 2px;
+      border-left: solid black 1px;
+      border-right: solid black 1px;
+      border-radius: 5px;
+  }
+
+  .inputGroupDeodor {
+      margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .toggling {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
+  }
+
+  .checkboxContainer {
+
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .divLabel {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+
+  .divLabelDeodor {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    width: 10vw;
+    text-align: center;
+    font-size: 16px;
+    
+  }
+
+  .hiddenCheckbox {
+    display: none;
+  }
+  
+  .customCheckbox {
+    width: 25px;
+    height: 25px;
+    border: 3px solid rgb(176, 0, 0);
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color .4s ease;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  .customCheckbox:hover {
+      background-color: rgb(190, 190, 190);
+  }
+
+  .checkboxLabel {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .customCheckbox.checked {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .customCheckbox.checked::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 6px;
+    height: 10px;
+    border: solid rgb(0, 0, 0);
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+ 
+  .inputGroupButton {
+      font-size: 17px;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 1px 0px 2px 3px rgba(0, 0, 0, 0.15);
+  }
+  
+  .inputGroupButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: black;
+  }
+  
+  .inputGroupButton:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .inputGroupInput {
+    width: 40px;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .quoteContainer {
+      margin: auto;
+      margin-bottom: 25vh;
+      border-radius: 8px;
+    background-color: rgba(223, 174, 37, 0.7);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+    width: 60%;
+  }
+
+  .head {
+      display: block;
+      margin: auto;
+      padding-top: 2.5vh;
+      padding-bottom: 2.5vh;
+      background-color:rgb(142, 16, 16);
+      width: 60vw;
+      border-radius: 20px;
+      margin-bottom: 2.5vh;
+      box-shadow: 0px 0px 10px 3px rgb(0, 0, 0);
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      text-align: center;
+      font-size: 28px;
+      color: white;
+      text-shadow: 0px 0px 4px black, 0px 0px 4px black;
+  }
+  
