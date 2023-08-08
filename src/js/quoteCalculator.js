@@ -41,7 +41,7 @@ function quoteCalculator(roomCount, flightOfSteps, chairCount, couchCount, secti
     // Loveseat : $139.99
     // Kitchen Chair : $19.99
     // Lazy Boy $89.99
-    totalPrice = totalPrice + (57.99 * parseFloat(numOfSteps)) + (parseFloat(chairCount) * 89.99) + (parseFloat(couchCount) * 179.00) + (parseFloat(sectionalCount) * 279.00);
+    totalPrice = totalPrice + (57.99 * parseFloat(flightOfSteps)) + (parseFloat(chairCount) * 89.99) + (parseFloat(couchCount) * 179.00) + (parseFloat(sectionalCount) * 279.00);
     return [totalPrice, quoteNum];
 }
 
