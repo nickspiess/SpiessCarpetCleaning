@@ -280,9 +280,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
       </html>`,
         });
         } catch (error) {
-
-          console.error(JSON.stringify(error, null, 2));
-          return res.status(error.statusCode || 500).json({ error: error.message });
+            console.log(error);
+            return res.status(error.statusCode || 500).json({ error: error.message.body });
         }
 
         return res.status(200).json({ error: "" });
