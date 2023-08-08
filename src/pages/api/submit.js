@@ -1,4 +1,4 @@
-import { insertIntoDatabase } from '../../utils/databaseUtils';
+import { insertDataIntoDatabase } from '../../utils/databaseUtils';
 
 export default async function handler(req, res) {
   console.log('in submit api');
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     try {
       console.log('in try');
       // Insert data into the database
-      await insertIntoDatabase(quoteData);
+      await insertDataIntoDatabase(quoteData);
     } catch (error) {
       console.error('Error handling quote submission:', error);
       res.status(500).json({ error: 'Something went wrong.' });
