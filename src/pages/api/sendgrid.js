@@ -1,7 +1,9 @@
 const sgMail = require("@sendgrid/mail");
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     async function sendEmail(req, res) {
 
@@ -207,7 +209,7 @@ require('dotenv').config();
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Feel free to reach out to us at </span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #2f93bf">651-472-2736</span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565"> or </span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #2f93bf">sales@spiesscarpet.com</span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565"> with any questions or to schedule an appointment.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
-            <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">We will be reaching out to you shortly!</span></div>
+            <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">We will be reaching out to you at ${req.body.phone} or ${req.body.email} shortly!</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565; font-size: 14px">*This price is subject to change in the case of inaccurate information or changed circumstances.</span></div><div></div></div></td>
                   </tr>
