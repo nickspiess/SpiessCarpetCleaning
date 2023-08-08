@@ -62,11 +62,12 @@ const QuoteCard = () => {
             quoteNumber,
           };
           const jsonQuoteData = JSON.stringify(quoteData);
-      
+
           try {
             const res = await fetch('/api/sendgrid', {
               body: JSON.stringify({
                 email: email,
+                phone: phone,
                 firstName: firstName,
                 lastName: lastName,
                 roomCount: rooms,
