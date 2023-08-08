@@ -199,7 +199,7 @@ require('dotenv').config();
               </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="efe5a2c4-1b11-49e7-889d-856d80b40f63.2" data-mc-module-version="2019-10-22">
                 <tbody>
                   <tr>
-                    <td style="padding:50px 20px 30px 20px; line-height:25px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Hi ${req.body.firstName} ${req.body.lastName}, ${req.body.email} ${req.body.phone},</span></div>
+                    <td style="padding:50px 20px 30px 20px; line-height:25px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Hi ${req.body.firstName} ${req.body.lastName},</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Here is your free quote #${req.body.quoteNumber}.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
