@@ -4,6 +4,7 @@ import quoteCalculator from '../js/quoteCalculator'
 import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
 import Swal from "sweetalert2";
+import createMessage from '../js/messageCreator';
 
 
 const QuoteCard = () => {
@@ -36,135 +37,113 @@ const QuoteCard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-            // Check if the required fields are filled out
-        if (!firstName || !lastName || !email || !phone) {
+    
+        // Ensure CAPTCHA is completed
+        if (!captchaValue) {
+            alert('Please complete the CAPTCHA');
+            return;
+        }
+    
+        // Check if the required fields are filled out
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
             alert('Please fill out all required fields.');
             return;
-        }else {
-          const [totalPrice, quoteNumber] = quoteCalculator(
-            rooms,
-            steps,
-            chairs,
-            loveseats,
-            couches
-          );
-          const quoteData = {
-            rooms,
-            steps,
-            chairs,
-            loveseats,
-            couches,
-            firstName,
-            lastName,
-            email,
-            phone,
-            totalPrice,
-            quoteNumber,
-          };
-          const jsonQuoteData = JSON.stringify(quoteData);
-      
-          try {
-            const res = await fetch('/api/sendgrid', {
-              body: JSON.stringify({
-                email: email,
-                firstName: firstName,
-                lastName: lastName,
-                roomCount: rooms,
-                stepCount: steps,
-                chairCount: chairs,
-                loveseatCount: loveseats,
-                couchCount: couches,
-                totalPrice: totalPrice,
-                quoteNumber: quoteNumber,
-                subject: 'Your Quote from Spiess Carpet!',
-                message:
-                  'Here is your quote for ' +
-                  rooms +
-                  ' rooms, ' +
-                  steps +
-                  ' flights of steps, ' +
-                  chairs +
-                  ' chairs, ' +
-                  loveseats +
-                  ' loveseats, and ' +
-                  couches +
-                  ' couches.',
-              }),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              method: 'POST',
-            });
-      
-            if (res.ok) {
-              console.log(await res.text());
-              Swal.fire({
-                icon: 'success',
-                title: 'Message Sent Successfully',
-              });
-            } else {
-              console.log(await res.text());
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops, something went wrong',
-                text: await res.text(),
-              });
-            }
-
-                    // Get a reference to the input element
-                const roomsInput = document.getElementById('num_input');
-
-                // Add event listener for input change
-                roomsInput.addEventListener('input', handleInputChange);
-
-                // Function to handle input change
-                function handleInputChange(event) {
-                const inputValue = parseInt(event.target.value);
-                
-                // Check if the input value is a number
-                if (!isNaN(inputValue)) {
-                    // Check if the input value is less than 0
-                    if (inputValue < 0) {
-                    // Set the input value to 0 if it is less than 0
-                    event.target.value = 0;
-                    }
-                } else {
-                    // Set the input value to an empty string if it is not a number
-                    event.target.value = '';
-                }
-                }
-            
-            const form = document.getElementById('input'); // Replace 'yourFormId' with the actual ID of your form
-            form.reset();
-          } catch (error) {
-            console.log(error);
-          }
-          try {
-          const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(quoteData),
-          });
-          const data = await response.json(); // This will await the JSON data from the response
-
-          console.log('submit data response:', data); // This will log the JSON data
-        } catch (error) {
-          console.error('Error updating database:', error);
-        }
-
-
-              // Reset the form inputs
-              setRooms(0);
-              setSteps(0);
-              setChairs(0);
-              setLoveseats(0);
-              setCouches(0);
+        } else {
+            const { rooms, flightsOfSteps, kitchenChairs, ottoman, chairs, loveseats, lazyBoys, sectionals, firstName, lastName, email, phone } = formData;
+            const message = createMessage(formData);
+            console.log('MESSAGE : ' + message);
     
-          console.log(firstName, lastName, email, email, phone);
+            const [totalPrice, quoteNumber] = quoteCalculator(
+                rooms,
+                flightsOfSteps,
+                kitchenChairs,
+                ottoman,
+                chairs,
+                loveseats,
+                lazyBoys,
+                sectionals
+            );
+            
+            const quoteData = {
+                rooms,
+                flightsOfSteps,
+                kitchenChairs,
+                ottoman,
+                chairs,
+                loveseats,
+                lazyBoys,
+                sectionals,
+                firstName,
+                lastName,
+                email,
+                phone,
+                totalPrice,
+                quoteNumber,
+            };
+            
+            const jsonQuoteData = JSON.stringify(quoteData);
+    
+            try {
+                const res = await fetch('/api/sendgrid', {
+                    body: JSON.stringify({
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName,
+                        roomCount: rooms,
+                        stepCount: flightsOfSteps,
+                        kitchenChairCount: kitchenChairs,
+                        ottomanCount: ottoman,
+                        chairCount: chairs,
+                        loveseatCount: loveseats,
+                        lazyBoyCount: lazyBoys,
+                        sectionalCount: sectionals,
+                        totalPrice: totalPrice,
+                        quoteNumber: quoteNumber,
+                        subject: 'Your Quote from Spiess Carpet!',
+                        message:
+                            'Here is your quote for ' +
+                            rooms +
+                            ' rooms, ' +
+                            flightsOfSteps +
+                            ' flights of steps, ' +
+                            kitchenChairs +
+                            ' kitchen chairs, ' +
+                            ottoman +
+                            ' ottomans, ' +
+                            chairs +
+                            ' chairs, ' +
+                            loveseats +
+                            ' loveseats, ' +
+                            lazyBoys +
+                            ' lazy boys, and ' +
+                            sectionals +
+                            ' sectionals.',
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'POST',
+                });
+    
+                if (res.ok) {
+                    console.log(await res.text());
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent Successfully',
+                    });
+                } else {
+                    console.log(await res.text());
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops, something went wrong',
+                        text: await res.text(),
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
-      };
+    };
       
 
 

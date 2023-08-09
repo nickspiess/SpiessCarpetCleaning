@@ -6,6 +6,7 @@ import StructuredData from 'src/pages/StructuredData';
 import Swal from "sweetalert2";
 import QuoteDetail from './quoteInput';
 import ReCAPTCHA from "react-google-recaptcha";
+import createMessage from '../js/messageCreator';
 
 const Quote = () => {
 
@@ -18,9 +19,9 @@ const Quote = () => {
       flightsOfSteps: 0,
       kitchenChairs: 0,
       ottoman: 0,
-      chairs: 0,
-      loveseats: 0,
       lazyBoys: 0,
+      loveseats: 0,
+      sofas: 0,
       sectionals: 0,
       firstName: "",
       lastName: "",
@@ -78,16 +79,120 @@ const Quote = () => {
       return Object.keys(newErrors).length === 0;
     };
   
-    const handleSubmit = (e) => {
-      e.preventDefault();
-  
-      if (!validateForm()) {
-        return;
-      }
-      const formDataJSON = JSON.stringify(formData);
-      console.log(formDataJSON);
-  
-      console.log(formData);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        // Ensure CAPTCHA is completed
+        //if (!captchaValue) {
+        //    alert('Please complete the CAPTCHA');
+        //    return;
+        //}
+    
+        // Check if the required fields are filled out
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+            alert('Please fill out all required fields.');
+            return;
+        } else {
+            const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
+            const message = createMessage(formData);
+            console.log('MESSAGE : ' + message);
+    
+            const [totalPrice, quoteNumber] = quoteCalculator(
+                rooms,
+                flightsOfSteps,
+                kitchenChairs,
+                ottoman,
+                lazyBoys,
+                loveseats,
+                sofas,
+                sectionals
+            );
+            
+            const quoteData = {
+                rooms,
+                flightsOfSteps,
+                kitchenChairs,
+                ottoman,
+                lazyBoys,
+                loveseats,
+                sofas,
+                sectionals,
+                firstName,
+                lastName,
+                email,
+                phone,
+                totalPrice,
+                quoteNumber,
+            };
+            
+            const jsonQuoteData = JSON.stringify(quoteData);
+    
+            // try {
+            //     const res = await fetch('/api/sendgrid', {
+            //         body: JSON.stringify({
+            //             email: email,
+            //             firstName: firstName,
+            //             lastName: lastName,
+            //             roomCount: rooms,
+            //             stepCount: flightsOfSteps,
+            //             kitchenChairCount: kitchenChairs,
+            //             ottomanCount: ottoman,
+            //             chairCount: chairs,
+            //             loveseatCount: loveseats,
+            //             lazyBoyCount: lazyBoys,
+            //             sectionalCount: sectionals,
+            //             totalPrice: totalPrice,
+            //             quoteNumber: quoteNumber,
+            //             subject: 'Your Quote from Spiess Carpet!',
+            //             message: message,
+            //         }),
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         method: 'POST',
+            //     });
+    
+            //     if (res.ok) {
+            //         console.log(await res.text());
+            //         Swal.fire({
+            //             icon: 'success',
+            //             title: 'Message Sent Successfully',
+            //         });
+            //     } else {
+            //         console.log(await res.text());
+            //         Swal.fire({
+            //             icon: 'error',
+            //             title: 'Oops, something went wrong',
+            //             text: await res.text(),
+            //         });
+            //     }
+            // } catch (error) {
+            //     console.error(error);
+            // }
+            try {
+                    const res = await fetch('/api/sendSms', {
+                    body: JSON.stringify({
+                        firstName: firstName,
+                        lastName: lastName,
+                        totalPrice: totalPrice,
+                        message: message,
+                        phone: phone,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'POST',
+                    });
+                
+                    if (res.ok) {
+                    console.log('SMS sent successfully');
+                    } else {
+                    console.log('Error sending SMS');
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+        }
     };
   
     return (
@@ -127,10 +232,6 @@ const Quote = () => {
                     <div className={styles.inputGroup}>
                     <QuoteDetail label="Ottoman" name="ottoman" value={formData.ottoman} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
                     </div>
-                
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Chairs" name="chairs" value={formData.chairs} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
 
                     <div className={styles.inputGroup}>
                     <QuoteDetail label="Lazy Boys" name="lazyBoys" value={formData.lazyBoys} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
@@ -138,6 +239,10 @@ const Quote = () => {
                 
                     <div className={styles.inputGroup}>
                     <QuoteDetail label="Loveseats" name="loveseats" value={formData.loveseats} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
+                    </div>
+
+                    <div className={styles.inputGroup}>
+                    <QuoteDetail label="Sofas" name="sofas" value={formData.sofas} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
                     </div>
                 
                     <div className={styles.inputGroup}>
@@ -181,11 +286,11 @@ const Quote = () => {
                     </div>
             </div>
 
-            <ReCAPTCHA
+            {/*<ReCAPTCHA
                 sitekey="6LcKKownAAAAAOcsOcsgySX2VMFeKmoFm-xRse5U"
                 onChange={handleCaptchaResponseChange}
-            />
-            
+    />*/}
+
             {/* Submit button */}
             <button type="submit" className={styles.button}>Get a Quote</button>
             </form>

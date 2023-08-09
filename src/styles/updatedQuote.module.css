@@ -7,7 +7,7 @@
   background-position: center;
   /* cover the entire viewport */
   width: 100vw;
-  height: 175vh;
+  height: 1700px;
   /* ensure the background covers the entire viewport even when the content exceeds the viewport height */
   min-height: 100vh;
   /* use a background color as a fallback */
