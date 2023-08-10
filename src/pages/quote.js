@@ -155,7 +155,7 @@ const Quote = () => {
             if (deodorize) {
                 message = message + ' and deodorizer';
             }
-
+            try {
             const [totalPrice, quoteNumber] = quoteCalculator(
                 rooms,
                 flightsOfSteps,
@@ -166,7 +166,10 @@ const Quote = () => {
                 sofas,
                 sectionals,
                 deodorize
-            );
+            ); }
+            catch (error) {
+                console.error('Error with calculator:', error);
+              }
             
             const quoteData = {
                 rooms,
