@@ -46,10 +46,15 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
     console.log(ottomanCount)
     console.log(loveseatCount)
     console.log(sectionalCount)
-    totalPrice = totalPrice + (57.99 * parseFloat(flightsOfSteps)) + (parseFloat(lazyBoyCount) * 79.99) + 
-                (parseFloat(sofaCount) * 179.00) + (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
-                + (parseFloat(loveseatCount) * 159.99) + (parseFloat(kitchenChairCount) * 24.99);
-                console.log(totalPrice);
+    let stepPrice = (57.99 * parseFloat(flightsOfSteps));
+    let upholsteryPrice = (parseFloat(lazyBoyCount) * 79.99) + (parseFloat(sofaCount) * 179.00) + 
+                    (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
+                    + (parseFloat(loveseatCount) * 159.99) + (parseFloat(kitchenChairCount) * 24.99);
+    console.log(totalPrice);
+    console.log(stepPrice);
+    console.log(upholsteryPrice);
+    totalPrice = totalPrice + stepPrice + upholsteryPrice;
+    console.log(totalPrice);
     if (deodorizer) {
         totalPrice = totalPrice + 40.00;
     }
