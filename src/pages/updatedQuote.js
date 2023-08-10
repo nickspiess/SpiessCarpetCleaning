@@ -62,25 +62,81 @@ const Quote = () => {
         [field]: formData[field] > 0 ? formData[field] - 1 : 0
       });
     };
+
+    const resetForm = () => {
+        setFormData({
+          rooms: 0,
+          flightsOfSteps: 0,
+          kitchenChairs: 0,
+          ottoman: 0,
+          lazyBoys: 0,
+          loveseats: 0,
+          sofas: 0,
+          sectionals: 0,
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: ""
+        });
+        setDeodorize(false);
+        setCaptchaValue(null);
+      };
   
     const validateForm = () => {
-      let newErrors = {};
-  
-      if (!phoneRegex.test(formData.phone)) {
-        newErrors.phone = "Invalid phone number.";
-      }
-  
-      if (!emailRegex.test(formData.email)) {
-        newErrors.email = "Invalid email address.";
-      }
-  
-      setFormErrors(newErrors);
-  
-      return Object.keys(newErrors).length === 0;
+        let newErrors = {};
+    
+        if (!formData.firstName.trim()) {
+            newErrors.firstName = "First name is required.";
+        }
+    
+        if (!formData.lastName.trim()) {
+            newErrors.lastName = "Last name is required.";
+        }
+    
+        if (!phoneRegex.test(formData.phone)) {
+            newErrors.phone = "Invalid phone number.";
+        }
+    
+        if (!emailRegex.test(formData.email)) {
+            newErrors.email = "Invalid email address.";
+        }
+    
+        setFormErrors(newErrors);
+    
+        return Object.keys(newErrors).length === 0;
     };
+    
   
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+            // Run validation checks
+            if (!validateForm()) {
+                let errorMessage = "";
+                for (const error in formErrors) {
+                  errorMessage += formErrors[error] + "\n";
+                }
+            
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: errorMessage,
+                });
+            }
+            else {
+
+    // Check if at least one option is selected
+    const options = ['rooms', 'flightsOfSteps', 'kitchenChairs', 'ottoman', 'lazyBoys', 'loveseats', 'sofas', 'sectionals'];
+    if (options.every(option => formData[option] === 0)) {
+        alert('Please select at least one option.');
+        return;
+    }
+
+    // Check if name fields are filled
+    if (!formData.firstName.trim() || !formData.lastName.trim()) {
+        alert('Please fill out the name fields.');
+        return;
+    }
     
         // Ensure CAPTCHA is completed
         //if (!captchaValue) {
@@ -94,9 +150,12 @@ const Quote = () => {
             return;
         } else {
             const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
-            const message = createMessage(formData);
-            console.log('MESSAGE : ' + message);
-    
+            let message = createMessage(formData);
+
+            if (deodorize) {
+                message = message + ' and deodorizer';
+            }
+
             const [totalPrice, quoteNumber] = quoteCalculator(
                 rooms,
                 flightsOfSteps,
@@ -105,7 +164,8 @@ const Quote = () => {
                 lazyBoys,
                 loveseats,
                 sofas,
-                sectionals
+                sectionals,
+                deodorize
             );
             
             const quoteData = {
@@ -127,72 +187,73 @@ const Quote = () => {
             
             const jsonQuoteData = JSON.stringify(quoteData);
     
-            // try {
-            //     const res = await fetch('/api/sendgrid', {
-            //         body: JSON.stringify({
-            //             email: email,
-            //             firstName: firstName,
-            //             lastName: lastName,
-            //             roomCount: rooms,
-            //             stepCount: flightsOfSteps,
-            //             kitchenChairCount: kitchenChairs,
-            //             ottomanCount: ottoman,
-            //             chairCount: chairs,
-            //             loveseatCount: loveseats,
-            //             lazyBoyCount: lazyBoys,
-            //             sectionalCount: sectionals,
-            //             totalPrice: totalPrice,
-            //             quoteNumber: quoteNumber,
-            //             subject: 'Your Quote from Spiess Carpet!',
-            //             message: message,
-            //         }),
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         method: 'POST',
-            //     });
-    
-            //     if (res.ok) {
-            //         console.log(await res.text());
-            //         Swal.fire({
-            //             icon: 'success',
-            //             title: 'Message Sent Successfully',
-            //         });
-            //     } else {
-            //         console.log(await res.text());
-            //         Swal.fire({
-            //             icon: 'error',
-            //             title: 'Oops, something went wrong',
-            //             text: await res.text(),
-            //         });
-            //     }
-            // } catch (error) {
-            //     console.error(error);
-            // }
             try {
-                    const res = await fetch('/api/sendSms', {
+                const res = await fetch('/api/sendgrid', {
                     body: JSON.stringify({
+                        email: email,
                         firstName: firstName,
                         lastName: lastName,
+                        roomCount: rooms,
+                        stepCount: flightsOfSteps,
+                        kitchenChairCount: kitchenChairs,
+                        ottomanCount: ottoman,
+                        loveseatCount: loveseats,
+                        lazyBoyCount: lazyBoys,
+                        sectionalCount: sectionals,
                         totalPrice: totalPrice,
+                        quoteNumber: quoteNumber,
+                        subject: 'Your Quote from Spiess Carpet!',
                         message: message,
-                        phone: phone,
                     }),
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     method: 'POST',
+                });
+    
+                if (res.ok) {
+                    console.log(await res.text());
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent Successfully',
                     });
-                
-                    if (res.ok) {
-                    console.log('SMS sent successfully');
-                    } else {
-                    console.log('Error sending SMS');
-                    }
-                } catch (error) {
-                    console.error(error);
+                    resetForm();
+                } else {
+                    console.log(await res.text());
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops, something went wrong',
+                        text: await res.text(),
+                    });
                 }
+            } catch (error) {
+                console.error(error);
+            }
+            // try {
+            //         const res = await fetch('/api/sendSms', {
+            //         body: JSON.stringify({
+            //             firstName: firstName,
+            //             lastName: lastName,
+            //             totalPrice: totalPrice,
+            //             message: message,
+            //             phone: phone,
+            //         }),
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         method: 'POST',
+            //         });
+                
+            //         if (res.ok) {
+            //         console.log('SMS sent successfully');
+            //         } else {
+            //         console.log('Error sending SMS');
+            //         }
+            //     } catch (error) {
+            //         console.error(error);
+            //     }
         }
+    }
     };
   
     return (
@@ -267,23 +328,25 @@ const Quote = () => {
             <div className={styles.infoContainer}>
                 <div className={styles.nameContainer}>
                     <div className={styles.labelContainer}>
-                        <label className={styles.label}>First Name</label>
-                        <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className={styles.input} />
-                    </div>
-                    <div className={styles.labelContainer}>
-                        <label className={styles.label}>Last Name</label>
-                        <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className={styles.input} />
-                    </div>
+                            <label className={styles.label}>First Name</label>
+                            <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className={styles.input} />
+                            {formErrors.firstName && <p className={styles.errorText}>{formErrors.firstName}</p>}
+                        </div>
+                        <div className={styles.labelContainer}>
+                            <label className={styles.label}>Last Name</label>
+                            <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className={styles.input} />
+                            {formErrors.lastName && <p className={styles.errorText}>{formErrors.lastName}</p>}
                 </div>
-                <div className={styles.contactContainer}>
+            </div>
 
-                        <label className={styles.label}>Email</label>
-                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={styles.input} />
-                        {formErrors.email && <p>{formErrors.email}</p>}
-                        <label className={styles.label}>Phone</label>
-                        <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={styles.input} />
-                        {formErrors.phone && <p>{formErrors.phone}</p>}
-                    </div>
+                <div className={styles.contactContainer}>
+                    <label className={styles.label}>Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={styles.input} />
+                    {formErrors.email && <p className={styles.errorText}>{formErrors.email}</p>}
+                    <label className={styles.label}>Phone</label>
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={styles.input} />
+                    {formErrors.phone && <p className={styles.errorText}>{formErrors.phone}</p>}
+                </div>
             </div>
 
             {/*<ReCAPTCHA
