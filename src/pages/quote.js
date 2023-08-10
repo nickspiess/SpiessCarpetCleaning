@@ -296,6 +296,7 @@ const Quote = () => {
 
         <Head>
             <title>Quote | Spiess Carpet Cleaning</title>
+            <link rel="preload" as="image" href="../../public/images/quoteBackground.jpeg" />
             <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
             <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service, quote" />
             <meta property="og:title" content="Quote | Spiess Carpet Cleaning" />
