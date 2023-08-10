@@ -8,6 +8,7 @@ var sectionalPrice;
 
 function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCount, lazyBoyCount, loveseatCount, sofaCount, sectionalCount, deodorizer) {
     console.log('in quote')
+
     totalPrice = 0.00
     stepPrice = 0.00
     chairPrice = 0.00
@@ -37,6 +38,7 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
     } else if (roomCount == 10) {
         totalPrice = 618.99;
     }
+  
     console.log(totalPrice);
     totalPrice = totalPrice + (57.99 * parseFloat(flightsOfSteps)) + (parseFloat(lazyBoyCount) * 79.99) + 
                 (parseFloat(sofaCount) * 179.00) + (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
@@ -46,6 +48,7 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
         totalPrice = totalPrice + 40.00;
     }
     console.log(totalPrice);
+
     return [totalPrice, quoteNum];
 }
 

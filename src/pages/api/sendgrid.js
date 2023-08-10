@@ -1,14 +1,15 @@
 const sgMail = require("@sendgrid/mail");
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     async function sendEmail(req, res) {
-      // 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
 
         try {
             await sgMail.sendMultiple({
-            to: [`${req.body.email}`, 'sales@spiesscarpet.com'], // Your email where you'll receive emails
+            to: [`${req.body.email}`, 'sales@spiesscarpet.com', 'nickspiess23@gmail.com'], // Your email where you'll receive emails
             from: "sales@spiesscarpet.com", // your website email address here
             subject: `${req.body.subject}`,
             html: `
@@ -204,14 +205,17 @@ require('dotenv').config();
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Here is your free quote #${req.body.quoteNumber}.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
+
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">${req.body.message}, your price is looking to be no more than $${req.body.totalPrice}.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">This includes up to our industry-high 400 square feet per room area.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
+
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">This also does not include any of our currently monthly specials.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">Please reach out to for an additional discount to </span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #2f93bf">651-472-2736</span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565"> or </span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #2f93bf">sales@spiesscarpet.com</span><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565"> with any questions or to schedule an appointment.</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
+
             <div style="font-family: inherit; text-align: inherit"><span style="font-size: 20px; font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565">We will be reaching out to you at ${req.body.phone} or ${req.body.email} shortly!</span></div>
             <div style="font-family: inherit; text-align: inherit"><br></div>
             <div style="font-family: inherit; text-align: inherit"><span style="font-family: &quot;trebuchet ms&quot;, helvetica, sans-serif; color: #656565; font-size: 14px">*This price is subject to change in the case of inaccurate information or changed circumstances.</span></div><div></div></div></td>
@@ -283,7 +287,6 @@ require('dotenv').config();
       </html>`,
         });
         } catch (error) {
-
             console.log(error);
             return res.status(error.statusCode || 500).json({ error: error.message.body });
         }
