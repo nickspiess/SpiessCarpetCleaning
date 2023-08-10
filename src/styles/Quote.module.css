@@ -372,7 +372,6 @@
       padding-bottom: 20vh;
       border-top: solid rgba(0, 0, 0, 0.15) 3px;
       height: 1800px;
-      background-size: 120%; /* Zoom out the background image */
     }
 
   .quoteContainer {
