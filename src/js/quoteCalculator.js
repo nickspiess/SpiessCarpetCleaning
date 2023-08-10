@@ -39,15 +39,10 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
         totalPrice = 618.99;
     }
     
-    console.log(totalPrice);
-    console.log(kitchenChairCount)
-    console.log(lazyBoyCount)
-    console.log(sofaCount)
-    console.log(ottomanCount)
-    console.log(loveseatCount)
-    console.log(sectionalCount)
-    let stepPrice = (57.99 * parseFloat(flightsOfSteps));
-    let upholsteryPrice = (parseFloat(lazyBoyCount) * 79.99) + (parseFloat(sofaCount) * 179.00) + 
+    let stepPrice;
+    stepPrice = (57.99 * parseFloat(flightsOfSteps));
+    let upholsteryPrice;
+    upholsteryPrice = (parseFloat(lazyBoyCount) * 79.99) + (parseFloat(sofaCount) * 179.00) + 
                     (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
                     + (parseFloat(loveseatCount) * 159.99) + (parseFloat(kitchenChairCount) * 24.99);
     console.log(totalPrice);
