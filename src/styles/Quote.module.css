@@ -353,6 +353,23 @@
   @media (max-width: 768px) {
 
     .background {
+      background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.8)), url('../../public/images/quoteBackgroundMobile.jpeg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      /* cover the entire viewport */
+      width: 100vw;
+      /* ensure the background covers the entire viewport even when the content exceeds the viewport height */
+      min-height: 100vh;
+      /* use a background color as a fallback */
+      background-color: #000;
+      /* make the background fixed */
+      background-attachment: fixed;
+      /* other styles */
+      z-index: 0;
+      padding-top: 10vh;
+      padding-bottom: 20vh;
+      border-top: solid rgba(0, 0, 0, 0.15) 3px;
       height: 1800px;
       background-size: 120%; /* Zoom out the background image */
     }

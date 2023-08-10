@@ -3,19 +3,15 @@ var totalPrice;
 var quoteNum;
 var stepPrice;
 var upholsteryPrice;
-var chairPrice;
-var couchPrice;
-var sectionalPrice;
 
 function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCount, lazyBoyCount, loveseatCount, sofaCount, sectionalCount, deodorizer) {
-    console.log('in quote')
 
     totalPrice = 0.00;
     stepPrice = 0.00;
     upholsteryPrice = 0.00;
 
     roomCount = parseFloat(roomCount)
-    
+
     quoteNum = Math.floor(Math.random() * (200 - 1 + 1)) + 1
     // Room Pricing
     if (roomCount == 2 || roomCount == 1) {
@@ -45,11 +41,9 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
                     (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
                     + (parseFloat(loveseatCount) * 159.99) + (parseFloat(kitchenChairCount) * 24.99);
     totalPrice = totalPrice + stepPrice + upholsteryPrice;
-    console.log(totalPrice);
     if (deodorizer) {
         totalPrice = totalPrice + 40.00;
     }
-    console.log(totalPrice);
 
     return [totalPrice, quoteNum];
 }
