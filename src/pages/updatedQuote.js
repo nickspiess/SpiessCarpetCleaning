@@ -5,12 +5,9 @@ import Head from 'next/head'
 import StructuredData from 'src/pages/StructuredData';
 import Swal from "sweetalert2";
 import QuoteDetail from './quoteInput';
-import ReCAPTCHA from "react-google-recaptcha";
-import createMessage from '../js/messageCreator';
 
 const Quote = () => {
 
-    const [captchaValue, setCaptchaValue] = useState(null);
     const [isCarpetOpen, setCarpetOpen] = useState(true);
     const [isUpholsteryOpen, setUpholsteryOpen] = useState(false);
     const [deodorize, setDeodorize] = useState(false);
@@ -18,10 +15,9 @@ const Quote = () => {
       rooms: 0,
       flightsOfSteps: 0,
       kitchenChairs: 0,
-      ottoman: 0,
-      lazyBoys: 0,
+      chairs: 0,
       loveseats: 0,
-      sofas: 0,
+      lazyBoys: 0,
       sectionals: 0,
       firstName: "",
       lastName: "",
@@ -33,10 +29,6 @@ const Quote = () => {
   
     const phoneRegex = /^[0-9]{10}$/;
     const emailRegex = /^\S+@\S+\.\S+$/;
-
-    const handleCaptchaResponseChange = (value) => {
-        setCaptchaValue(value);
-    };
 
     const handleCheckboxChange = (e) => {
         setDeodorize(e.target.checked);
@@ -62,198 +54,33 @@ const Quote = () => {
         [field]: formData[field] > 0 ? formData[field] - 1 : 0
       });
     };
-
-    const resetForm = () => {
-        setFormData({
-          rooms: 0,
-          flightsOfSteps: 0,
-          kitchenChairs: 0,
-          ottoman: 0,
-          lazyBoys: 0,
-          loveseats: 0,
-          sofas: 0,
-          sectionals: 0,
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: ""
-        });
-        setDeodorize(false);
-        setCaptchaValue(null);
-      };
   
     const validateForm = () => {
-        let newErrors = {};
-    
-        if (!formData.firstName.trim()) {
-            newErrors.firstName = "First name is required.";
-        }
-    
-        if (!formData.lastName.trim()) {
-            newErrors.lastName = "Last name is required.";
-        }
-    
-        if (!phoneRegex.test(formData.phone)) {
-            newErrors.phone = "Invalid phone number.";
-        }
-    
-        if (!emailRegex.test(formData.email)) {
-            newErrors.email = "Invalid email address.";
-        }
-    
-        setFormErrors(newErrors);
-    
-        return Object.keys(newErrors).length === 0;
-    };
-    
+      let newErrors = {};
   
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-            // Run validation checks
-            if (!validateForm()) {
-                let errorMessage = "";
-                for (const error in formErrors) {
-                  errorMessage += formErrors[error] + "\n";
-                }
-            
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Validation Error',
-                  text: errorMessage,
-                });
-            }
-            else {
-
-    // Check if at least one option is selected
-    const options = ['rooms', 'flightsOfSteps', 'kitchenChairs', 'ottoman', 'lazyBoys', 'loveseats', 'sofas', 'sectionals'];
-    if (options.every(option => formData[option] === 0)) {
-        alert('Please select at least one option.');
+      if (!phoneRegex.test(formData.phone)) {
+        newErrors.phone = "Invalid phone number.";
+      }
+  
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Invalid email address.";
+      }
+  
+      setFormErrors(newErrors);
+  
+      return Object.keys(newErrors).length === 0;
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+  
+      if (!validateForm()) {
         return;
-    }
-
-    // Check if name fields are filled
-    if (!formData.firstName.trim() || !formData.lastName.trim()) {
-        alert('Please fill out the name fields.');
-        return;
-    }
-    
-        // Ensure CAPTCHA is completed
-        //if (!captchaValue) {
-        //    alert('Please complete the CAPTCHA');
-        //    return;
-        //}
-    
-        // Check if the required fields are filled out
-        if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
-            alert('Please fill out all required fields.');
-            return;
-        } else {
-            const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
-            let message = createMessage(formData);
-
-            if (deodorize) {
-                message = message + ' and deodorizer';
-            }
-
-            const [totalPrice, quoteNumber] = quoteCalculator(
-                rooms,
-                flightsOfSteps,
-                kitchenChairs,
-                ottoman,
-                lazyBoys,
-                loveseats,
-                sofas,
-                sectionals,
-                deodorize
-            );
-            
-            const quoteData = {
-                rooms,
-                flightsOfSteps,
-                kitchenChairs,
-                ottoman,
-                lazyBoys,
-                loveseats,
-                sofas,
-                sectionals,
-                firstName,
-                lastName,
-                email,
-                phone,
-                totalPrice,
-                quoteNumber,
-            };
-            
-            const jsonQuoteData = JSON.stringify(quoteData);
-    
-            try {
-                const res = await fetch('/api/sendgrid', {
-                    body: JSON.stringify({
-                        email: email,
-                        firstName: firstName,
-                        lastName: lastName,
-                        roomCount: rooms,
-                        stepCount: flightsOfSteps,
-                        kitchenChairCount: kitchenChairs,
-                        ottomanCount: ottoman,
-                        loveseatCount: loveseats,
-                        lazyBoyCount: lazyBoys,
-                        sectionalCount: sectionals,
-                        totalPrice: totalPrice,
-                        quoteNumber: quoteNumber,
-                        subject: 'Your Quote from Spiess Carpet!',
-                        message: message,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'POST',
-                });
-    
-                if (res.ok) {
-                    console.log(await res.text());
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Message Sent Successfully',
-                    });
-                    resetForm();
-                } else {
-                    console.log(await res.text());
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops, something went wrong',
-                        text: await res.text(),
-                    });
-                }
-            } catch (error) {
-                console.error(error);
-            }
-            // try {
-            //         const res = await fetch('/api/sendSms', {
-            //         body: JSON.stringify({
-            //             firstName: firstName,
-            //             lastName: lastName,
-            //             totalPrice: totalPrice,
-            //             message: message,
-            //             phone: phone,
-            //         }),
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         method: 'POST',
-            //         });
-                
-            //         if (res.ok) {
-            //         console.log('SMS sent successfully');
-            //         } else {
-            //         console.log('Error sending SMS');
-            //         }
-            //     } catch (error) {
-            //         console.error(error);
-            //     }
-        }
-    }
+      }
+      const formDataJSON = JSON.stringify(formData);
+      console.log(formDataJSON);
+  
+      console.log(formData);
     };
   
     return (
@@ -289,9 +116,9 @@ const Quote = () => {
                     <div className={styles.inputGroup}>
                         <QuoteDetail label="Kitchen Chairs" name="kitchenChairs" value={formData.kitchenChairs} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
                     </div>
-
+                
                     <div className={styles.inputGroup}>
-                    <QuoteDetail label="Ottoman" name="ottoman" value={formData.ottoman} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
+                    <QuoteDetail label="Chairs" name="chairs" value={formData.chairs} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
                     </div>
 
                     <div className={styles.inputGroup}>
@@ -300,10 +127,6 @@ const Quote = () => {
                 
                     <div className={styles.inputGroup}>
                     <QuoteDetail label="Loveseats" name="loveseats" value={formData.loveseats} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Sofas" name="sofas" value={formData.sofas} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
                     </div>
                 
                     <div className={styles.inputGroup}>
@@ -328,32 +151,25 @@ const Quote = () => {
             <div className={styles.infoContainer}>
                 <div className={styles.nameContainer}>
                     <div className={styles.labelContainer}>
-                            <label className={styles.label}>First Name</label>
-                            <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className={styles.input} />
-                            {formErrors.firstName && <p className={styles.errorText}>{formErrors.firstName}</p>}
-                        </div>
-                        <div className={styles.labelContainer}>
-                            <label className={styles.label}>Last Name</label>
-                            <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className={styles.input} />
-                            {formErrors.lastName && <p className={styles.errorText}>{formErrors.lastName}</p>}
+                        <label className={styles.label}>First Name</label>
+                        <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className={styles.input} />
+                    </div>
+                    <div className={styles.labelContainer}>
+                        <label className={styles.label}>Last Name</label>
+                        <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className={styles.input} />
+                    </div>
                 </div>
-            </div>
-
                 <div className={styles.contactContainer}>
-                    <label className={styles.label}>Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={styles.input} />
-                    {formErrors.email && <p className={styles.errorText}>{formErrors.email}</p>}
-                    <label className={styles.label}>Phone</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={styles.input} />
-                    {formErrors.phone && <p className={styles.errorText}>{formErrors.phone}</p>}
-                </div>
+
+                        <label className={styles.label}>Email</label>
+                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={styles.input} />
+                        {formErrors.email && <p>{formErrors.email}</p>}
+                        <label className={styles.label}>Phone</label>
+                        <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={styles.input} />
+                        {formErrors.phone && <p>{formErrors.phone}</p>}
+                    </div>
             </div>
-
-            {/*<ReCAPTCHA
-                sitekey="6LcKKownAAAAAOcsOcsgySX2VMFeKmoFm-xRse5U"
-                onChange={handleCaptchaResponseChange}
-    />*/}
-
+        
             {/* Submit button */}
             <button type="submit" className={styles.button}>Get a Quote</button>
             </form>

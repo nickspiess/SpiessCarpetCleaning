@@ -1,33 +1,16 @@
 
 .background {
-  /* or replace 'body' with a className that selects a div covering the entire viewport */
-  background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.8)), url('../../public/images/quoteBackground.jpeg');
+    background-image: linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.8)),
+    url('../../public/images/quoteBackground.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* cover the entire viewport */
-  width: 100vw;
-  height: 1700px;
-  /* ensure the background covers the entire viewport even when the content exceeds the viewport height */
-  min-height: 100vh;
-  /* use a background color as a fallback */
-  background-color: #000;
-  /* make the background fixed */
-  background-attachment: fixed;
-  /* other styles */
+  width: 100%;
+  height: 2000px;
+  min-height: 900px;
   z-index: 0;
   padding-top: 10vh;
-  padding-bottom: 20vh;
-  border-top: solid rgba(0, 0, 0, 0.15) 3px;
-}
 
-.errorText {
-  color: rgb(165, 0, 0);
-  font-size: 14px;
-  font-weight: 600;
-
-  text-align: left;
-  text-shadow: 0px 0px 4px rgb(255, 255, 255), 0px 0px 4px rgb(255, 255, 255);
 }
 
 /* Dropdown Section Styles */
@@ -55,14 +38,13 @@
     padding: 1rem;
     cursor: pointer;
     font-weight: bold;
-    width: 50vw;
+    width: 40vw;
     text-shadow: 0px 0px 4px black, 0px 0px 4px black;
     border-radius: 10px;
   }
 
   .dropdownHeader:hover {
-    background-color: rgb(33, 105, 19);
-    border: solid rgba(255, 255, 255, 0.6) 1px;
+    background-color: rgb(17, 76, 186);
   }
   
   .arrowUp, .arrowDown {
@@ -72,34 +54,28 @@
   .arrowUp {
     transform: rotate(180deg);
   }
-
-  .dropdownContentClosed, .dropdownContentOpen {
-    gap: 10px;
-  }
   
   .dropdownContentClosed {
-    height: 0;
+    max-height: 0;
     overflow: hidden;
-    transition: height 0.8s ease;
+    transition: max-height 0.8s ease;
     background-color: rgb(199, 199, 199);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     border-radius: 10px;
   }
   
   .dropdownContentOpen {
     border-radius: 10px;
-    height: auto;
-    transition: height 0.8s ease;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0px;
-    justify-items: center;
+    max-height: 700px; /* Adjust based on your content's potential max height */
+    transition: max-height 0.8s ease;
+    display: block;
+    text-align: center;
+    flex-direction: column;
     align-items: center;
-    width: 50vw;
+    justify-content: center;
+    width: 40vw;
     background-color: rgb(245, 245, 245);
     border: solid rgba(0, 0, 0, 0.35) 1px;
   }
@@ -117,9 +93,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
-    font-size: 16px;
   }
   
   .input {
@@ -159,7 +134,7 @@
   .infoContainer {
       display: flex;
       flex-direction: column;
-      width: 50vw;
+      width: 40vw;
   }
 
   .nameContainer {
@@ -175,13 +150,11 @@
 
   
   .inputGroup {
-    border: 1 px solid rgba(0, 0, 0, 0.35);
-    background-color: #f5f5f5;
     display: inline;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
-    width: auto;
+    padding: 10px;
+    width: 40vw;
     text-align: center;
     margin: auto;
   }
@@ -193,11 +166,10 @@
   .inputGroupDetail {
 
       display: inline-block;
-        width: 25vw;
+        width: 40vw;
       margin: auto;
       padding: 15px;
-      border: 1px solid rgba(0, 0, 0, 0.35);
-      border-radius: 10px;
+      border-top: solid black 1px;
   }
 
   .inputGroupDeodor {
@@ -248,20 +220,15 @@
   }
   
   .customCheckbox {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     border: 3px solid rgb(176, 0, 0);
     border-radius: 5px;
     display: inline-block;
     position: relative;
     cursor: pointer;
     background-color: white;
-    transition: background-color .4s ease;
     box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
-  }
-
-  .customCheckbox:hover {
-      background-color: rgb(190, 190, 190);
   }
 
   .checkboxLabel {
@@ -273,16 +240,15 @@
     background-color: rgb(255, 255, 255);
   }
   
-  
   .customCheckbox.checked::after {
     content: "";
     position: absolute;
-    left: 52%;
-    top: 40%;
-    width: 10px;
-    height: 20px;
+    left: 50%;
+    top: 45%;
+    width: 6px;
+    height: 10px;
     border: solid rgb(0, 0, 0);
-    border-width: 0 3px 3px 0;
+    border-width: 0 2px 2px 0;
     transform: translate(-50%, -50%) rotate(45deg);
   }
  
@@ -321,22 +287,21 @@
   .quoteContainer {
       margin: auto;
       margin-bottom: 25vh;
-      border-radius: 12px;
+      border-radius: 8px;
     background-color: rgba(223, 174, 37, 0.7);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8);
-    width: 70%;
-    padding: 40px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.6);
+    width: 60%;
   }
 
   .head {
       display: block;
       margin: auto;
-      padding-top: 3vh;
-      padding-bottom: 3vh;
+      padding-top: 2.5vh;
+      padding-bottom: 2.5vh;
       background-color:rgb(142, 16, 16);
-      width: 70%;
+      width: 60vw;
       border-radius: 20px;
-      margin-bottom: 35px;
+      margin-bottom: 2.5vh;
       box-shadow: 0px 0px 10px 3px rgb(0, 0, 0);
   }
 
@@ -350,120 +315,3 @@
       text-shadow: 0px 0px 4px black, 0px 0px 4px black;
   }
   
-
-  @media (max-width: 768px) {
-
-    .background {
-      height: 1800px;
-    }
-
-  .quoteContainer {
-    width: 90%;
-    padding: 20px;
-    margin-bottom: 5vh;
-  }
-
-  .head {
-    width: 90vw;
-    margin-top: 100px;
-  }
-
-  .dropdownHeader, .dropdownContentOpen {
-    width: 80vw;
-  }
-
-  .inputGroupDetail {
-    width: 40vw;
-    padding: 10px;
-  }
-
-
-  .inputGroupButton {
-    font-size: 17px;
-  padding: 0rem;
-  }
-
-  .button {
-    padding: 15px;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-size: 18px;
-    margin-top: 30px;
-    margin-bottom: 0px;
-  }
-
-  .infoContainer {
-    width: 80vw;
-  }
-
-  .nameContainer {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .inputGroup {
-    width: auto;
-    margin: 0px;
-
-  }
-  .inputGroupInput {
-    width:20%;
-  }
-
-  .divLabelDeodor {
-    width: 30vw;
-  }
-
-  .customCheckbox {
-
-  }
-
-  .toggling {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 15px;
-    }
-
-  .inputGroupButton {
-    font-size: 15px;
-    padding: 0.7rem;
-  }
-
-  .header {
-    font-size: 24px;
-  }
-
-  .dropdownContentOpen, .dropdownContentClosed {
-  }
-
-    .customCheckbox {
-    width: 30px;
-    height: 30px;
-    border: 3px solid rgb(176, 0, 0);
-    border-radius: 5px;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: white;
-    transition: background-color .4s ease;
-    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.15);
-  }
-  
-  .customCheckbox.checked::after {
-    content: "";
-    position: absolute;
-    left: 52%;
-    top: 40%;
-    width: 9px;
-    height: 18px;
-    border: solid rgb(0, 0, 0);
-    border-width: 0 3px 3px 0;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  .label {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-}

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Quote.module.css';
+import styles from '../styles/updatedQuote.module.css';
 
 const QuoteDetail = ({ label, name, value, onIncrement, onDecrement, onChange }) => {
   return (
