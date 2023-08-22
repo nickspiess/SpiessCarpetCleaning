@@ -15,31 +15,41 @@ function quoteCalculator(roomCount, flightsOfSteps, kitchenChairCount, ottomanCo
     quoteNum = Math.floor(Math.random() * (200 - 1 + 1)) + 1
     // Room Pricing
     if (roomCount == 2 || roomCount == 1) {
-        totalPrice = 169.99;
+        totalPrice = 130.00;
     } else if (roomCount == 3) {
-        totalPrice = 224.99;
+        totalPrice = 170.00;
     } else if (roomCount == 4) {
-        totalPrice = 281.99;
+        totalPrice = 230.00;
     } else if (roomCount == 5) {
-        totalPrice = 337.99;
+        totalPrice = 280.00;
     } else if (roomCount == 6) {
-        totalPrice = 394.99;
+        totalPrice = 335.00;
     } else if (roomCount == 7) {
-        totalPrice = 449.99;
+        totalPrice = 385.00;
     } else if (roomCount == 8) {
-        totalPrice = 506.99;
-    } else if (roomCount == 8) {
-        totalPrice = 506.99;
+        totalPrice = 445.00;
     } else if (roomCount == 9) {
-        totalPrice = 560.99;
+        totalPrice = 495.00;
     } else if (roomCount == 10) {
-        totalPrice = 618.99;
+        totalPrice = 560.00;
+    } else if (roomCount == 11) {
+        totalPrice = 610.00;
+    } else if (roomCount == 12) {
+        totalPrice = 660.00;
+    } else if (roomCount == 13) {
+        totalPrice = 710.00;
+    } else if (roomCount == 14) {
+        totalPrice = 770.00;
+    } else if (roomCount == 15) {
+        totalPrice = 810.00;
+    } else if (roomCount == 16) {
+        totalPrice = 860.00;
     }
     
     stepPrice = (57.99 * parseFloat(flightsOfSteps));
-    upholsteryPrice = (parseFloat(lazyBoyCount) * 79.99) + (parseFloat(sofaCount) * 179.00) + 
-                    (parseFloat(sectionalCount) * 279.00) + (parseFloat(ottomanCount) * 24.99)
-                    + (parseFloat(loveseatCount) * 159.99) + (parseFloat(kitchenChairCount) * 24.99);
+    upholsteryPrice = (parseFloat(lazyBoyCount) * 60.00) + (parseFloat(sofaCount) * 130.00) + 
+                    (parseFloat(sectionalCount) * 210.00) + (parseFloat(ottomanCount) * 15.00)
+                    + (parseFloat(loveseatCount) * 89.99) + (parseFloat(kitchenChairCount) * 20.00);
     totalPrice = totalPrice + stepPrice + upholsteryPrice;
     if (deodorizer) {
         totalPrice = totalPrice + 40.00;

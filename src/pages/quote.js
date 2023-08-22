@@ -151,7 +151,7 @@ const Quote = () => {
         } else {
             const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
             let message = createMessage(formData);
-
+            console.log('message ' + message);
             if (deodorize) {
                 message = message + ' and deodorizer';
             }
