@@ -1,7 +1,7 @@
 
 const createMessage = (formData) => {
     let message = 'Here is your quote for';
-    const items = ['rooms', 'flightsOfSteps', 'kitchenChairs', 'ottoman', 'chairs', 'loveseats', 'lazyBoys', 'sectionals'];
+    const items = ['rooms', 'flightsOfSteps', 'kitchenChairs', 'ottoman', 'sofas', 'loveseats', 'lazyBoys', 'sectionals'];
 
     for (let item of items) {
         let count = formData[item];
