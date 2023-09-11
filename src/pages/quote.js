@@ -1,4 +1,4 @@
-import styles from "../styles/Quote.module.css";
+import styles from "../styles/updatedQuote.module.css";
 import { useRef, useState } from "react"; // REVISED
 import quoteCalculator from '../js/quoteCalculator'
 import Head from 'next/head'
@@ -151,10 +151,11 @@ const Quote = () => {
         } else {
             const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
             let message = createMessage(formData);
-            console.log('message ' + message);
+
             if (deodorize) {
                 message = message + ' and deodorizer';
             }
+
             const [totalPrice, quoteNumber] = quoteCalculator(
                 rooms,
                 flightsOfSteps,
@@ -190,7 +191,6 @@ const Quote = () => {
                 const res = await fetch('/api/sendgrid', {
                     body: JSON.stringify({
                         email: email,
-                        phone: phone,
                         firstName: firstName,
                         lastName: lastName,
                         roomCount: rooms,
@@ -252,67 +252,26 @@ const Quote = () => {
             //     } catch (error) {
             //         console.error(error);
             //     }
-            try {
-                const response = await fetch('/api/submit', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(quoteData),
-                });
-                const data = await response.json(); // This will await the JSON data from the response
-      
-              } catch (error) {
-                console.error('Error updating database:', error);
-              }
         }
     }
     };
-
-    const structuredData =  {
-        "@context": "https://schema.org",
-        "@type": "HomeAndConstructionBusiness",
-        "name": "Quote | Spiess Carpet Cleaning",
-        "url": "https://www.spiesscarpet.com/quote",
-        "description": "We are the most experienced carpet cleaner in the Twin Cities, providing expert-level carpet cleaning services.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "301 Quentin Ave N",
-            "addressLocality": "Lakeland",
-            "addressRegion": "MN",
-            "postalCode": "55043",
-            "addressCountry": "US",
-        },
-        "telephone": "+1-651-472-2736",
-        "openingHours": "Mo-Fr 07:00-17:00",
-        "sameAs": [
-            "https://www.facebook.com/SpiessCarpetCleaning",
-        ]
-    };
-
   
     return (
         <>
 
         <Head>
-            <title>Quote | Spiess Carpet Cleaning</title>
-            <link rel="preload" as="image" href="../../public/images/quoteBackground.jpeg" />
-            <link rel="preload" as="image" href="../../public/images/quoteBackgroundMobile.jpeg" />
-            <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
-            <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service, quote" />
-            <meta property="og:title" content="Quote | Spiess Carpet Cleaning" />
-            <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
-            <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-            <meta property="og:url" content="https://www.spiesscarpet.com/quote" />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="Quote | Spiess Carpet Cleaning" />
-            <meta name="twitter:description" content="Get an instant quote for the Most Experienced Carpet Cleaner in the Twin Cities Area." />
-            <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-        </Head>
-
-
-        <StructuredData data={structuredData} />
-
+        <title>Quote | Spiess Carpet Cleaning</title>
+        <meta name="description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
+          <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service" />
+          <meta property="og:title" content="Free Quote | Spiess Carpet Cleaning" />
+          <meta property="og:description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
+          <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+          <meta property="og:url" content="https://www.spiesscarpet.com" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="Free Quote | Spiess Carpet Cleaning" />
+          <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
+          <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+      </Head>
 
         <div className={styles.background}>
             <header className={styles.head}>
@@ -408,7 +367,7 @@ const Quote = () => {
             {/*<ReCAPTCHA
                 sitekey="6LcKKownAAAAAOcsOcsgySX2VMFeKmoFm-xRse5U"
                 onChange={handleCaptchaResponseChange}
-            />*/}
+    />*/}
 
             {/* Submit button */}
             <button type="submit" className={styles.button}>Get a Quote</button>

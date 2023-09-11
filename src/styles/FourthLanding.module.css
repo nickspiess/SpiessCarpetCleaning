@@ -1,32 +1,69 @@
 .aboutLanding {
   display: flex;
   flex-wrap: wrap;
-  background-color: #f5f5f5;
-  justify-content: space-between;
+  background: linear-gradient(0deg, #132135 0%, rgb(62, 73, 79) 38%, #bbc6cb 65%, rgb(255, 255, 255) 100%);
+  justify-content: center;
   align-items: center;
   border: solid 2px #cccccc;
   border-radius: 10px;
-  height: 600px;
-  gap: 5vw;
 }
+
+.lowestContainer {
+  width: 50%;
+}
+
+
+.reviewHead {
+  text-align: center;
+  color: white;
+  line-height: 2.5;
+  letter-spacing: 1px;
+  font-size: 28px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  text-shadow: 4px 4px 8px rgb(61,61,61), 4px 4px 8px rgb(61, 61, 61);
+  font-weight: 700;
+  background-color: #459847;
+  border-radius: 10px;
+  padding: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 80%;
+  box-shadow: 3px 2px 4px 2px rgba(0, 0, 0, 0.3);
+}
+
+.containerDos {
+  margin: auto;
+  width: 75%;
+}
+
+.elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0 {
+  width: 80%;
+}
+
+.upperContainer {
+  margin-top: 140px;
+  margin-bottom: 150px;
+  display: flex;
+}
+
+
 
 .aboutInfo {
   font-weight: 500;
   color: black;
-  margin-right: 2vw;
   flex: 1;
-  font-size: 1.3em;
+  font-size: 20px;
   text-align: center;
   line-height: 1.9;
     letter-spacing: 0.5px;
-    text-shadow: 4px 4px 8px rgb(194, 194, 194);
+    text-shadow: 4px 4px 8px rgb(255, 255, 255);
 }
 
 .aboutVid {
-  flex: 1 0 40%;
-  margin-right: 50px;
-  margin-top: -40px;
-  margin-left: 3vw;
+  flex: 1 0 35%;
+  margin-top: 0px;
+  margin-left: 7.5vw;
 }
 
 .aboutVideoHead {
@@ -37,7 +74,7 @@
 
 .aboutAboveVid {
   color: white;
-  width: 100%;
+  width: 85%;
   height: 70px;
   font-size: 1.4em;
   border: solid black 1px;
@@ -60,16 +97,23 @@
   text-transform: uppercase;
 }
 
+.aboutAboveVid {
+  font-size: 22px;
+}
+
 .aboutResponsiveIframe {
   margin: auto;
   box-shadow: 
   -2px 3px 5px 1px rgb(94, 94, 94);
+  margin-bottom: 10vh;
+  border-radius: 20px;
 }
 
 .fourthContainer {
   flex: 1 0 35%;
-  margin-top: -40px;
+  margin-top: 60px;
   margin-right: 5vw;
+  margin-left: 5vw;
 }
 
 .fourthHeader {
@@ -96,7 +140,7 @@
 }
 
 .head {
-  font-size: .9em;
+  font-size: 30px;
 }
 
 .landingButton {
@@ -162,6 +206,8 @@
   2px 3px 5px 1px rgb(94, 94, 94);
 }
 
+
+
 .landingButtonPrimaryButton:hover,
 .landingButtonPrimaryButton:focus {
   transform: translateY(-2px);
@@ -182,60 +228,38 @@
 }
 
 
-@media (min-width: 1600px) {
 
-  .landingButtonPrimaryButton {
-    font-size: 1.3em;
-  }
-  .landingButtonSecondaryButton {
-    font-size: 1.3em;
-  }
-
-  .aboutLanding {
-    padding-left: 5vw;
-  }
-
-  .aboutAboveVid {
-
-    width: 35vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .aboutResponsiveIframe {
-    width: 35vw;
-    display: flex;
-  }
-
-  .aboutVid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-
-  .aboutInfo {
-    font-size: 1.5em;
-  }
-
-
-}
 
 @media (max-width: 800px) {
   .aboutLanding {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: auto;
     padding: 20px;
     margin-top: 0vh;
   }
 
+
   .aboutVid,
   .aboutInfo {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0;
-    flex: none;
+    width: 100%;
+  }
+
+  .fourthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
     width: 100%;
   }
 
@@ -244,6 +268,10 @@
     margin-top: 2em;
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .aboutResponsiveIframe {
+    width: 85vw;
   }
 
   .fourthContainer {
@@ -270,34 +298,67 @@
 
 @media (max-width: 800px) {
 
-  .fourthContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .buttonContainer {
     margin-top: 10vh;
     margin-bottom: -5vh;
   }
 
   .landingButtonPrimary {
-    width: 30vw;
+    width: 40vw;
   }
   .landingButtonSecondary {
-    width: 30vw;
+    width: 40vw;
   }
 
   .aboutVid {
-    margin-top: 5vh;
+    margin-top: 0vh;
     padding-top: 5vh;
+  }
+
+  .aboutVidBody {
+    margin-bottom: -20px;
   }
 
   .aboutLanding {
     padding-top: 5vh;
   }
 
+  .aboutInfo {
+    font-size: 20px;
+  }
+
+  .upperContainer {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -100px;
+  }
+
+  .fourthContainer { 
+    margin-bottom: 0;
+  }
+
+  .aboutAboveVid {
+    font-size: 20px;
+  }
+
   .fourthHeader {
     padding: 10px;
   }
+
+  .head {
+    font-size: 22px;
+    line-height: 1.75;
+  }
+
+  .reviewHead {
+    font-size: 22px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .mainContainer {
+    margin-bottom: -100px;
+  }
+
 }
