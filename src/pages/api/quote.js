@@ -1,4 +1,4 @@
-import { sendEmail, insertIntoDatabase } from '../../utils/database'; // Import the functions to handle database operations
+import { sendEmail, insertIntoDatabase } from '../../utils/databaseUtils'; // Import the functions to handle database operations
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
