@@ -27,9 +27,10 @@
     background-color: #f4a31c !important;
     border-radius: 50px;
     color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 40px;
     padding-right: 40px;
-    height: 55px;
     border: solid rgb(0, 0, 0) 1px !important;
     transition: 0.4s !important;
     font-size: 1.4rem;
@@ -136,7 +137,7 @@
 
   .btn_primary {
     width: 500px;
-    height: 50px;
+
 }
 }
 
@@ -157,7 +158,6 @@
   }
 
     .btn_primary {
-        height: 50px;
         font-size: 1.8em;
     }
 
