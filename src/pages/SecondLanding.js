@@ -11,7 +11,7 @@ const SecondLanding = () => {
     return (
         <>
         <div className={styles.second_banner}>
-            <span><h3 className={styles.second_ban}><strong>Services & Specials</strong></h3></span>
+            <span><h3 className={styles.second_ban}><strong>Services Provided</strong></h3></span>
         </div>
         <div className={styles.landing_body}>
             <div className={styles.service_container}>
@@ -81,11 +81,12 @@ const SecondLanding = () => {
                 <div className={styles.dots}>
                     <Image src={Dots} width={45} alt='three dots' />
                 </div>
-                <div className={styles.text}>
+                <div className={styles.lastText}>
                     <p>
                         Upholstery cleaning available with the most advanced cleaning technologies.
                     </p>
-                    <div className={styles.buttonContainer}>
+                </div>
+                <div className={styles.buttonContainerLast}>
                         <Link className={styles.landingButtonPrimary} href='/services'>
                             <button className={styles.learnButton}>
                                 Learn More
@@ -97,75 +98,6 @@ const SecondLanding = () => {
                                 </button>
                         </Link>
                     </div>
-                </div>
-                </div>
-            </div>
-            <div className={styles.specialsContainer}>
-                <header className={styles.specialsHeader}>
-                    <h4 className={styles.specialsHeaderText}>
-                        <strong>
-                            Our Current Specials
-                        </strong>
-                    </h4>
-                </header>
-                <div className={styles.clippingContainer}>
-                    <article className={`${styles.clipping} ${styles.box}`}>
-                        <h5>
-                            <strong>
-                            15% Off All Carpet Cleaning
-                            </strong>
-                        </h5>
-                        <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/quote'>
-                                <button className={styles.quoteButton}>
-                                    Get a Quote
-                                </button>
-                            </Link>
-                            <Link className={styles.landingButtonPrimary} href='/contact'>
-                                    <button className={styles.specialScheduleButton}>
-                                        Schedule Today
-                                    </button>
-                            </Link>
-                        </div>
-                    </article>
-                    <article className={`${styles.clipping} ${styles.box}`}>
-                        <h5>
-                            <strong>
-                            30% Off All Upholstery Cleaning
-                            </strong>
-                        </h5>
-                        <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/quote'>
-                                <button className={styles.quoteButton}>
-                                    Get a Quote
-                                </button>
-                            </Link>
-                            <Link className={styles.landingButtonPrimary} href='/contact'>
-                                    <button className={styles.specialScheduleButton}>
-                                        Schedule Today
-                                    </button>
-                            </Link>
-                        </div>
-                    </article>
-                    <article className={`${styles.clipping} ${styles.box}`}>
-                        <h5>
-                        <strong>
-                            50% Off Pet Odor Neutralizers
-                            </strong>
-                        </h5>
-                        <div className={styles.specialButtonContainer}>
-                            <Link className={styles.landingButtonPrimary} href='/quote'>
-                                <button className={styles.quoteButton}>
-                                    Get a Quote
-                                </button>
-                            </Link>
-                            <Link className={styles.landingButtonPrimary} href='/contact'>
-                                    <button className={styles.specialScheduleButton}>
-                                        Schedule Today
-                                    </button>
-                            </Link>
-                        </div>
-                    </article>
                 </div>
             </div>
         </div>

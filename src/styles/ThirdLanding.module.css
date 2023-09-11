@@ -2,7 +2,7 @@
 .awarded-header {
     text-align: center;
     background-color: #2b2d42;
-    height: 85px;
+    padding: 30px;
     font-size: 2.2em;
     font-style: oblique;
     display: flex;
@@ -10,18 +10,32 @@
     align-items: center;
     margin-bottom: 0vh;
     color: white;
+    width: 100%;
   }
+
+
+  .awardCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+  }
+
+  .doorImg {
+    border-radius: 10px;
+    box-shadow: 6px 6px 6px 4px rgba(0, 0, 0, 0.15);
+  }
+
   
   /* Style for the Angie container */
   .angie-container {
     padding: 100px;
-    margin-top: -4vh;
+    margin-bottom: 220px;
     background-color: #f0f4f8;
-    margin-left: 8vw;
     border-radius: 10px;
     box-shadow: 6px 6px 6px 4px rgba(0, 0, 0, 0.15);
     height: 450px;
-    width: 40vw;
+    width: 35vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +52,7 @@
   /* Style for the Angie header */
   .angie-head {
     color: white;
-    background-color: #e63946;
+    background-color:  #0076EA;
     text-align: center;
     width: 100%;
     border: solid lightgrey 1.5px;
@@ -46,7 +60,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.55em;
-    line-height: 30px;
+    line-height: 36px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 20px;
@@ -67,20 +81,21 @@
   
   /* Style for the landing container */
   .landing-container {
+    width: 100%;
     background-color: #dcdee0;
-    height: 110vh;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0vh;
+    display: block;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Style for the lower container */
   .lower-container {
-    margin-top: -12.5vh;
-    flex: 1; /* Use flex: 1 to allow the container to grow and take available space */
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 175px;
   }
 
   .headText {
@@ -89,20 +104,42 @@
   
   /* Style for the review container */
   .review-container {
-    margin-right: -3vw;
-    width: 100%;
-    padding-right: 3vw;
-    padding-left: 3vw;
-    margin-top: 0vh; /* Adjust margin-top as needed */
-    margin-bottom: 2vh; /* Add margin-bottom to create spacing between components */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 67%;
+    width: 100%;
   }
 
   .reviewHead {
+    text-align: center;
+    color: white;
+    line-height: 2.5;
+    letter-spacing: 1px;
+    font-size: 28px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    text-shadow: 4px 4px 8px rgb(61,61,61), 4px 4px 8px rgb(61, 61, 61);
+    font-weight: 700;
+    background-color: #c23642;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 55%;
+    box-shadow: 3px 2px 4px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .nextDoorContainer {
+    margin-bottom: 210px;
+  }
+
+  .doorImg {
+    width: 35vw;
+    height: auto;
+  }
+
+  .nextDoorHead {
     color: white;
     line-height: 2.5;
     letter-spacing: 1px;
@@ -111,116 +148,112 @@
     text-shadow: 4px 4px 8px rgb(61,61,61), 4px 4px 8px rgb(61, 61, 61);
     font-weight: 700;
     margin-bottom: 3vh;
-    background-color: #395fe6;
+    background-color: #eab300;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     padding-top: 3px;
     padding-bottom: 3px;
     box-shadow: 6px 6px 6px 4px rgba(0, 0, 0, 0.3);
   }
   
   .containerTwo {
-    width: 70%;
+    margin-bottom: 400px;
   }
   
-  /* Media Queries */
-/* Media Queries */
-@media screen and (min-width: 1400px) {
-  .angie-container {
-    width: 30vw;
-  }
 
-.headText {
-  font-size: 1.1em;
-}
-
-  .awarded-header {
-    padding: 10px;
-    
-  }
-
-  .lower-container {
-    gap: 8vw;
-  }
-
-  .angie-head {
-    font-size: 1.8em;
-    line-height: 1.4em;
-  }
-
-  .review-container {
-    width: 50vw;
-    margin-right: 0;
-  }
-
-  .containerTwo {
-    width: 80%;
-  }
-}
 
 @media screen and (max-width: 1200px) {
-  .angie-container {
-    margin: auto;
-    margin-top: -20vh;
-    margin-bottom: 15vh;
-    width: 50vw;
 
+
+  .doorImg {
+    width: 40vw;
   }
-
-  .angie-head {
-    padding: 20px;
-    font-size: 1.5em;
-  }
-
-  .awarded-header {
-    height: auto;
-  }
-
-  .headText {
-    width: 90%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .landing-container {
-    height: 200vh;
-    overflow: hidden; /* Add overflow: hidden to hide overflowing content */
-  }
-
-  .reviewHead {
-    width: 60%;
-    text-align: center;
-    line-height: 1.75;
-    padding: 10px;
-  }
-
-  .lower-container {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .review-container {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-right: 3vw;
-    padding-left: 3vw;
-    margin-top: 10vh;
-    margin-bottom: 0vh;
-    max-height: calc(100% - 4vh); /* Set max-height to fit within the available space */
-    overflow-y: auto; /* Add overflow-y: auto to enable vertical scrolling if needed */
-  }
-
-  .containerTwo {
-    margin-top: 5vh;
+  .nextDoorHead {
+    font-size: 24px;
   }
 }
 
+
+@media screen and (max-width: 1000px) {
+
+.angie-container {
+  margin: auto;
+  width: 60vw;
+
+}
+
+.doorImg {
+  width: 55vw;
+}
+
+.angie-head {
+  padding: 30px;
+  font-size: 22px;
+}
+
+.awarded-header {
+  padding: 10px;
+}
+
+.headText {
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.landing-container {
+  overflow: hidden; /* Add overflow: hidden to hide overflowing content */
+}
+
+.reviewHead {
+  width: 80%;
+  text-align: center;
+  line-height: 1.75;
+  padding: 10px;
+}
+
+.lower-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.review-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20vh;
+  overflow-y: auto; /* Add overflow-y: auto to enable vertical scrolling if needed */
+}
+
+.nextDoorHead {
+  padding: 15px;
+}
+
+
+.awardCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .nextDoorHead {
+    font-size: 22px;
+  }
+
+  .doorImg {
+    width: 70vw;
+  }
+
+}
 
 
 @media screen and (max-width: 400px) {
@@ -237,6 +270,29 @@
     width: 75vw;
 
   }
+
+  .angie-head {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .lower-container {
+    margin-top: 10vh;
+  }
+.nextDoorHead {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.doorImg {
+  width: 75vw;
+  margin-bottom: 0;
+}
+
+.nextDoorContainer {
+  margin-bottom: 15vh;
+}
+
+
   .reviewHead {
     margin-bottom: 0;
     width: 75%;

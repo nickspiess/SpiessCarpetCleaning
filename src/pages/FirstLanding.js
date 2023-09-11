@@ -29,7 +29,7 @@ const FirstLanding = () => {
                     <h1 className={styles['mobileHead']}><strong><u>The Twin Cities' Most Experienced Carpet Cleaner</u></strong></h1>
                 </div>
                 <div className={styles.button_container}>
-                    <button onClick={handleButtonClick} className={`${styles.btn_primary}`} kind="primary"><strong>Get an Instant Quote</strong></button>
+                    <button onClick={handleButtonClick} className={`${styles.btn_primary}`} kind="primary"><strong>Schedule Your Cleaning Today</strong></button>
                 </div>
             </div>
         </>

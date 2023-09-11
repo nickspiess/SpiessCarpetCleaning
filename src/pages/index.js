@@ -63,9 +63,9 @@ export default class extends React.Component {
             <div className="">
               <div className="wrapper">
                     <FirstLanding />
-                    <FourthLanding />
                     <SecondLanding />
                     <ThirdLanding />
+                    <FourthLanding />
                   </div>
             </div>
         </>

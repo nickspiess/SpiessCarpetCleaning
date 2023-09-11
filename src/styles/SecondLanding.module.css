@@ -119,6 +119,15 @@
         margin-bottom: 10px;
       }
 
+      .buttonContainerLast {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 10px;
+      }
+
       .learnButton, .scheduleButton {
         border-radius: 10px;
         padding: 6px;
@@ -176,7 +185,7 @@
 
       
     .landing_body {
-      background-color: #e0e0e0;
+      background: linear-gradient(0deg, #ffffff 0%, #bac2d2 40%, #bac2d2 60%, #ffffff 100%);
         margin-top: -28px;
         width: 100vw;
         display: flex;
@@ -238,8 +247,8 @@
     }
     
     .service_container {
-      margin-top: 15vh;
-      margin-bottom: 10vh;
+      margin-top: 17.5vh;
+      margin-bottom: 17.5vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -254,6 +263,18 @@
         overflow: hidden;
         margin-bottom: 20px;
     }
+
+    .lastText {
+      margin-top: 0vh;
+      color: #333333;
+      font-weight:600;
+      overflow: hidden;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+  }
     
     .service {
         display: inline-block;
@@ -265,6 +286,7 @@
         box-shadow: 
         0px 0px 10px 1px rgb(0,0,0);
         transition: transform 0.3s ease-in-out;
+        min-height: 400px;
     }
     
     .service:hover {
@@ -356,6 +378,7 @@
           width: 100%;
           height: auto;
           margin-bottom: 20px;
+
         }
       
         .landing_body {

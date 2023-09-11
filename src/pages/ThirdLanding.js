@@ -1,5 +1,7 @@
 import ImageSlider from "./ImageSlider";
+import Image from 'next/image'
 import styles from "../styles/ThirdLanding.module.css";
+import NextDoor from '../../public/images/NextDoor.jpg';
 
 const ThirdLanding = () => {
   const images = [    
@@ -12,7 +14,7 @@ const ThirdLanding = () => {
   return (
     <>
         <div className={styles["landing-container"]}>
-            <div className={styles["top-cont"]}>
+        <div className={styles["top-cont"]}>
                 <div className={styles["head"]}>
                     <header className={styles["awarded-header"]}>
                         <h2 className={styles.headText}><strong>The Most Awarded Carpet Cleaner in the Midwest</strong></h2>
@@ -20,6 +22,7 @@ const ThirdLanding = () => {
                 </div>
             </div>
             <div className={styles['lower-container']}>
+                <div className={styles.awardCont}>
                 <div className={styles["angie-container"]}>
                     <header className={styles["angie-head"]}>
                         <strong>Multi-Time Angie's List Super Service Award</strong>
@@ -28,12 +31,19 @@ const ThirdLanding = () => {
                     <ImageSlider className={styles.image} images={images} />
                 </div>
                 </div>
-                <div className={styles["review-container"]}>
-                    <header className={styles.reviewHead}>See What Our Customers Are Saying:</header>
-                    <div className={styles.containerTwo}>
-                    <div className="elfsight-app-d014ef4b-1230-4e83-b2ae-ec10f15fe6f0" />
+                <div className={styles.nextDoorContainer}>
+                    <header className={styles.nextDoorHead}>NextDoor&trade; Neighborhood Fave</header>
+                    <div className={styles.nextDoorImageContainer}>
+                    <Image
+                        className={styles.doorImg}
+                        src={NextDoor} // Path to your image
+                        alt="NextDoor image" // Alternative text for accessibility
+                    />
                     </div>
                 </div>
+                
+                </div>
+                
             </div>
       </div>
     </>
