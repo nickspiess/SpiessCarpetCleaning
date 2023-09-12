@@ -191,6 +191,7 @@ const Quote = () => {
                 const res = await fetch('/api/sendgrid', {
                     body: JSON.stringify({
                         email: email,
+                        phone: phone,
                         firstName: firstName,
                         lastName: lastName,
                         roomCount: rooms,
