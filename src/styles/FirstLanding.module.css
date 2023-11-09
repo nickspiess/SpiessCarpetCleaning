@@ -1,24 +1,27 @@
 
 .callHeader {
   background-color: rgba(0, 0, 0, .7);
-  height: 70px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3vw;
   color: white;
+  letter-spacing: 2px;
 }
 
 .link {
   color: white;
   font-weight: 600;
+  color:#f4d41c;
 }
 
 .callHeader h3 {
   margin: 0;
   padding: 0;
-  font-size: 1.5em;
-  text-shadow: 2px 2px 12px rgb(131, 131, 131);
+  font-size: 22px;
+  text-shadow: 2px 2px 12px rgb(0, 0, 0);
+  color:#f4d41c;
 }
   
 
@@ -146,8 +149,9 @@
 
   .callHeader {
     margin-top: 115px;
-    height: 80px;
+    height: 100px;
   }
+
 
   .h3One {
     width: 50%;

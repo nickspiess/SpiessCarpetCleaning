@@ -96,9 +96,9 @@ const handleMenuToggle = () => {
                 <Link style={{ textDecoration: 'none' }} href='/quote' passHref onClick={handleLinkClick}>
                 <button
                     className={`${styles.btnMd} ${styles.navButton}`}
-                    onClick={() => router.push('/quote')}
+                    onClick={() => router.push('/contact')}
                 >
-                    Get a Quote!
+                    Schedule Today!
                 </button>
                 </Link>
             </li>

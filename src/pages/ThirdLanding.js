@@ -37,7 +37,7 @@ const ThirdLanding = () => {
                     <Image
                         className={styles.doorImg}
                         src={NextDoor} // Path to your image
-                        alt="NextDoor image" // Alternative text for accessibility
+                        alt="NextDoor image" 
                     />
                     </div>
                 </div>

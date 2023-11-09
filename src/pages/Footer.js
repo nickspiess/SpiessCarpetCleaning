@@ -43,7 +43,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className={styles.bottomContainer}>
-                        <p style={{ opacity: 0.75 }}>&copy;2023 Nick Spiess | All Rights Reserved</p>
+                        <p style={{ opacity: 0.75 }}>&copy;2023 Spiess Technologies LLC | All Rights Reserved</p>
                     </div>
                 </div>
                 <div className={styles.buttonContainer}>
@@ -97,7 +97,7 @@ const Footer = () => {
                         </Link>
                     </div>
                     <div className={styles.bottomContainer}>
-                            <p style={{ color: 'white', }}>&copy;2023 Nick Spiess | All Rights Reserved</p>
+                            <p style={{ color: 'white', }}>&copy;2023 Spiess Technologies LLC | All Rights Reserved</p>
                     </div>
                 </div>
             </footer>

@@ -300,6 +300,13 @@
 
 @media (max-width: 800px) {
 
+  .aboutLanding {
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(0deg, #132135 0%, #bbc6cb 65%, rgb(255, 255, 255) 100%);
+
+  }
+
   .buttonContainer {
     margin-top: 10vh;
     margin-bottom: -5vh;
