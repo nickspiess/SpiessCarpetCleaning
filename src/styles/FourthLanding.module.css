@@ -1,7 +1,7 @@
 .aboutLanding {
   display: flex;
   flex-wrap: wrap;
-  background: linear-gradient(0deg, #132135 0%, rgb(62, 73, 79) 38%, #bbc6cb 65%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(0deg, #132135 0%, rgb(62, 73, 79) 38%, #eff3f5 65%, rgb(255, 255, 255) 100%);
   justify-content: center;
   align-items: center;
   border: solid 2px #cccccc;
@@ -191,6 +191,7 @@
   font-size: 1.2em;
   width: 100%;
   text-shadow: 4px 4px 8px black;
+  transition: background-color .5s;
 }
 
 .landingButtonSecondaryButton {
@@ -303,7 +304,7 @@
   .aboutLanding {
     display: flex;
     flex-wrap: wrap;
-    background: linear-gradient(0deg, #132135 0%, #bbc6cb 65%, rgb(255, 255, 255) 100%);
+    background: linear-gradient(0deg, #3f4a5a 0%, #cfdadf 65%, rgb(255, 255, 255) 100%);
 
   }
 
@@ -313,9 +314,15 @@
   }
 
   .landingButtonPrimary {
-    width: 40vw;
+    width: 60vw;
+  }
+  .landingButtonPrimaryButton {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
   }
   .landingButtonSecondary {
+      background-color: rgb(56,132,252);
     width: 40vw;
   }
 
@@ -363,8 +370,9 @@
   .reviewHead {
     font-size: 22px;
     padding: 10px;
-    width: 100%;
+    width: 80%;
   }
+  
 
   .mainContainer {
     margin-bottom: -100px;

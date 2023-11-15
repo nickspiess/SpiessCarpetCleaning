@@ -47,12 +47,12 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={styles.buttonContainer}>
-                    <Link style={{ textDecoration: 'none' }} href='/quote' passHref>
+                    <Link style={{ textDecoration: 'none' }} href='/contact' passHref>
                         <button
                             className={`${styles.btnMd} ${styles.navButton}`}
                             onClick={() => router.push('/quote')}
                         >
-                            <strong>Get a Free Quote!</strong>
+                            <strong>Schedule Today!</strong>
                         </button>
                     </Link>
                 </div>
@@ -90,9 +90,9 @@ const Footer = () => {
                         <Link style={{ textDecoration: 'none' }} href='/quote' passHref>
                             <button
                                 className={`${styles.btnMd} ${styles.navButton}`}
-                                onClick={() => router.push('/quote')}
+                                onClick={() => router.push('/contact')}
                             >
-                                <strong>Get a Free Quote!</strong>
+                                <strong>Schedule Today!</strong>
                             </button>
                         </Link>
                     </div>
