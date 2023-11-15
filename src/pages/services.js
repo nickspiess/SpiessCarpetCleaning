@@ -158,11 +158,6 @@ const buttonColors = {
                   Book Now
               </button>
           </Link>
-          <Link className={styles.linkButton} href='/quote'>
-              <button className={styles.quoteButton}>
-                  Get a Quote
-              </button>
-          </Link>
         </div>
       </div>
       </div>
