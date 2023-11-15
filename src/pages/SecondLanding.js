@@ -16,9 +16,10 @@ const SecondLanding = () => {
         <div className={styles.landing_body}>
             <div className={styles.service_container}>
                 <div className={styles.service}>
-                    <div className={styles.carpet_image}>
-                        <Image src={CarpetLogo} width={100} height={100} alt='air vent' />
-                    </div>
+                <div className={styles.serviceContent}>
+                    <div className={styles.imgContainer}>
+                        <Image className={styles.image} src={CarpetLogo} width={100} height={100} alt='air vent' />
+                        </div>
                     <div className={styles.head}>
                         <h3 className={styles.headText}><strong>Carpet Cleaning</strong></h3>
                     </div>
@@ -26,8 +27,8 @@ const SecondLanding = () => {
                         <Image src={Dots} width={45} alt='three dots' />
                     </div>
                     <div className={styles.text}>
-                        <p>
-                        State-of-the-Art Steam Cleaning machines designed to make your carpet as clean and dry as fast as possible.
+                        <p className={styles.pTag}>
+                        State-of-the-Art Steam Cleaning designed to make your carpet as clean and dry as fast as possible.
                         </p>
                         <div className={styles.buttonContainer}>
                         <Link className={styles.landingButtonPrimary} href='/services'>
@@ -42,11 +43,13 @@ const SecondLanding = () => {
                         </Link>
                         </div>
                     </div>
+                    </div>
                 </div>
                 <div className={styles.service}>
-                <div className={styles.duct_image}>
-                    <Image src={AirVent} width={77} height={77} alt='air vent' />
-                </div>
+                <div className={styles.serviceContent}>
+                    <div className={styles.imgContainer}>
+                    <Image className={styles.duct_image} src={AirVent} width={77} height={77} alt='air vent' />
+                    </div>
                 <div className={styles.head}>
                     <h3 className={styles.headText}><strong>Air Duct Cleaning</strong></h3>
                 </div>
@@ -54,39 +57,41 @@ const SecondLanding = () => {
                     <Image src={Dots} width={45} alt='three dots' />
                 </div>
                 <div className={styles.text}>
-                    <p>
+                    <p className={styles.pTag}>
                         Innovative Air Duct and Dryer Vent cleaning technologies to keep you and your home healthy.
                     </p>
-                    <div className={styles.buttonContainer}>
-                    <Link className={styles.landingButtonPrimary} href='/services'>
-                            <button className={styles.learnButton}>
-                                Learn More
+                
+                <div className={styles.buttonContainer}>
+                <Link className={styles.landingButtonPrimary} href='/services'>
+                        <button className={styles.learnButton}>
+                            Learn More
+                        </button>
+                    </Link>
+                    <Link className={styles.landingButtonPrimary} href='/contact'>
+                            <button className={styles.scheduleButton}>
+                                Schedule Today
                             </button>
-                        </Link>
-                        <Link className={styles.landingButtonPrimary} href='/contact'>
-                                <button className={styles.scheduleButton}>
-                                    Schedule Today
-                                </button>
-                        </Link>
-                        </div>
+                    </Link>
+                    </div>
+                    </div>
+                    </div>
                 </div>
-                </div>
-                <div className={`${styles.service} ${styles['rounded-border-gradient']}`}>
-                <div className={styles.couch_image}>
-                    <Image src={Couch} width={115} height={115} alt='air vent' />
-                </div>
+                <div className={`${styles.service}`}>
+                <div className={styles.serviceContent}>
+                    <div className={styles.imgContainer}>
+                    <Image className={styles.image} src={Couch} width={115} height={115} alt='air vent' />
+                    </div>
                 <div className={styles.head}>
                     <h3 className={styles.headText}><strong>Upholstery Cleaning</strong></h3>
                 </div>
                 <div className={styles.dots}>
                     <Image src={Dots} width={45} alt='three dots' />
                 </div>
-                <div className={styles.lastText}>
-                    <p>
+                <div className={styles.text}>
+                    <p className={styles.pTag}>
                         Upholstery cleaning available with the most advanced cleaning technologies.
                     </p>
-                </div>
-                <div className={styles.buttonContainerLast}>
+                <div className={styles.buttonContainer}>
                         <Link className={styles.landingButtonPrimary} href='/services'>
                             <button className={styles.learnButton}>
                                 Learn More
@@ -97,6 +102,8 @@ const SecondLanding = () => {
                                     Schedule Today
                                 </button>
                         </Link>
+                    </div>
+                    </div>
                     </div>
                 </div>
             </div>

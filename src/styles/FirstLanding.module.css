@@ -30,10 +30,10 @@
     background-color: #f4a31c !important;
     border-radius: 50px;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 80px;
+    padding-right: 80px;
     border: solid rgb(0, 0, 0) 1px !important;
     transition: 0.4s !important;
     font-size: 1.4rem;
@@ -195,10 +195,26 @@
 @media (max-width: 600px) {
 
   .btn_primary {
-    font-size: 1.6em;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 40px;
+    padding-left: 40px;
+    width: 80%;
+
 }
+
+.callHeader {
+  background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.callHeader h3 {
+  font-size: 20px;
+}
+
 }
 
 @media (max-width: 350px) {
