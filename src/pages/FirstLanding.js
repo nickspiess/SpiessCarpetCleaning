@@ -1,7 +1,7 @@
 import styles from '../styles/FirstLanding.module.css';
 import { useRouter } from "next/router";
 import React from 'react';
-
+import Link from 'next/link';
 import Head from 'next/head';
 
 const FirstLanding = () => {
@@ -21,7 +21,7 @@ const FirstLanding = () => {
 
             <div className={`${styles.first_container}`}>
                 <header className={styles.callHeader}>
-                    <h3 className={styles.h3One}><a className={styles.link} href="sms:6513238711">651-323-8711</a></h3><h3> | </h3><h3>Call or Text Today for a FREE QUOTE</h3>
+                    <h3 className={styles.h3One}><Link className={styles.link} href="sms:6513238711">651-323-8711</Link></h3><h3> | </h3><h3>Call or Text Today for a FREE QUOTE</h3>
                 </header>
                 <div className={styles.landing_head}>
                     <h1 className={styles['head']}><strong><u>The Twin Cities' Most</u></strong></h1>
