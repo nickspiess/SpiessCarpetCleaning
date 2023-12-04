@@ -50,11 +50,6 @@ const handleMenuToggle = () => {
     // Perform phone call action here
     console.log('Calling', '6512169512');
   };
-
-  document.getElementById('phoneLink').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.location.href = 'tel:+16514722736';
-});
   
 
   return (
@@ -111,7 +106,7 @@ const handleMenuToggle = () => {
         </ul>
         <div className={styles.mobileContainer}>
             <div className={styles.phoneIcon}>
-                <a href="tel:6514722736" id="phoneLink" className="phoneIcon">
+                <a href="tel:6514722736" className="phoneIcon">
                     <FontAwesomeIcon onClick={handlePhoneClick} className={styles.phone} icon={faPhone} size="2xl" />
                 </a>
                 <p className={styles.phoneCall}>Call Today!</p>
