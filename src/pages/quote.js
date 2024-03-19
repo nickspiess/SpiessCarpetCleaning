@@ -261,18 +261,8 @@ const Quote = () => {
         <>
 
         <Head>
-        <title>Quote | Spiess Carpet Cleaning</title>
-        <meta name="description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
-          <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service" />
-          <meta property="og:title" content="Free Quote | Spiess Carpet Cleaning" />
-          <meta property="og:description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
-          <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-          <meta property="og:url" content="https://www.spiesscarpet.com" />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content="Free Quote | Spiess Carpet Cleaning" />
-          <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, get a free quote." />
-          <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-      </Head>
+            <title>Quote | Spiess Carpet Cleaning</title>
+        </Head>
 
         <div className={styles.background}>
             <header className={styles.head}>
