@@ -6,12 +6,17 @@ import "semantic-ui-css/semantic.min.css";
 import Script from 'next/script';
 import { useEffect, useRef } from "react";
 import { isServer } from '../utils/isServer';
+import { Head } from 'next/document'
 
 
 // Set a flag to track if the migration has been performed
 let migrationPerformed = false;
 
 export default function App({ Component, pageProps }) {
+
+  <Head>
+      <link rel="icon" href="/favicon.ico" />
+  </Head>
 
   useEffect(() => {
        // Check if the migration has already been performed

@@ -18,11 +18,13 @@ const FirstLanding = () => {
 
     return (
         <>
-
+        <div className={styles.specialsContainer}>
+        
+        </div>
             <div className={`${styles.first_container}`}>
-                <header className={styles.callHeader}>
-                    <h3 className={styles.h3One}><a className={styles.link} href="sms:6513238711">651-323-8711</a></h3><h3> | </h3><h3>Call or Text Today for a FREE QUOTE</h3>
-                </header>
+            <header className={styles.callHeader}>
+                <h3 className={styles.h3One}><a className={styles.link} href="sms:6513238711">651-323-8711</a></h3><h3> | </h3><h3>Call or Text Today for a FREE QUOTE</h3>
+            </header>
                 <div className={styles.landing_head}>
                     <h1 className={styles['head']}><strong><u>The Twin Cities' Most</u></strong></h1>
                     <h1 className={styles['head']}><strong><u>Experienced Carpet Cleaner</u></strong></h1>

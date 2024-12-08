@@ -11,6 +11,14 @@ const FourthLanding = () => {
         <header className={styles.fourthHeader}>
         <h2 className={styles.head}><strong>Experts in Carpet, Upholstery, and Air Duct Cleaning</strong></h2>
       </header>
+      <div className={styles.specialsVideoContainer}>
+      <h3 className={styles.aboutAboveSpecial}>Check Out Our Most Recent Specials:</h3>
+
+          <iframe className={styles.specialsiFrame} width="100%" height="500" src="https://www.youtube.com/embed/03yWrky_bHg?si=W58yQRQ4dmMxyk3N" 
+            title="Spiess Carpet Cleaning Holiday Specials" frameBorder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+            picture-in-picture; web-share" allowFullScreen></iframe>
+      </div>
           <div className={styles.upperContainer}>
           <div className={styles.aboutVid}>
             <h3 className={styles.aboutAboveVid}>Hear this Message from Our Founder:</h3>
