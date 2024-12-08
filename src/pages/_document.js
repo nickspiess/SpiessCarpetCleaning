@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="logo" href="favicon.ico" />
         
         {/* Google Analytics 4 */}
         <script
