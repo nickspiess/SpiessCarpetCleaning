@@ -24,7 +24,7 @@ const FirstLanding = () => {
             </header>
                 <div className={styles.landing_head}>
                     <h1 className={styles['head']}><strong><u>The Twin Cities' Most</u></strong></h1>
-                    <h1 className={styles['head']}><strong><u>Experienced Carpet Cleaner</u></strong></h1>
+                    <h1 className={styles['head']}><strong><u>Experienced Carpet Cleaning Business</u></strong></h1>
                     <h1 className={styles['mobileHead']}><strong><u>The Twin Cities' Most Experienced Carpet Cleaning Business</u></strong></h1>
                 </div>
                 <div className={styles.button_container}>
