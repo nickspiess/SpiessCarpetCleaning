@@ -437,6 +437,13 @@
   }
 }
 
+@media (max-width: 440px) {
+  .first_container {
+    height: 150vh;
+  }
+
+}
+
 @media (max-width: 390px) {
   .first_container {
     min-height: max(140vh, 1200px);
