@@ -437,9 +437,9 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
   .first_container {
-    min-height: max(170vh, 1100px);
+    min-height: max(140vh, 1200px);
   }
 
   .butHead {
