@@ -130,6 +130,7 @@
   letter-spacing: 2px;
   margin-top: 52px;
   margin-bottom: 24px;
+  font-family: Tahoma, sans-serif;
 }
 
 .subButton {
@@ -145,8 +146,8 @@
   border: 1px solid rgba(59, 130, 246, 0.3);
   position: relative;
   overflow: hidden;
-  transition: all 0.2s ease;
   margin-bottom: 16px;
+  transition: al 0.3s ease;
 }
 
 .subButton::before {
@@ -162,7 +163,7 @@
 
 .subButton:hover {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(to bottom, rgb(37, 99, 235), rgb(29, 78, 216));
+  background: linear-gradient(to bottom, rgb(188, 126, 18), rgb(171, 111, 7));
 }
 
 /* Features Section */
@@ -441,7 +442,6 @@
   .first_container {
     height: 150vh;
   }
-
 }
 
 @media (max-width: 390px) {
