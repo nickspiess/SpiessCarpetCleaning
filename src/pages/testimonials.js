@@ -33,7 +33,7 @@ const Testimonials = () => {
             "postalCode": "55043",
             "addressCountry": "US",
         },
-        "telephone": "+1-651-472-2736",
+        "telephone": "+1-651-472-2736", 
         "openingHours": "Mo-Fr 07:00-17:00",
         "sameAs": [
             "https://www.facebook.com/SpiessCarpetCleaning",

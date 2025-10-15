@@ -26,7 +26,7 @@ export default class extends React.Component {
           "postalCode": "55043",
           "addressCountry": "US",
       },
-      "telephone": "+1-651-472-2736",
+      "telephone": "+1-651-472-2736", 
       "openingHours": "Mo-Fr 07:00-17:00",
       "sameAs": [
           "https://www.facebook.com/SpiessCarpetCleaning",
@@ -50,7 +50,7 @@ export default class extends React.Component {
                                               Eden prairie steam cleaner, woodbury steam cleaner, saint paul steam cleaner." />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <meta property="og:title" content="Spiess Carpet Cleaning" />
-                <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get an instant quote and book our trusted cleaners today." />
+                <meta property="og:description" content="The Most Experienced Carpet Cleaner in the Twin Cities Area. Get a free quote and book our trusted cleaners today." />
                 <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
                 <meta property="og:url" content="https://www.spiesscarpet.com" />
                 <meta name="twitter:card" content="summary" />
