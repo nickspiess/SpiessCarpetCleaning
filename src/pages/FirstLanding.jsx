@@ -10,7 +10,7 @@ const FirstLanding = () => {
     };
 
     const handleContactClick = () => {
-        window.location.href = "sms:6513238711";
+        window.location.href = "sms:6514722736";
     };
 
     return (
@@ -18,8 +18,8 @@ const FirstLanding = () => {
             <div className={`${styles.first_container}`}>
                 <header className={styles.callHeader}>
                     <h3 className={styles.h3One}>
-                        <a className={styles.link} href="sms:6513238711">Call or Text Today for a FREE QUOTE</a>
-                        <a className={styles.link} href="sms:6513238711">651-323-8711</a>
+                        <a className={styles.link} href="sms:6514722736">Call or Text Today for a FREE QUOTE</a>
+                        <a className={styles.link} href="sms:6514722736">651-472-2736</a>
                     </h3> | 
                     <button onClick={handleButtonClick} className={`${styles.btn_primary}`} kind="primary">
                         <strong>Schedule Today!</strong>
