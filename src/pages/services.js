@@ -1,171 +1,348 @@
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import Head from 'next/head';
-import styles from '../styles/services.module.scss';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Vent from '../../public/images/vents.jpeg';
-import Carpet from '../../public/images/carpet.jpeg';
-import Other from '../../public/images/upholstery.jpeg';
-import StructuredData from 'src/pages/StructuredData';
-import Carousel from './ServicesCarousel'
 
+export default function Services() {
+  const router = useRouter();
+  const [activeService, setActiveService] = useState('carpet');
 
-const Services = () => {
-
-  const structuredData =  {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Services | Spiess Carpet Cleaning",
-    "url": "https://www.spiesscarpet.com/services",
-    "description": "We are the most experienced carpet cleaner in the Twin Cities, see our expert-provided services.",
-    "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "301 Quentin Ave N",
-        "addressLocality": "Lakeland",
-        "addressRegion": "MN",
-        "postalCode": "55043",
-        "addressCountry": "US",
+  const services = [
+    {
+      id: 'carpet',
+      title: 'Carpet Cleaning',
+      subtitle: 'Deep Steam Cleaning',
+      icon: '🏠',
+      price: 'Starting at $45/room',
+      image: '/images/carpet.jpeg',
+      description: 'State-of-the-art, chemical-free, truck-mounted steam cleaning designed to make your carpets as clean as possible. Our advanced cleaning process removes deep-seated dirt, allergens, and stains.',
+      features: [
+        'Deep steam extraction',
+        'Chemical-free cleaning',
+        'Fast drying (2-4 hours)',
+        'Pet odor elimination',
+        'Stain protection available',
+        'Truck-mounted equipment'
+      ],
+      process: [
+        'Pre-inspection and spot treatment',
+        'Hot water extraction cleaning',
+        'Neutralizing rinse',
+        'Fast-dry process'
+      ]
     },
-    "telephone": "+1-651-472-2736",
-    "openingHours": "Mo-Fr 07:00-17:00",
-    "sameAs": [
-        "https://www.facebook.com/SpiessCarpetCleaning/quote",
-    ]
-};
+    {
+      id: 'upholstery',
+      title: 'Upholstery Cleaning',
+      subtitle: 'Furniture & Fabric Care',
+      icon: '🛋️',
+      price: 'Starting at $85/piece',
+      image: '/images/upholstery.jpeg',
+      description: 'Professional upholstery cleaning that removes allergens and protects your family\'s health. Our state-of-the-art cleaning tackles even the most ground-in dirt and grime, extending furniture life.',
+      features: [
+        'Allergen removal',
+        'Deep fabric cleaning',
+        'Color restoration',
+        'Fabric protection',
+        'Odor elimination',
+        'Gentle care process'
+      ],
+      process: [
+        'Fabric type assessment',
+        'Pre-treatment application',
+        'Gentle extraction cleaning',
+        'Protective finishing'
+      ]
+    },
+    {
+      id: 'airduct',
+      title: 'Air Duct Cleaning',
+      subtitle: 'Improved Air Quality',
+      icon: '💨',
+      price: 'Starting at $199/system',
+      image: '/images/vents.jpeg',
+      description: 'Professional air duct cleaning with two service levels: advanced and maintenance cleanings. Our industrial equipment cleans vents, branches, and trunk lines for cleaner indoor air.',
+      features: [
+        'Industrial vacuum systems',
+        'High-pressure air cleaning',
+        'Complete system cleaning',
+        'Improved air quality',
+        'Energy efficiency boost',
+        'Allergen reduction'
+      ],
+      process: [
+        'System inspection',
+        'Access point creation',
+        'High-powered vacuuming',
+        'Final system check'
+      ]
+    },
+    {
+      id: 'additional',
+      title: 'Additional Services',
+      subtitle: 'Specialized Solutions',
+      icon: '⭐',
+      price: 'Custom pricing',
+      image: '/images/upholstery.jpeg',
+      description: 'Comprehensive cleaning solutions for specialized needs. From area rugs to emergency water removal, we handle it all with professional expertise.',
+      features: [
+        'Area rug cleaning',
+        'Pet stain & odor removal',
+        'Water damage restoration',
+        'Tile floor cleaning',
+        'Move-in/out cleaning',
+        'Emergency services'
+      ],
+      process: [
+        'Damage assessment',
+        'Custom treatment plan',
+        'Specialized cleaning',
+        'Quality inspection'
+      ]
+    }
+  ];
 
-// Manage the current service state
-const [currentService, setCurrentService] = useState('Carpet Cleaning');
-const [isTransitioning, setIsTransitioning] = useState(false);
-const [isNextService, setIsNextService] = useState(false);
-
-
-const handleClick = (newService) => {
-  if (newService !== currentService && !isTransitioning) {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentService(newService);
-      setIsTransitioning(false);
-    }, 400);
-  }
-};
-
-
-const servicesInfo = {
-  'Carpet Cleaning': {
-    description: '<article><p>State of the art, chemical-free, truck mount powered, steam cleaning designed to make your carpets as clean as possible.</p><p>Additional services such as deodorizing and Scotchgard stain-resistant protective coating are also available.</p></article>',
-    image: '/images/carpet.jpeg',
-  },
-  'Upholstery Cleaning': {
-    description: '<article><p>Cleaning away allergens helps protect your families health. This bonus is just one of many. Our state-of-the-art upholstery cleaning tackles even the most ground-in dirt and grime.</p><p>Let us help you prolong the life of your furniture.</p></article>',
-    image: '/images/upholstery.jpeg',
-  },
-  'Air Duct Cleaning': {
-    description: '<article><p>Spiess Carpet Cleaning offers two different levels for cleaning your air ducts, advanced and maintenance cleanings.</p><p>Our process uses industrial vaccuums, high-pressure air wands, and snakes to clean all your vents, branches, and trunk lines, making the air in your home cleaner than ever before.</p></article>',
-    image: '/images/vents.jpeg',
-  },
-  'Additional Services': {
-    description: '<div><ul><li className={styles.description}>Area Rug Cleaning</li><li>Blood stain removal</li><li>Moving in/out cleanings</li><li>Pet odor removal</li><li>Pet stain removal</li></ul><ul><li>Rust stain removal</li><li>Added Carpet Protectant</li><li>Steam and spot cleaning</li><li>Tile floor cleaning</li><li>Water removal</li></ul></div>',
-    image: '/images/upholstery.jpeg',
-  },
-};
-
-const buttonColors = {
-  'Carpet Cleaning': 'linear-gradient(0deg, rgba(199, 150, 148, .75) 0%, rgba(199,62,55,.95) 33%, rgba(195,19,10,1) 50%, rgba(199,62,55,.95) 66%, rgba(199, 150, 148, .75) 100%)',
-  'Upholstery Cleaning': 'linear-gradient(0deg, rgba(148, 185, 222, 0.75) 0%, rgba(20, 132, 226, 0.95) 33%, rgba(0, 118, 234, 1) 50%, rgba(20, 132, 226, 0.95) 66%, rgba(148, 185, 222, 0.75) 100%)',
-  'Air Duct Cleaning': 'linear-gradient(0deg, rgba(130, 178, 118, 0.85)0%, rgba(67, 130, 42, 0.95) 33%, rgba(52, 133, 33, 1) 50%, rgba(67, 130, 42, 0.95) 66%, rgba(130, 178, 118, 0.85) 100%)',
-  'Additional Services': 'linear-gradient(0deg, rgba(229, 214, 145, 0.75)0%, rgba(234, 198, 40, 0.95) 33%, rgba(234, 179, 0, 1) 50%, rgba(234, 198, 40, 0.95) 66%, rgba(229, 214, 145, 0.75) 100%)',
-};
-
-  useEffect(() => {
-    const handleClick = (event) => {
-      const boxes = document.querySelectorAll(`.${styles.box}`);
-      boxes.forEach((box) => {
-        box.classList.remove(styles.active);
-      });
-      event.currentTarget.classList.add(styles.active);
-    };
-
-    const boxes = document.querySelectorAll(`.${styles.box}`);
-    boxes.forEach((box) => {
-      box.addEventListener('click', handleClick);
-    });
-
-    return () => {
-      boxes.forEach((box) => {
-        box.removeEventListener('click', handleClick);
-      });
-    };
-    
-  }, []);
+  const currentService = services.find(s => s.id === activeService);
 
   return (
     <>
       <Head>
-        <title>Services | Spiess Carpet Cleaning</title>
-        <meta name="description" content="We are the most experienced carpet cleaner in the Twin Cities, see our expert-provided services." />
-          <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service" />
-          <meta property="og:title" content="Services | Spiess Carpet Cleaning" />
-          <meta property="og:description" content="We are the most experienced carpet cleaner in the Twin Cities, see our expert-provided services." />
-          <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-          <meta property="og:url" content="https://www.spiesscarpet.com" />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content="Services | Spiess Carpet Cleaning" />
-          <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, see our expert-provided services." />
-          <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+        <title>Professional Cleaning Services | Spiess Carpet Cleaning</title>
+        <meta name="description" content="Expert carpet, upholstery, and air duct cleaning services in the Twin Cities. 40+ years of experience, state-of-the-art equipment, 100% satisfaction guaranteed." />
+        <meta name="keywords" content="carpet cleaning, upholstery cleaning, air duct cleaning, Twin Cities, professional cleaning services" />
       </Head>
 
-      <StructuredData data={structuredData} />
-      <div className={styles.background}>
-        <div className={styles.mainContainer}>
-      <header className={styles.head}>
-          <h3 className={styles.header}>Our Services</h3>
-      </header>
-      <div className={styles.container}>
-      <div className={styles.buttonsContainer}>
-        {Object.keys(servicesInfo).map((service) => (
-          <button
-          key={service}
-          className={styles.serviceButton}
-          style={
-            buttonColors[service].includes("linear-gradient")
-              ? { backgroundImage: buttonColors[service] }
-              : { backgroundColor: buttonColors[service] }
-          }
-          onClick={() => handleClick(service)}
-        >
-            {service}
-          </button>
-        ))}
+      <div className="pt-20">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50/40 via-white to-accent-50/30 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent-100/40 rounded-full blur-3xl transform translate-x-1/2"></div>
+            <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-secondary-100/40 rounded-full blur-3xl transform -translate-x-1/2"></div>
+          </div>
+          
+          <div className="container-wide relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🧽 Professional Services
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+                <span className="block">Complete Cleaning</span>
+                <span className="bg-gradient-to-r from-secondary-500 to-accent-500 bg-clip-text text-transparent">
+                  Solutions
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                From deep carpet cleaning to comprehensive air duct services—we've got your home covered. 
+                Four decades of expertise with state-of-the-art equipment.
+              </p>
+            </div>
+
+            {/* Service Selector */}
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden mb-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 border-b border-slate-200">
+                  {services.map((service) => (
+                    <button
+                      key={service.id}
+                      onClick={() => setActiveService(service.id)}
+                      className={`p-6 text-center transition-all duration-300 ${
+                        activeService === service.id
+                          ? (service.id === 'carpet' ? 'bg-secondary-50 text-secondary-600 border-b-2 border-secondary-500' : 
+                             service.id === 'upholstery' ? 'bg-accent-50 text-accent-600 border-b-2 border-accent-500' :
+                             service.id === 'airduct' ? 'bg-primary-50 text-primary-600 border-b-2 border-primary-500' :
+                             'bg-secondary-50 text-secondary-600 border-b-2 border-secondary-500')
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      }`}
+                    >
+                      <div className="text-3xl mb-2">{service.icon}</div>
+                      <h3 className="font-bold text-sm lg:text-base">{service.title}</h3>
+                      <p className="text-xs lg:text-sm opacity-75">{service.subtitle}</p>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Service Content */}
+                <div className="p-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Service Image */}
+                    <div className="order-2 lg:order-1">
+                      <div className="rounded-2xl overflow-hidden shadow-xl">
+                        <div className="aspect-video relative">
+                          <Image
+                            src={currentService.image}
+                            alt={currentService.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Service Details */}
+                    <div className="order-1 lg:order-2">
+                      <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                          {currentService.title}
+                        </h2>
+                        <div className="text-right">
+                          <div className="text-2xl font-black text-secondary-600">
+                            {currentService.price}
+                          </div>
+                        </div>
+                      </div>
+
+                      <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                        {currentService.description}
+                      </p>
+
+                      {/* Features */}
+                      <div className="mb-8">
+                        <h4 className="text-lg font-bold text-slate-900 mb-4">What's Included:</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {currentService.features.map((feature, index) => (
+                            <div key={index} className="flex items-center gap-3">
+                              <div className="w-5 h-5 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span className="text-secondary-600 text-sm font-bold">✓</span>
+                              </div>
+                              <span className="text-slate-700">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <button
+                          onClick={() => router.push('/quote')}
+                          className="flex-1 py-3 px-6 bg-secondary-500 text-white font-bold rounded-lg hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        >
+                          Get Free Quote
+                        </button>
+                        <button
+                          onClick={() => router.push('/contact')}
+                          className="flex-1 py-3 px-6 border-2 border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-all duration-300"
+                        >
+                          Schedule Service
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Process Section */}
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+                  Our {currentService.title} Process
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                  {currentService.process.map((step, index) => (
+                    <div key={index} className="text-center">
+                      <div className={`w-12 h-12 mx-auto rounded-full flex items-center justify-center font-bold text-lg mb-4 ${
+                        index % 3 === 0 ? 'bg-secondary-100 text-secondary-600' : 
+                        index % 3 === 1 ? 'bg-accent-100 text-accent-600' : 
+                        'bg-primary-100 text-primary-600'
+                      }`}>
+                        {index + 1}
+                      </div>
+                      <p className="text-slate-700 font-medium">{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Comparison */}
+        <section className="py-20 bg-white">
+          <div className="container-wide">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-secondary-100 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                🏆 Why Choose Us
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                The Spiess Difference
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Four decades of innovation and expertise sets us apart from the competition
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {[
+                {
+                  icon: "⚡",
+                  title: "Portable Equipment",
+                  description: "More powerful than truck-mounted units, ensuring deeper cleaning and faster drying"
+                },
+                {
+                  icon: "🌿",
+                  title: "Chemical-Free Options",
+                  description: "Safe for your family and pets while still delivering exceptional cleaning results"
+                },
+                {
+                  icon: "💯",
+                  title: "100% Satisfaction Guarantee",
+                  description: "We stand behind our work with a complete satisfaction guarantee on every job"
+                }
+              ].map((feature, index) => (
+                <div key={index} className="text-center">
+                  <div className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl mb-6 ${
+                    index % 3 === 0 ? 'bg-secondary-100' : index % 3 === 1 ? 'bg-accent-100' : 'bg-primary-100'
+                  }`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-secondary-500 via-accent-500 to-primary-500 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl transform translate-x-16 -translate-y-16"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-400/20 rounded-full blur-xl transform -translate-x-12 translate-y-12"></div>
+          
+          <div className="container-wide relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-bold mb-6">
+                📞 Ready to Book?
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 mt-4 [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)] text-white">
+                Experience Professional Cleaning Today
+              </h2>
+              
+              <p className="text-xl md:text-2xl opacity-95 mb-16 max-w-3xl mx-auto leading-relaxed [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)] text-white mt-12">
+                Join thousands of satisfied customers who trust Spiess Carpet Cleaning. 
+                Same-day service available.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <button
+                  onClick={() => router.push('/quote')}
+                  className="flex-1 bg-white text-secondary-600 font-bold py-4 px-8 rounded-xl hover:bg-accent-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Get Free Quote
+                </button>
+                <a href="tel:6514722736" className="flex-1">
+                  <button className="w-full bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-secondary-600 transition-all duration-300">
+                    Call (651) 472-2736
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div className={`
-            ${styles.infoContainer} 
-            ${isTransitioning ? (isNextService ? styles.slideRight : styles.slideLeft) : styles.show}
-          `}>
-            <div className={styles.infoContent}>
-        <img
-          className={styles.serviceImage}
-          src={servicesInfo[currentService].image}
-          alt={currentService}
-        />
-        <div
-              className={`${styles.serviceDescription} ${styles.dangerousHTMLContainer}`}
-              dangerouslySetInnerHTML={{ __html: servicesInfo[currentService].description }}
-        >
-        </div>
-        <div className={styles.buttonContainer}>
-          <Link className={styles.linkButton} href='/contact'>
-              <button className={styles.bookButton}>
-                  Book Now
-              </button>
-          </Link>
-        </div>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
     </>
   );
-};
-
-export default Services;
+}

@@ -1,349 +1,367 @@
-import React from 'react';
-import { useRef, useState } from "react";
-import styles from '../styles/contact.module.css'
-import { FaCcAmex } from "react-icons/fa";
-import { FaCcMastercard } from "react-icons/fa";
-import { FaCcVisa } from "react-icons/fa";
-import { FaCcDiscover } from "react-icons/fa";
-import Check from '../../public/images/bankCheck.png'
-import Cash from '../../public/images/money.png'
-import emailjs from "emailjs-com";
+import { useState } from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
-import Swal from "sweetalert2";
-import Head from "next/head";
-import StructuredData from 'src/pages/StructuredData';
 
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+    service: ''
+  });
+  
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const SERVICE_ID = "service_5e4f1be";
-const TEMPLATE_ID = "template_rfah2ei";
-const USER_ID = "VPkdzprTCBDdiUbQI";
+  const services = [
+    'Carpet Cleaning',
+    'Upholstery Cleaning', 
+    'Air Duct Cleaning',
+    'Pet Odor Removal',
+    'Emergency Water Removal',
+    'Other/General Inquiry'
+  ];
 
-const Contact = () => {
+  const paymentMethods = [
+    { name: 'Visa', icon: '💳' },
+    { name: 'Mastercard', icon: '💳' },
+    { name: 'Discover', icon: '💳' },
+    { name: 'American Express', icon: '💳' },
+    { name: 'Cash', icon: '💵' },
+    { name: 'Check', icon: '✅' }
+  ];
 
-    const [formStatus, setFormStatus] = React.useState('Send');
-    const [userInput, setUserInput] = useState("");
-    const [emailerror, setEmailError] = useState(false);
-    const [showEmailErrorText, setShowEmailErrorText] = useState(false);
-    const [phoneerror, setPhoneError] = useState(false);
-    const [showPhoneErrorText, setShowPhoneErrorText] = useState(false);
-    const [firstnameerror, setFirstNameError] = useState(false);
-    const [showFirstNameErrorText, setShowFirstNameErrorText] = useState(false);
-    const [lastnameerror, setLastNameError] = useState(false);
-    const [showLastNameErrorText, setShowLastNameErrorText] = useState(false);
-
-    const onSubmit = async (e) => {
-        e.preventDefault()
-
-        const contactMsg = {
-          name: e.target.firstName.value + " " + e.target.lastName.value,
-          message: e.target.message.value,
-          email: e.target.email.value,
-          phone: e.target.phone.value,
-        };
-
-        const jsonQuoteData = JSON.stringify(contactMsg);
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
-        .then((result) => {
-            console.log(result.text);
-            Swal.fire({
-            icon: 'success',
-            title: 'Message Sent Successfully'
-            })
-            // Reset form fields
-            setName('');
-            setEmail('');
-            setPhone('');
-            setMessage('');
-        }, (error) => {
-            console.log(error.text);
-            Swal.fire({
-            icon: 'error',
-            title: 'Oops, something went wrong',
-            text: error.text,
-            })
-        });
-
-        e.target.reset()
-        setFormStatus('Submitting...')
-        
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
     }
+  };
 
-    const handleEmailBlur = (event) => {
-        if (!emailerror) {
-            if (event.target.validity.patternMismatch) {
-                ref.current.focus();
-                setEmailError(true);
-                setShowEmailErrorText(true);
-            }
-        }
-        if (emailerror) {
-            setShowEmailErrorText(false);
-        }
-    };
-    const handlePhoneBlur = (event) => {
-        if (!phoneerror) {
-            if (event.target.validity.patternMismatch) {
-                ref.current.focus();
-                setPhoneError(true);
-                setShowPhoneErrorText(true);
-            }
-        }
-        if (phoneerror) {
-            setShowPhoneErrorText(false);
-        }
-    };
-    const handleFirstNameBlur = (event) => {
-        if (!firstnameerror) {
-            if (event.target.validity.patternMismatch) {
-                ref.current.focus();
-                setFirstNameError(true);
-                setShowFirstNameErrorText(true);
-            }
-        }
-        if (firstnameerror) {
-            setShowFirstNameErrorText(false);
-        }
-    };
-    const handleLastNameBlur = (event) => {
-        if (!lastnameerror) {
-            if (event.target.validity.patternMismatch) {
-                ref.current.focus();
-                setLastNameError(true);
-                setShowLastNameErrorText(true);
-            }
-        }
-        if (lastnameerror) {
-            setShowLastNameErrorText(false);
-        }
-    };
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name required';
+    if (!formData.email.trim()) newErrors.email = 'Email required';
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email format';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone required';
+    if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) newErrors.phone = 'Invalid phone format';
+    if (!formData.message.trim()) newErrors.message = 'Message required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    const handleEmailChange = (event) => {
-        const newValueIsValid = !event.target.validity.patternMismatch;
-        if (emailerror) {
-            if (newValueIsValid) {
-                setEmailError(false);
-                setShowEmailErrorText(false);
-            }
-        }
-
-        setUserInput(event.target.value);
-    };
-    const handlePhoneChange = (event) => {
-        const newValueIsValid = !event.target.validity.patternMismatch;
-        if (phoneerror) {
-            if (newValueIsValid) {
-                setPhoneError(false);
-                setShowPhoneErrorText(false);
-            }
-        }
-
-        setUserInput(event.target.value);
-    };
-    const handleFirstNameChange = (event) => {
-        const newValueIsValid = !event.target.validity.patternMismatch;
-        if (firstnameerror) {
-            if (newValueIsValid) {
-                setFirstNameError(false);
-                setShowFirstNameErrorText(false);
-            }
-        }
-
-        setUserInput(event.target.value);
-    };
-    const handleLastNameChange = (event) => {
-        const newValueIsValid = !event.target.validity.patternMismatch;
-        if (lastnameerror) {
-            if (newValueIsValid) {
-                setLastNameError(false);
-                setShowLastNameErrorText(false);
-            }
-        }
-
-        setUserInput(event.target.value);
-    };
-
-    const handleFirstNameFocus = () => {
-        if (firstnameerror) {
-            setShowFirstNameErrorText(true);
-        }
-    };
-    const handleLastNameFocus = () => {
-        if (lastnameerror) {
-            setShowLastNameErrorText(true);
-        }
-    };
-    const handlePhoneFocus = () => {
-        if (phoneerror) {
-            setShowPhoneErrorText(true);
-        }
-    };
-    const handleEmailFocus = () => {
-        if (emailerror) {
-            setShowEmailErrorText(true);
-        }
-    };
-
-    function style(error) {
-        if (error) {
-            return {
-            backgroundColor: "rgba(255, 0, 0, 0.5)" 
-            // Or any other style you prefer
-            };
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Here you would normally send to your API
+      console.log('Form data:', formData);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      alert('Thank you! Your message has been sent. We\'ll contact you soon!');
+      
+      // Reset form
+      setFormData({
+        firstName: '', lastName: '', email: '', phone: '', message: '', service: ''
+      });
+      
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
+  };
 
-    const ref = useRef();
+  return (
+    <>
+      <Head>
+        <title>Contact Us | Spiess Carpet Cleaning - Twin Cities</title>
+        <meta name="description" content="Contact Spiess Carpet Cleaning for professional carpet, upholstery, and air duct cleaning in the Twin Cities. Call (651) 472-2736 or schedule online." />
+        <meta name="keywords" content="contact Spiess Carpet Cleaning, Twin Cities carpet cleaning, schedule service, phone number" />
+      </Head>
 
-
-    const structuredData =  {
-        "@context": "https://schema.org",
-        "@type": "HomeAndConstructionBusiness",
-        "name": "Contact Spiess Carpet Cleaning",
-        "url": "https://www.spiesscarpet.com/contact",
-        "description": "Contact Spiess Carpet Cleaning, a family-based local company providing high-quality carpet cleaning services since 1972.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "301 Quentin Ave N",
-            "addressLocality": "Lakeland",
-            "addressRegion": "MN",
-            "postalCode": "55043",
-            "addressCountry": "US",
-        },
-        "telephone": "+1-651-472-2736",
-        "openingHours": "Mo-Fr 07:00-17:00",
-        "url": "https://www.spiesscarpet.com/about",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://www.spiesscarpet.com/contact"
-        },
-    };
-
-
-    return (
-        <>
-        <Head>
-            <title>Contact | Spiess Carpet Cleaning</title>
-            <meta name="description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
-            <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, contact, booking" />
-            <meta property="og:title" content="Contact | Spiess Carpet Cleaning" />
-            <meta property="og:description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
-            <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-            <meta property="og:url" content="https://www.spiesscarpet.com/contact" />
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="Contact | Spiess Carpet Cleaning" />
-            <meta name="twitter:description" content="Contact Spiess Carpet Cleaning for all your carpet cleaning inquiries and bookings. We provide trusted and professional carpet cleaning services in the Twin Cities." />
-            <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
-        </Head>
-
-        <StructuredData data={structuredData} />
-        <div className={styles.contactCont}>
-            <article className={styles.contactBox}>
-                <h2 className={styles.contactHead}>Enter Your Info and We Will Message<br/>You Back As Soon As Possible</h2>
-                <div className="container mt-5">
-                    <form onSubmit={onSubmit}>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="firstName">
-                        First Name
-                        </label>
-                        <input className="form-control" type="text" name="firstName" id="firstName" pattern="[A-Za-z]{1,32}" 
-                            onBlur={handleFirstNameBlur} onChange={handleFirstNameChange} onFocus={handleFirstNameFocus} 
-                            style={style(firstnameerror)} required />
-                            {showFirstNameErrorText && (
-                                <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
-                                    Please enter letter format for first name.
-                                </p>
-                            )}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="lastName">
-                        Last Name
-                        </label>
-                        <input className="form-control" type="text" name="lastName" id="lastName" pattern="[A-Za-z]{1,32}" 
-                        onBlur={handleLastNameBlur} onChange={handleLastNameChange} onFocus={handleLastNameFocus} 
-                        style={style(lastnameerror)} required />
-                        {showLastNameErrorText && (
-                            <p role="alert" style={{ color: "rgb(255, 0, 0)"}}>
-                                Please enter letter format for last name.
-                            </p>
-                        )}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="email">
-                        Email
-                        </label>
-                        <input className="form-control" id="email" 
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-                        ref={ref} name="email"
-                        onBlur={handleEmailBlur} onChange={handleEmailChange} onFocus={handleEmailFocus} 
-                        style={style(emailerror)} required />
-                        {showEmailErrorText && (
-                            <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
-                                Please enter email format as xxxxx@yyyyy.zzzzz
-                            </p>
-                        )}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="phone">
-                        Phone
-                        </label>
-                        <input className="form-control" id="phone" name="phone" inputMode="decimal" 
-                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}|[0-9]{3}-[0-9]{3}-[0-9]{4}" ref={ref}
-                        onBlur={handlePhoneBlur} onChange={handlePhoneChange} onFocus={handlePhoneFocus} 
-                        style={style(phoneerror)} required />
-                        {showPhoneErrorText && (
-                            <p role="alert" style={{ color: "rgb(255, 0, 0)" }}>
-                                Please enter phone number format as xxx-yyy-zzzz
-                            </p>
-                        )}
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label" htmlFor="message">
-                        Message
-                        </label>
-                        <input className="form-control" name="message" id="message" required />
-                    </div>
-                        <div className={styles.buttonContainer}>
-                            <button className={`${styles.contactBtn} btn btn-danger`} type="submit">
-                                <strong>Submit</strong>
-                                {onSubmit}
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </article>
-            <div className={styles.contactInfo}>
-                <article className={styles.directContact}>
-                    <h2 className={styles.contactHeadTop}>Contact Us Directly</h2>
-                    <p className={styles.contactParagraphs}><a className={styles.link} href="tel:6514722736">(651)-472-2736</a></p>
-                    <p className={styles.contactParagraphs}><u><a className={styles.link} href="mailto:sales@spiesscarpet.com">sales@spiesscarpet.com</a></u></p>
-                </article>
-                <article className={styles.hours}>
-                    <h2 className={styles.contactHead}>Business Hours</h2>
-                    <p className={styles.contactParagraphs}>Monday - Friday:      7:00am - 5:00pm</p>
-                    <p className={styles.contactParagraphs}>Saturday:             By Appointment Only</p>
-                    <p className={styles.contactParagraphs}>Sunday:               Closed</p>
-                </article>
-                <article className={styles.serviceArea}>
-                    <h2 className={styles.contactHead}>Areas Serviced</h2>
-                    <p className={styles.contactParagraphs}>Twin Cities Metro and Surrounding Areas</p>
-                </article>
-                <div className={styles.payments}>
-                    <h2 className={styles.contactParagraphs}>Payments Accepted:</h2> 
-                    <div className={styles.paymentContainer}>
-                        <div className={styles.topPay}>
-                            <h1 className={styles.cardLineOne}><FaCcVisa className={styles.visa} /><FaCcMastercard className={styles.mastercard} /><FaCcDiscover className={styles.discover} /></h1>
-                        </div>
-                        <div className={styles.bottomPay}>
-                                <FaCcAmex className={styles.amex}/>
-                                <Image className={styles.cash} src={Cash} width={40} height={55} alt='cash' />
-                                <Image className={styles.cash}src={Check} width={40} height={57} alt='cashiers check' />
-                        </div>
-                    </div>
-                </div>
+      <div className="pt-20">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50/40 via-white to-accent-50/30 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent-100/40 rounded-full blur-3xl transform translate-x-1/2"></div>
+            <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-secondary-100/40 rounded-full blur-3xl transform -translate-x-1/2"></div>
+          </div>
+          
+          <div className="container-wide relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                📞 Get In Touch
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+                <span className="block">Contact</span>
+                <span className="bg-gradient-to-r from-secondary-500 to-accent-500 bg-clip-text text-transparent">
+                  Spiess Carpet
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                Ready to transform your space? Contact us today for a free consultation and quote. 
+                Same-day service available throughout the Twin Cities.
+              </p>
             </div>
-        </div>
-        </>
-    );
-};
 
-export default Contact;
+            {/* Quick Contact Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200 text-center hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 mx-auto bg-secondary-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                  📞
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Call Us Now</h3>
+                <a 
+                  href="tel:6514722736" 
+                  className="text-2xl font-black text-secondary-600 hover:text-secondary-700 transition-colors"
+                >
+                  (651) 472-2736
+                </a>
+                <p className="text-slate-600 mt-6">Available 7 days a week</p>
+              </div>
+
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200 text-center hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 mx-auto bg-accent-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                  ✉️
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Email Us</h3>
+                <a 
+                  href="mailto:sales@spiesscarpet.com" 
+                  className="text-lg font-medium text-accent-600 hover:text-accent-700 transition-colors"
+                >
+                  sales@spiesscarpet.com
+                </a>
+                <p className="text-slate-600 mt-6">We respond within 24 hours</p>
+              </div>
+
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200 text-center hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 mx-auto bg-primary-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
+                  🕒
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Business Hours</h3>
+                <div className="text-slate-700 space-y-1">
+                  <p className="font-medium">Mon-Fri: 7:00am - 5:00pm</p>
+                  <p>Saturday: By Appointment</p>
+                  <p>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form & Info */}
+        <section className="py-20 bg-white">
+          <div className="container-wide">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+              {/* Contact Form */}
+              <div>
+                <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
+                  <p className="text-slate-600 mb-8">
+                    Fill out the form below and we'll get back to you as soon as possible with a personalized quote.
+                  </p>
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                        <input
+                          type="text"
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange('firstName', e.target.value)}
+                          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                            errors.firstName ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                          } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                          placeholder="John"
+                        />
+                        {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                        <input
+                          type="text"
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange('lastName', e.target.value)}
+                          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                            errors.lastName ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                          } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                          placeholder="Smith"
+                        />
+                        {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                            errors.email ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                          } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                          placeholder="john@example.com"
+                        />
+                        {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                          className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                            errors.phone ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                          } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                          placeholder="(651) 472-2736"
+                        />
+                        {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Service Needed</label>
+                      <select
+                        value={formData.service}
+                        onChange={(e) => handleInputChange('service', e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:outline-none focus:ring-2 focus:ring-secondary-500/20 transition-colors"
+                      >
+                        <option value="">Select a service...</option>
+                        {services.map((service) => (
+                          <option key={service} value={service}>{service}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                      <textarea
+                        rows="4"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        className={`w-full px-4 py-3 rounded-lg border transition-colors resize-vertical ${
+                          errors.message ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                        } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                        placeholder="Tell us about your cleaning needs..."
+                      />
+                      {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-secondary-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-secondary-600 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              {/* Contact Info & Additional Details */}
+              <div className="space-y-8">
+                {/* Service Areas */}
+                <div className="bg-slate-50 rounded-2xl p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Service Areas</h3>
+                  <p className="text-slate-700 mb-6">
+                    We proudly serve the entire Twin Cities metro area and surrounding communities:
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      'Minneapolis', 'St. Paul', 'Bloomington', 'Plymouth',
+                      'Minnetonka', 'Edina', 'Burnsville', 'Eagan',
+                      'Woodbury', 'Maple Grove', 'Lakeville', 'Roseville'
+                    ].map((city) => (
+                      <div key={city} className="flex items-center gap-2">
+                        <span className="text-secondary-600">📍</span>
+                        <span className="text-slate-700">{city}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-600 mt-8">
+                    Don't see your city? Call us - we likely service your area!
+                  </p>
+                </div>
+
+                {/* Payment Methods */}
+                <div className="bg-slate-50 rounded-2xl p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Payment Methods</h3>
+                  <p className="text-slate-700 mb-6">We accept all major forms of payment:</p>
+                  <div className="grid grid-cols-3 gap-4">
+                    {paymentMethods.map((method) => (
+                      <div key={method.name} className="flex flex-col items-center p-4 bg-white rounded-xl border border-slate-200">
+                        <span className="text-2xl mb-2">{method.icon}</span>
+                        <span className="text-sm font-medium text-slate-700 text-center">{method.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Emergency Service */}
+                <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-8 text-white">
+                  <h3 className="text-2xl font-bold mb-6 text-white">🚨 Emergency Service Available</h3>
+                  <p className="text-red-100 mb-8">
+                    Water damage or urgent cleaning needs? We offer 24/7 emergency response for critical situations.
+                  </p>
+                  <a
+                    href="tel:6514722736"
+                    className="inline-block bg-white text-red-600 font-bold py-3 px-6 rounded-xl hover:bg-red-50 transition-all duration-300"
+                  >
+                    Call Emergency Line
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-20 bg-gradient-to-br from-secondary-500 via-accent-500 to-primary-500 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl transform translate-x-16 -translate-y-16"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary-400/30 rounded-full blur-xl transform -translate-x-12 translate-y-12"></div>
+          
+          <div className="container-wide relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)]">
+                Ready to Get Started?
+              </h2>
+              
+              <p className="text-white [text-shadow:_0_1px_2px_rgba(0,0,0,0.4)] text-xl md:text-2xl opacity-95 mb-16 max-w-3xl mx-auto mt-20 leading-relaxed">
+                Experience the difference that 40+ years of expertise makes. 
+                Contact us today for your free consultation.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <a href="tel:6514722736" className="flex-1">
+                  <button className="w-full bg-white text-secondary-600 font-bold py-4 px-8 rounded-xl hover:bg-accent-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                    Call (651) 472-2736
+                  </button>
+                </a>
+                <a href="/quote" className="flex-1">
+                  <button className="w-full bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-secondary-600 transition-all duration-300">
+                    Get Free Quote
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}

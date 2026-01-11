@@ -31,12 +31,12 @@
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  padding: 100px;
+  padding: 20px;
 }
 
 
 .image-wrapper {
-  padding: 100px;
+  padding: 20px;
   position: absolute;
   top: 0;
   left: 0;

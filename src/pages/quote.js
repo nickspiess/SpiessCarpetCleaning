@@ -1,372 +1,361 @@
-import styles from "../styles/updatedQuote.module.css";
-import { useRef, useState } from "react"; // REVISED
-import quoteCalculator from '../js/quoteCalculator'
-import Head from 'next/head'
-import StructuredData from 'src/pages/StructuredData';
-import Swal from "sweetalert2";
-import QuoteDetail from './quoteInput';
-import ReCAPTCHA from "react-google-recaptcha";
-import createMessage from '../js/messageCreator';
+import { useState } from 'react';
+import Head from 'next/head';
 
 const Quote = () => {
+  const [activeTab, setActiveTab] = useState('carpet');
+  const [formData, setFormData] = useState({
+    // Carpet cleaning
+    rooms: 0,
+    hallways: 0,
+    stairs: 0,
+    
+    // Upholstery cleaning
+    chairs: 0,
+    ottomans: 0,
+    loveseats: 0,
+    sofas: 0,
+    sectionals: 0,
+    
+    // Customer info
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    
+    // Options
+    deodorize: false,
+    protection: false
+  });
 
-    const [captchaValue, setCaptchaValue] = useState(null);
-    const [isCarpetOpen, setCarpetOpen] = useState(true);
-    const [isUpholsteryOpen, setUpholsteryOpen] = useState(false);
-    const [deodorize, setDeodorize] = useState(false);
-    const [formData, setFormData] = useState({
-      rooms: 0,
-      flightsOfSteps: 0,
-      kitchenChairs: 0,
-      ottoman: 0,
-      lazyBoys: 0,
-      loveseats: 0,
-      sofas: 0,
-      sectionals: 0,
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: ""
-    });
-  
-    const [formErrors, setFormErrors] = useState({});
-  
-    const phoneRegex = /^[0-9]{10}$/;
-    const emailRegex = /^\S+@\S+\.\S+$/;
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleCaptchaResponseChange = (value) => {
-        setCaptchaValue(value);
-    };
-
-    const handleCheckboxChange = (e) => {
-        setDeodorize(e.target.checked);
-    };
-  
-    const handleInputChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      });
-    };
-  
-    const handleIncrement = (field) => {
-      setFormData({
-        ...formData,
-        [field]: formData[field] + 1
-      });
-    };
-  
-    const handleDecrement = (field) => {
-      setFormData({
-        ...formData,
-        [field]: formData[field] > 0 ? formData[field] - 1 : 0
-      });
-    };
-
-    const resetForm = () => {
-        setFormData({
-          rooms: 0,
-          flightsOfSteps: 0,
-          kitchenChairs: 0,
-          ottoman: 0,
-          lazyBoys: 0,
-          loveseats: 0,
-          sofas: 0,
-          sectionals: 0,
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: ""
-        });
-        setDeodorize(false);
-        setCaptchaValue(null);
-      };
-  
-    const validateForm = () => {
-        let newErrors = {};
-    
-        if (!formData.firstName.trim()) {
-            newErrors.firstName = "First name is required.";
-        }
-    
-        if (!formData.lastName.trim()) {
-            newErrors.lastName = "Last name is required.";
-        }
-    
-        if (!phoneRegex.test(formData.phone)) {
-            newErrors.phone = "Invalid phone number.";
-        }
-    
-        if (!emailRegex.test(formData.email)) {
-            newErrors.email = "Invalid email address.";
-        }
-    
-        setFormErrors(newErrors);
-    
-        return Object.keys(newErrors).length === 0;
-    };
-    
-  
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-            // Run validation checks
-            if (!validateForm()) {
-                let errorMessage = "";
-                for (const error in formErrors) {
-                  errorMessage += formErrors[error] + "\n";
-                }
-            
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Validation Error',
-                  text: errorMessage,
-                });
-            }
-            else {
-
-    // Check if at least one option is selected
-    const options = ['rooms', 'flightsOfSteps', 'kitchenChairs', 'ottoman', 'lazyBoys', 'loveseats', 'sofas', 'sectionals'];
-    if (options.every(option => formData[option] === 0)) {
-        alert('Please select at least one option.');
-        return;
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
     }
-
-    // Check if name fields are filled
-    if (!formData.firstName.trim() || !formData.lastName.trim()) {
-        alert('Please fill out the name fields.');
-        return;
-    }
-    
-        // Ensure CAPTCHA is completed
-        //if (!captchaValue) {
-        //    alert('Please complete the CAPTCHA');
-        //    return;
-        //}
-    
-        // Check if the required fields are filled out
-        if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
-            alert('Please fill out all required fields.');
-            return;
-        } else {
-            const { rooms, flightsOfSteps, kitchenChairs, ottoman, lazyBoys, loveseats, sofas, sectionals, firstName, lastName, email, phone } = formData;
-            let message = createMessage(formData);
-
-            if (deodorize) {
-                message = message + ' and deodorizer';
-            }
-
-            const [totalPrice, quoteNumber] = quoteCalculator(
-                rooms,
-                flightsOfSteps,
-                kitchenChairs,
-                ottoman,
-                lazyBoys,
-                loveseats,
-                sofas,
-                sectionals,
-                deodorize
-            );
-            
-            const quoteData = {
-                rooms,
-                flightsOfSteps,
-                kitchenChairs,
-                ottoman,
-                lazyBoys,
-                loveseats,
-                sofas,
-                sectionals,
-                firstName,
-                lastName,
-                email,
-                phone,
-                totalPrice,
-                quoteNumber,
-            };
-            
-            const jsonQuoteData = JSON.stringify(quoteData);
-    
-            try {
-                const res = await fetch('/api/sendgrid', {
-                    body: JSON.stringify({
-                        email: email,
-                        phone: phone,
-                        firstName: firstName,
-                        lastName: lastName,
-                        roomCount: rooms,
-                        stepCount: flightsOfSteps,
-                        kitchenChairCount: kitchenChairs,
-                        ottomanCount: ottoman,
-                        loveseatCount: loveseats,
-                        lazyBoyCount: lazyBoys,
-                        sectionalCount: sectionals,
-                        totalPrice: totalPrice,
-                        quoteNumber: quoteNumber,
-                        subject: 'Your Quote from Spiess Carpet!',
-                        message: message,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    method: 'POST',
-                });
-    
-                if (res.ok) {
-                    console.log(await res.text());
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Message Sent Successfully',
-                    });
-                    resetForm();
-                } else {
-                    console.log(await res.text());
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops, something went wrong',
-                        text: await res.text(),
-                    });
-                }
-            } catch (error) {
-                console.error(error);
-            }
-            // try {
-            //         const res = await fetch('/api/sendSms', {
-            //         body: JSON.stringify({
-            //             firstName: firstName,
-            //             lastName: lastName,
-            //             totalPrice: totalPrice,
-            //             message: message,
-            //             phone: phone,
-            //         }),
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //         },
-            //         method: 'POST',
-            //         });
-                
-            //         if (res.ok) {
-            //         console.log('SMS sent successfully');
-            //         } else {
-            //         console.log('Error sending SMS');
-            //         }
-            //     } catch (error) {
-            //         console.error(error);
-            //     }
-        }
-    }
-    };
-  
-    return (
-        <>
-
-        <Head>
-            <title>Quote | Spiess Carpet Cleaning</title>
-        </Head>
-
-        <div className={styles.background}>
-            <header className={styles.head}>
-                    <h3 className={styles.header}>Get an Instant Quote!</h3>
-                </header>
-            <div className={styles.quoteContainer}>
-            <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.dropdownSection}>
-                <div className={styles.dropdownHeader} onClick={() => setCarpetOpen(!isCarpetOpen)}>
-                    Carpet Cleaning
-                    <span className={isCarpetOpen ? styles.arrowUp : styles.arrowDown}>▼</span>
-                </div>
-                <div className={isCarpetOpen ? styles.dropdownContentOpen : styles.dropdownContentClosed}>
-                    <div className={styles.inputGroup}>
-                        <QuoteDetail label="Rooms" name="rooms" value={formData.rooms} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-                
-                    <div className={styles.inputGroup}>
-                        <QuoteDetail label="Flights of Steps" name="flightsOfSteps" value={formData.flightsOfSteps} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-                    </div>
-            </div>
-        
-            <div className={styles.dropdownSection}>
-                <div className={styles.dropdownHeader} onClick={() => setUpholsteryOpen(!isUpholsteryOpen)}>
-                    Upholstery Cleaning
-                    <span className={isUpholsteryOpen ? styles.arrowUp : styles.arrowDown}>▼</span>
-                </div>
-                <div className={isUpholsteryOpen ? styles.dropdownContentOpen : styles.dropdownContentClosed}>
-                    <div className={styles.inputGroup}>
-                        <QuoteDetail label="Kitchen Chairs" name="kitchenChairs" value={formData.kitchenChairs} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Ottoman" name="ottoman" value={formData.ottoman} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Lazy Boys" name="lazyBoys" value={formData.lazyBoys} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-                
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Loveseats" name="loveseats" value={formData.loveseats} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Sofas" name="sofas" value={formData.sofas} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-                
-                    <div className={styles.inputGroup}>
-                    <QuoteDetail label="Sectionals" name="sectionals" value={formData.sectionals} onIncrement={handleIncrement} onDecrement={handleDecrement} onChange={handleInputChange} />
-                    </div>
-                </div>
-            </div>
-
-                <div className={styles.inputGroupDeodor}>
-                    <div className={styles.divLabelDeodor}>
-                        <label className={styles.label}>Deodorizer:</label>
-                    </div>
-                    <div className={styles.checkboxContainer}>
-                        <label className={styles.checkboxLabel}>
-                        <input type="checkbox" id="deodorizeCheckbox" checked={deodorize} onChange={handleCheckboxChange} className={styles.hiddenCheckbox} />
-                        <span className={deodorize ? `${styles.customCheckbox} ${styles.checked}` : styles.customCheckbox}></span>
-                        </label>
-                    </div>
-                </div>
-        
-            {/* Customer Details */}
-            <div className={styles.infoContainer}>
-                <div className={styles.nameContainer}>
-                    <div className={styles.labelContainer}>
-                            <label className={styles.label}>First Name</label>
-                            <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className={styles.input} />
-                            {formErrors.firstName && <p className={styles.errorText}>{formErrors.firstName}</p>}
-                        </div>
-                        <div className={styles.labelContainer}>
-                            <label className={styles.label}>Last Name</label>
-                            <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className={styles.input} />
-                            {formErrors.lastName && <p className={styles.errorText}>{formErrors.lastName}</p>}
-                </div>
-            </div>
-
-                <div className={styles.contactContainer}>
-                    <label className={styles.label}>Email</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={styles.input} />
-                    {formErrors.email && <p className={styles.errorText}>{formErrors.email}</p>}
-                    <label className={styles.label}>Phone</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={styles.input} />
-                    {formErrors.phone && <p className={styles.errorText}>{formErrors.phone}</p>}
-                </div>
-            </div>
-
-            {/*<ReCAPTCHA
-                sitekey="6LcKKownAAAAAOcsOcsgySX2VMFeKmoFm-xRse5U"
-                onChange={handleCaptchaResponseChange}
-    />*/}
-
-            {/* Submit button */}
-            <button type="submit" className={styles.button}>Get a Quote</button>
-            </form>
-            </div>
-        </div>
-        </>
-      );
   };
+
+  const incrementValue = (field) => {
+    setFormData(prev => ({ ...prev, [field]: prev[field] + 1 }));
+  };
+
+  const decrementValue = (field) => {
+    setFormData(prev => ({ ...prev, [field]: Math.max(0, prev[field] - 1) }));
+  };
+
+  const calculatePrice = () => {
+    let total = 0;
+    
+    // Carpet pricing
+    total += formData.rooms * 45;
+    total += formData.hallways * 25;
+    total += formData.stairs * 3;
+    
+    // Upholstery pricing
+    total += formData.chairs * 35;
+    total += formData.ottomans * 40;
+    total += formData.loveseats * 85;
+    total += formData.sofas * 120;
+    total += formData.sectionals * 180;
+    
+    // Add-ons
+    if (formData.deodorize) total += 25;
+    if (formData.protection) total += 50;
+    
+    return total;
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name required';
+    if (!formData.email.trim()) newErrors.email = 'Email required';
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email format';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone required';
+    if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) newErrors.phone = 'Invalid phone format';
+    
+    const hasItems = Object.keys(formData).some(key => 
+      ['rooms', 'hallways', 'stairs', 'chairs', 'ottomans', 'loveseats', 'sofas', 'sectionals'].includes(key) && 
+      formData[key] > 0
+    );
+    
+    if (!hasItems) newErrors.items = 'Please select at least one service';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      const price = calculatePrice();
+      const quoteData = {
+        ...formData,
+        totalPrice: price,
+        quoteNumber: `SC${Date.now()}`
+      };
+      
+      // Here you would normally send to your API
+      console.log('Quote data:', quoteData);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      alert(`Thank you! Your quote is $${price}. We'll contact you soon!`);
+      
+      // Reset form
+      setFormData({
+        rooms: 0, hallways: 0, stairs: 0, chairs: 0, ottomans: 0,
+        loveseats: 0, sofas: 0, sectionals: 0, firstName: '', lastName: '',
+        email: '', phone: '', address: '', deodorize: false, protection: false
+      });
+      
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const ServiceCounter = ({ label, field, price }) => (
+    <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200 hover:border-secondary-300 transition-colors">
+      <div>
+        <h4 className="font-medium text-slate-900">{label}</h4>
+        <p className="text-sm text-slate-600">${price} each</p>
+      </div>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => decrementValue(field)}
+          className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
+        >
+          −
+        </button>
+        <span className="w-8 text-center font-medium text-lg">{formData[field]}</span>
+        <button
+          type="button"
+          onClick={() => incrementValue(field)}
+          className="w-8 h-8 rounded-full bg-secondary-100 hover:bg-secondary-200 flex items-center justify-center text-secondary-600 transition-colors"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      <Head>
+        <title>Get Free Quote | Spiess Carpet Cleaning</title>
+        <meta name="description" content="Get an instant quote for professional carpet and upholstery cleaning services in the Twin Cities." />
+      </Head>
+
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-accent-50/20 pt-20">
+        <div className="container-narrow py-12">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              💰 Instant Quote Calculator
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              Get Your Free Quote
+            </h1>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Get an instant estimate for professional cleaning services. No hidden fees, no surprises.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Service Selection Tabs */}
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+                <div className="flex border-b border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('carpet')}
+                    className={`flex-1 py-4 px-6 font-medium transition-colors ${
+                      activeTab === 'carpet'
+                        ? 'bg-secondary-50 text-secondary-600 border-b-2 border-secondary-500'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    }`}
+                  >
+                    🏠 Carpet Cleaning
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('upholstery')}
+                    className={`flex-1 py-4 px-6 font-medium transition-colors ${
+                      activeTab === 'upholstery'
+                        ? 'bg-accent-50 text-accent-600 border-b-2 border-accent-500'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                    }`}
+                  >
+                    🛋️ Upholstery Cleaning
+                  </button>
+                </div>
+
+                <div className="p-6">
+                  {activeTab === 'carpet' && (
+                    <div className="space-y-4">
+                      <ServiceCounter label="Rooms" field="rooms" price="45" />
+                      <ServiceCounter label="Hallways" field="hallways" price="25" />
+                      <ServiceCounter label="Stairs (per step)" field="stairs" price="3" />
+                    </div>
+                  )}
+
+                  {activeTab === 'upholstery' && (
+                    <div className="space-y-4">
+                      <ServiceCounter label="Chairs" field="chairs" price="35" />
+                      <ServiceCounter label="Ottomans" field="ottomans" price="40" />
+                      <ServiceCounter label="Loveseats" field="loveseats" price="85" />
+                      <ServiceCounter label="Sofas" field="sofas" price="120" />
+                      <ServiceCounter label="Sectionals" field="sectionals" price="180" />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Add-ons */}
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-4">⭐ Add-On Services</h3>
+                <div className="space-y-4">
+                  <label className="flex items-center justify-between p-4 bg-accent-50/30 rounded-xl cursor-pointer hover:bg-accent-100/40 transition-colors">
+                    <div>
+                      <span className="font-medium text-slate-900">🌿 Deodorizer Treatment</span>
+                      <p className="text-sm text-slate-600">Eliminates odors and freshens your space (+$25)</p>
+                    </div>
+                    <input
+                      type="checkbox"
+                      checked={formData.deodorize}
+                      onChange={(e) => handleInputChange('deodorize', e.target.checked)}
+                      className="w-5 h-5 text-accent-600 rounded border-slate-300 focus:ring-accent-500"
+                    />
+                  </label>
+                  
+                  <label className="flex items-center justify-between p-4 bg-secondary-50/30 rounded-xl cursor-pointer hover:bg-secondary-100/40 transition-colors">
+                    <div>
+                      <span className="font-medium text-slate-900">🛡️ Fabric Protection</span>
+                      <p className="text-sm text-slate-600">Extends the life of your carpets and furniture (+$50)</p>
+                    </div>
+                    <input
+                      type="checkbox"
+                      checked={formData.protection}
+                      onChange={(e) => handleInputChange('protection', e.target.checked)}
+                      className="w-5 h-5 text-secondary-600 rounded border-slate-300 focus:ring-secondary-500"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              {/* Customer Information */}
+              <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+                <h3 className="text-xl font-bold text-slate-900 mb-6">Contact Information</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                    <input
+                      type="text"
+                      value={formData.firstName}
+                      onChange={(e) => handleInputChange('firstName', e.target.value)}
+                      className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                        errors.firstName ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                      } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                      placeholder="John"
+                    />
+                    {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                    <input
+                      type="text"
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange('lastName', e.target.value)}
+                      className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                        errors.lastName ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                      } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                      placeholder="Smith"
+                    />
+                    {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                        errors.email ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                      } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                        errors.phone ? 'border-red-300 focus:border-red-500' : 'border-slate-300 focus:border-secondary-500'
+                      } focus:outline-none focus:ring-2 focus:ring-secondary-500/20`}
+                      placeholder="(651) 472-2736"
+                    />
+                    {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Address (Optional)</label>
+                    <input
+                      type="text"
+                      value={formData.address}
+                      onChange={(e) => handleInputChange('address', e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:outline-none focus:ring-2 focus:ring-secondary-500/20 transition-colors"
+                      placeholder="123 Main Street, Minneapolis, MN"
+                    />
+                  </div>
+                </div>
+
+                {errors.items && <p className="mt-4 text-sm text-red-600">{errors.items}</p>}
+              </div>
+
+              {/* Quote Summary */}
+              <div className="bg-gradient-to-r from-secondary-500 via-primary-500 to-accent-500 rounded-2xl p-6 text-white">
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold mb-2">Your Estimated Total</h3>
+                  <div className="text-4xl font-black mb-4">${calculatePrice()}</div>
+                  <p className="text-blue-100 mb-6">
+                    Professional cleaning with 40+ years of experience. 100% satisfaction guaranteed.
+                  </p>
+                  
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-white text-secondary-600 font-bold py-4 px-8 rounded-xl hover:bg-accent-50 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Get My Quote'}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Quote;

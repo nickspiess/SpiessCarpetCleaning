@@ -7,6 +7,50 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: {
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#e85d5d',
+          600: '#d73c3c',
+          700: '#b91c1c',
+          800: '#991b1b',
+          900: '#7f1d1d',
+        },
+        secondary: {
+          50: '#e6f7ff',
+          100: '#bae7ff',
+          200: '#91d5ff',
+          300: '#69c0ff',
+          400: '#40a9ff',
+          500: '#00A3E0',
+          600: '#0084c2',
+          700: '#096dd9',
+          800: '#0050b3',
+          900: '#003a8c',
+        },
+        accent: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#F5A623',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
+      },
+      boxShadow: {
+        'soft': '0 2px 4px rgba(0, 0, 0, 0.05)',
+        'medium': '0 4px 15px rgba(0, 0, 0, 0.08)',
+        'hard': '0 10px 30px rgba(0, 0, 0, 0.12)',
+        'extra': '0 20px 40px rgba(0, 0, 0, 0.15)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
