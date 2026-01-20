@@ -68,22 +68,39 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-semibold text-lg transition-colors duration-200 relative group ${
-                    router.pathname === link.href 
-                      ? 'text-secondary-600' 
-                      : 'text-slate-700 hover:text-secondary-600'
-                  }`}
-                >
-                  {link.label}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-secondary-500 transform origin-left transition-transform duration-200 ${
-                    router.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`} />
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = router.pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-semibold text-lg transition-all duration-300 relative group"
+                    style={{
+                      color: isActive ? 'rgba(0,168,227,1)' : undefined
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) e.currentTarget.style.color = 'rgba(0,168,227,1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) e.currentTarget.style.color = '';
+                    }}
+                    onMouseDown={(e) => {
+                      e.currentTarget.style.color = 'rgba(0,140,195,1)';
+                    }}
+                    onMouseUp={(e) => {
+                      e.currentTarget.style.color = isActive ? 'rgba(0,168,227,1)' : '';
+                    }}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300 ${
+                        isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
+                      style={{ backgroundColor: 'rgba(0,168,227,1)' }}
+                    />
+                  </Link>
+                );
+              })}
               
               <div className="flex items-center gap-6 ml-6 pl-6 border-l border-slate-300">
                 <a
@@ -95,7 +112,7 @@ const Navbar = () => {
                 
                 <button
                   onClick={() => router.push('/quote')}
-                  className="px-8 py-3 bg-gradient-to-r from-secondary-500 to-accent-500 text-white font-bold rounded-xl hover:from-secondary-600 hover:to-accent-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-6 py-2.5 bg-secondary-50 hover:bg-secondary-100 text-secondary-600 font-semibold rounded-lg border border-secondary-200 hover:border-secondary-300 transition-all duration-200"
                 >
                   Get Free Quote
                 </button>
@@ -157,22 +174,44 @@ const Navbar = () => {
 
           {/* Mobile Navigation Links */}
           <div className="flex-1 p-6 space-y-2">
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
-                className={`flex items-center gap-4 py-4 px-4 rounded-xl font-semibold text-lg transition-all duration-200 ${
-                  router.pathname === link.href
-                    ? 'bg-secondary-50 text-secondary-600 border-l-4 border-secondary-500'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-secondary-600'
-                }`}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <span className="text-2xl">{link.icon}</span>
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link, index) => {
+              const isActive = router.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  className={`flex items-center gap-4 py-4 px-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
+                    isActive
+                      ? 'border-l-4'
+                      : 'text-slate-700 hover:bg-slate-50'
+                  }`}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                    backgroundColor: isActive ? 'rgba(0,168,227,0.1)' : undefined,
+                    color: isActive ? 'rgba(0,168,227,1)' : undefined,
+                    borderColor: isActive ? 'rgba(0,168,227,1)' : undefined
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) e.currentTarget.style.color = 'rgba(0,168,227,1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = '';
+                  }}
+                  onMouseDown={(e) => {
+                    e.currentTarget.style.color = 'rgba(0,140,195,1)';
+                    e.currentTarget.style.backgroundColor = 'rgba(0,168,227,0.15)';
+                  }}
+                  onMouseUp={(e) => {
+                    e.currentTarget.style.color = isActive ? 'rgba(0,168,227,1)' : '';
+                    e.currentTarget.style.backgroundColor = isActive ? 'rgba(0,168,227,0.1)' : '';
+                  }}
+                >
+                  <span className="text-2xl">{link.icon}</span>
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
           
           {/* Mobile Contact Actions */}
@@ -190,9 +229,9 @@ const Navbar = () => {
                 router.push('/quote');
                 handleLinkClick();
               }}
-              className="w-full py-4 px-6 bg-gradient-to-r from-secondary-500 to-accent-500 text-white font-bold text-lg rounded-xl hover:from-secondary-600 hover:to-accent-600 transition-all duration-200 shadow-lg"
+              className="w-full py-4 px-6 bg-secondary-50 hover:bg-secondary-100 text-secondary-600 font-semibold text-lg rounded-xl border border-secondary-200 hover:border-secondary-300 transition-all duration-200"
             >
-              💰 Get Free Quote
+              Get Free Quote
             </button>
           </div>
         </div>

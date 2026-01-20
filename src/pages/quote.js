@@ -159,13 +159,10 @@ const Quote = () => {
         <meta name="description" content="Get an instant quote for professional carpet and upholstery cleaning services in the Twin Cities." />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-accent-50/20 pt-20">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-accent-50/20">
         <div className="container-narrow py-12">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-accent-100 text-accent-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              💰 Instant Quote Calculator
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
               Get Your Free Quote
             </h1>
@@ -188,7 +185,7 @@ const Quote = () => {
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                     }`}
                   >
-                    🏠 Carpet Cleaning
+                    Carpet Cleaning
                   </button>
                   <button
                     type="button"
@@ -199,7 +196,7 @@ const Quote = () => {
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                     }`}
                   >
-                    🛋️ Upholstery Cleaning
+                    Upholstery Cleaning
                   </button>
                 </div>
 
@@ -226,11 +223,11 @@ const Quote = () => {
 
               {/* Add-ons */}
               <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">⭐ Add-On Services</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">Add-On Services</h3>
                 <div className="space-y-4">
                   <label className="flex items-center justify-between p-4 bg-accent-50/30 rounded-xl cursor-pointer hover:bg-accent-100/40 transition-colors">
                     <div>
-                      <span className="font-medium text-slate-900">🌿 Deodorizer Treatment</span>
+                      <span className="font-medium text-slate-900">Deodorizer Treatment</span>
                       <p className="text-sm text-slate-600">Eliminates odors and freshens your space (+$25)</p>
                     </div>
                     <input
@@ -243,7 +240,7 @@ const Quote = () => {
                   
                   <label className="flex items-center justify-between p-4 bg-secondary-50/30 rounded-xl cursor-pointer hover:bg-secondary-100/40 transition-colors">
                     <div>
-                      <span className="font-medium text-slate-900">🛡️ Fabric Protection</span>
+                      <span className="font-medium text-slate-900">Fabric Protection</span>
                       <p className="text-sm text-slate-600">Extends the life of your carpets and furniture (+$50)</p>
                     </div>
                     <input
@@ -332,21 +329,20 @@ const Quote = () => {
                 {errors.items && <p className="mt-4 text-sm text-red-600">{errors.items}</p>}
               </div>
 
-              {/* Quote Summary */}
-              <div className="bg-gradient-to-r from-secondary-500 via-primary-500 to-accent-500 rounded-2xl p-6 text-white">
+              {/* Submit Section */}
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 text-white">
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-2">Your Estimated Total</h3>
-                  <div className="text-4xl font-black mb-4">${calculatePrice()}</div>
-                  <p className="text-blue-100 mb-6">
-                    Professional cleaning with 40+ years of experience. 100% satisfaction guaranteed.
+                  <h3 className="text-2xl font-bold mb-2 text-white">Request Your Free Quote</h3>
+                  <p className="text-white/80 mb-6">
+                    Professional cleaning with 53 years of experience. 100% satisfaction guaranteed.
                   </p>
-                  
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-white text-secondary-600 font-bold py-4 px-8 rounded-xl hover:bg-accent-50 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-white text-slate-900 font-bold py-4 px-8 rounded-xl hover:bg-slate-100 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Sending...' : 'Get My Quote'}
+                    {isSubmitting ? 'Sending...' : 'Submit Quote Request'}
                   </button>
                 </div>
               </div>
