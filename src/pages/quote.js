@@ -193,7 +193,7 @@ const Quote = () => {
                     className={`flex-1 py-4 px-6 font-medium transition-colors ${
                       activeTab === 'upholstery'
                         ? 'bg-accent-50 text-accent-600 border-b-2 border-accent-500'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' 
                     }`}
                   >
                     Upholstery Cleaning
