@@ -12,11 +12,11 @@ const Testimonials = () => {
         "description": "We are the most experienced carpet cleaner in the Twin Cities, see what our customers have to say.",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "301 Quentin Ave N",
-            "addressLocality": "Lakeland",
+            "streetAddress": "2042 Wooddale Dr Ste 145",
+            "addressLocality": "Woodbury",
             "addressRegion": "MN",
-            "postalCode": "55043",
-            "addressCountry": "US",
+            "postalCode": "55125",
+            "addressCountry": "US"
         },
         "telephone": "+1-651-472-2736",
         "openingHours": "Mo-Fr 07:00-17:00",

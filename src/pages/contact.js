@@ -272,14 +272,16 @@ export default function Contact() {
                 </div>
 
                 {/* Payment Methods */}
-                <div className="bg-slate-50 rounded-2xl p-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Payment Methods</h3>
-                  <p className="text-slate-700 mb-6">We accept all major forms of payment:</p>
-                  <div className="grid grid-cols-3 gap-4">
+                <div className="bg-slate-50 rounded-2xl p-6 md:p-8">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Payment Methods</h3>
+                  <p className="text-slate-700 mb-4 md:mb-6 text-sm md:text-base">We accept all major forms of payment:</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
                     {paymentMethods.map((method) => (
-                      <div key={method.name} className="flex items-center justify-center gap-2 p-4 bg-white rounded-xl border border-slate-200">
-                        <span className="w-2 h-2 rounded-full bg-slate-400"></span>
-                        <span className="text-sm font-medium text-slate-700 text-center">{method.name}</span>
+                      <div key={method.name} className="flex items-center justify-center gap-2 p-3 md:p-4 bg-white rounded-lg md:rounded-xl border border-slate-200">
+                        <svg className="w-3 h-3 flex-shrink-0" style={{ color: 'rgba(0,168,227,1)' }} fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-xs md:text-sm font-medium text-slate-700">{method.name}</span>
                       </div>
                     ))}
                   </div>
