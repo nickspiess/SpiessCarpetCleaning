@@ -174,13 +174,13 @@ export default function Services() {
     <>
       <Head>
         <title>Professional Cleaning Services | Spiess Carpet Cleaning</title>
-        <meta name="description" content="Expert carpet, upholstery, and air duct cleaning services in the Twin Cities. 53 years of experience, state-of-the-art BridgePoint equipment, 100% satisfaction guaranteed." />
+        <meta name="description" content="Expert carpet, upholstery, and air duct cleaning services in the Twin Cities. 50+ years of experience, state-of-the-art BridgePoint equipment, 100% satisfaction guaranteed." />
         <meta name="keywords" content="carpet cleaning, upholstery cleaning, air duct cleaning, Twin Cities, professional cleaning services" />
       </Head>
 
       <div className="bg-gradient-to-b from-stone-50 via-slate-50/80 to-stone-50 min-h-screen">
         {/* Hero Section */}
-        <section className="pb-20 pt-10 relative overflow-hidden">
+        <section className="pb-16 md:pb-20 pt-8 md:pt-12 relative overflow-hidden">
           <div className="container-wide relative z-10">
             {/* Header with entrance animation */}
             <div className={`max-w-3xl mx-auto text-center mb-14 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

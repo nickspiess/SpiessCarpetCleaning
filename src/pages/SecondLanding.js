@@ -47,7 +47,7 @@ const SecondLanding = () => {
         {
             icon: Couch,
             title: 'Upholstery Cleaning',
-            description: 'Revitalize your furniture with gentle yet effective cleaning methods. Our 53 years of expertise ensures your investment is protected.',
+            description: 'Revitalize your furniture with gentle yet effective cleaning methods. Our 50+ years of expertise in all types of materials ensures your investment is protected.',
             features: ['Fabric Protection', 'Color Restoration', 'Deep Sanitization', 'Gentle Care'],
             color: 'rgba(247,167,25,1)',
             colorLight: 'rgba(247,167,25,0.1)'

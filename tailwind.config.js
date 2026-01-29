@@ -7,6 +7,28 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Nunito', 'sans-serif'],
+        body: ['"DM Sans"', 'sans-serif'],
+      },
+      fontSize: {
+        'hero': ['56px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'hero-mobile': ['36px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'h1': ['40px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'h1-mobile': ['28px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'h2': ['32px', { lineHeight: '1.25', letterSpacing: '0' }],
+        'h2-mobile': ['24px', { lineHeight: '1.25', letterSpacing: '0' }],
+        'h3': ['24px', { lineHeight: '1.3', letterSpacing: '0' }],
+        'h3-mobile': ['20px', { lineHeight: '1.3', letterSpacing: '0' }],
+        'body': ['18px', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-mobile': ['17px', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-large': ['20px', { lineHeight: '1.5', letterSpacing: '0' }],
+        'body-small': ['15px', { lineHeight: '1.5', letterSpacing: '0' }],
+        'caption': ['14px', { lineHeight: '1.4', letterSpacing: '0.01em' }],
+        'btn': ['18px', { lineHeight: '1', letterSpacing: '0.02em' }],
+        'btn-mobile': ['16px', { lineHeight: '1', letterSpacing: '0.02em' }],
+        'nav': ['16px', { lineHeight: '1', letterSpacing: '0.01em' }],
+      },
       colors: {
         primary: {
           50: '#fef2f2',

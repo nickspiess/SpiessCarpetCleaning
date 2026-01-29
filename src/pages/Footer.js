@@ -8,7 +8,6 @@ const Footer = () => {
     const quickLinks = [
         { href: '/about', label: 'About Us' },
         { href: '/services', label: 'Services' },
-        { href: '/quote', label: 'Get Quote' },
         { href: '/contact', label: 'Contact' },
         { href: '/testimonials', label: 'Reviews' }
     ];
@@ -29,59 +28,59 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Company Info */}
                     <div className="lg:col-span-2">
-                        <div className="mb-8">
+                        <div className="mb-6 md:mb-8">
                             <Image
                                 src={logo}
                                 alt="Spiess Carpet Cleaning"
-                                width={200}
-                                height={70}
-                                className="h-auto"
+                                width={160}
+                                height={56}
+                                className="h-auto w-[140px] md:w-[200px]"
                             />
                         </div>
                         <p className="text-slate-600 text-lg leading-relaxed mb-6 max-w-md">
-                            Twin Cities' most trusted carpet cleaning service with over 40 years of excellence.
+                            Twin Cities' most trusted carpet cleaning service with over 50 years of excellence.
                             Family-owned, locally operated, and 100% satisfaction guaranteed.
                         </p>
 
                         {/* Contact Highlights */}
-                        <div className="space-y-4 mb-8">
+                        <div className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                             <a
                                 href="tel:6514722736"
-                                className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group max-w-sm border border-slate-100"
+                                className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-lg md:rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group max-w-sm border border-slate-100"
                             >
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'rgba(0,168,227,0.1)' }}>
-                                    <svg className="w-6 h-6" style={{ color: 'rgba(0,168,227,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'rgba(0,168,227,0.1)' }}>
+                                    <svg className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'rgba(0,168,227,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="font-bold text-lg" style={{ color: 'rgba(0,168,227,1)' }}>(651) 472-2736</p>
-                                    <p className="text-slate-500 text-sm">Call for free quote</p>
+                                    <p className="font-bold text-base md:text-lg" style={{ color: 'rgba(0,168,227,1)' }}>(651) 472-2736</p>
+                                    <p className="text-slate-500 text-xs md:text-sm">Call for free quote</p>
                                 </div>
                             </a>
 
                             <a
                                 href="mailto:sales@spiesscarpet.com"
-                                className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group max-w-sm border border-slate-100"
+                                className="flex items-center gap-2 md:gap-3 p-3 md:p-4 bg-white rounded-lg md:rounded-xl shadow-sm hover:shadow-md transition-all duration-300 group max-w-sm border border-slate-100"
                             >
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'rgba(198,25,73,0.1)' }}>
-                                    <svg className="w-6 h-6" style={{ color: 'rgba(198,25,73,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'rgba(198,25,73,0.1)' }}>
+                                    <svg className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'rgba(198,25,73,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="font-bold text-lg" style={{ color: 'rgba(198,25,73,1)' }}>Email Us</p>
-                                    <p className="text-slate-500 text-sm">sales@spiesscarpet.com</p>
+                                    <p className="font-bold text-base md:text-lg" style={{ color: 'rgba(198,25,73,1)' }}>Email Us</p>
+                                    <p className="text-slate-500 text-xs md:text-sm">sales@spiesscarpet.com</p>
                                 </div>
                             </a>
                         </div>
 
                         {/* CTA Button */}
-                        <Link href="/quote">
-                            <button className="px-8 py-4 text-white font-bold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:opacity-90" style={{ backgroundColor: 'rgba(198,25,73,1)' }}>
-                                Get Free Quote Today
+                        <a href="tel:6514722736">
+                            <button className="px-6 md:px-8 py-3 md:py-4 text-white font-bold text-base md:text-lg rounded-lg md:rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:opacity-90" style={{ backgroundColor: 'rgba(198,25,73,1)' }}>
+                                Call for Free Quote
                             </button>
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Quick Links */}

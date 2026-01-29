@@ -15,21 +15,11 @@ export default function Contact() {
     lastName: '',
     email: '',
     phone: '',
-    message: '',
-    service: ''
+    message: ''
   });
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const services = [
-    'Carpet Cleaning',
-    'Upholstery Cleaning', 
-    'Air Duct Cleaning',
-    'Pet Odor Removal',
-    'Emergency Water Removal',
-    'Other/General Inquiry'
-  ];
 
   const paymentMethods = [
     { name: 'Visa' },
@@ -80,7 +70,7 @@ export default function Contact() {
       
       // Reset form
       setFormData({
-        firstName: '', lastName: '', email: '', phone: '', message: '', service: ''
+        firstName: '', lastName: '', email: '', phone: '', message: ''
       });
       
     } catch (error) {
@@ -100,14 +90,10 @@ export default function Contact() {
 
       <div className="bg-gradient-to-b from-stone-50 via-slate-50/80 to-white min-h-screen">
         {/* Hero Section */}
-        <section className="py-16 pt-10 relative overflow-hidden">
+        <section className="pb-12 md:pb-16 pt-8 md:pt-12 relative overflow-hidden">
           <div className="container-wide relative z-10">
             {/* Header */}
             <div className={`text-center mb-12 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: 'rgba(0,168,227,0.1)', color: 'rgba(0,168,227,1)', borderWidth: '1px', borderColor: 'rgba(0,168,227,0.2)' }}>
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(0,168,227,1)' }}></span>
-                Get In Touch
-              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
                 Contact Us
               </h1>
@@ -119,44 +105,44 @@ export default function Contact() {
             {/* Quick Contact Cards */}
             <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-200 ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Phone Card */}
-              <div className="relative bg-white rounded-2xl p-6 pt-8 border border-slate-200 text-center hover:-translate-y-1 transition-all duration-300 group overflow-hidden flex flex-col items-center justify-center">
+              <div className="relative bg-white rounded-2xl p-5 pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
                 <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'rgba(0,168,227,1)' }}></div>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(0,168,227,0.1)' }}>
-                  <svg className="w-6 h-6" style={{ color: 'rgba(0,168,227,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(0,168,227,0.1)' }}>
+                  <svg className="w-5 h-5" style={{ color: 'rgba(0,168,227,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                   </svg>
                 </div>
-                <p className="text-sm text-slate-500 mb-1">Call or Text</p>
-                <a href="tel:6514722736" className="text-lg font-bold text-slate-900 hover:opacity-70 transition-opacity">
+                <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Call or Text</p>
+                <a href="tel:6514722736" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity">
                   (651) 472-2736
                 </a>
               </div>
 
               {/* Email Card */}
-              <div className="relative bg-white rounded-2xl p-6 pt-8 border border-slate-200 text-center hover:-translate-y-1 transition-all duration-300 group overflow-hidden flex flex-col items-center justify-center">
+              <div className="relative bg-white rounded-2xl p-5 pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
                 <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'rgba(198,25,73,1)' }}></div>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(198,25,73,0.1)' }}>
-                  <svg className="w-6 h-6" style={{ color: 'rgba(198,25,73,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(198,25,73,0.1)' }}>
+                  <svg className="w-5 h-5" style={{ color: 'rgba(198,25,73,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                 </div>
-                <p className="text-sm text-slate-500 mb-1">Email</p>
-                <a href="mailto:sales@spiesscarpet.com" className="text-sm font-bold text-slate-900 hover:opacity-70 transition-opacity">
+                <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Email</p>
+                <a href="mailto:sales@spiesscarpet.com" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity">
                   sales@spiesscarpet.com
                 </a>
               </div>
 
               {/* Hours Card */}
-              <div className="relative bg-white rounded-2xl p-6 pt-8 border border-slate-200 text-center hover:-translate-y-1 transition-all duration-300 group overflow-hidden flex flex-col items-center justify-center">
+              <div className="relative bg-white rounded-2xl p-5 pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
                 <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'rgba(247,167,25,1)' }}></div>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(247,167,25,0.1)' }}>
-                  <svg className="w-6 h-6" style={{ color: 'rgba(247,167,25,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(247,167,25,0.1)' }}>
+                  <svg className="w-5 h-5" style={{ color: 'rgba(247,167,25,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-sm text-slate-500 mb-1">Hours</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Hours</p>
                 <p className="text-base font-bold text-slate-900">Mon–Fri 7a–5p</p>
-                <p className="text-sm text-slate-600">Sat by Appointment</p>
+                <p className="text-xs text-slate-500 mt-0.5">Sat by Appointment</p>
               </div>
             </div>
           </div>
@@ -233,20 +219,6 @@ export default function Contact() {
                         />
                         {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                       </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">Service Needed</label>
-                      <select
-                        value={formData.service}
-                        onChange={(e) => handleInputChange('service', e.target.value)}
-                        className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-secondary-500 focus:outline-none focus:ring-2 focus:ring-secondary-500/20 transition-colors"
-                      >
-                        <option value="">Select a service...</option>
-                        {services.map((service) => (
-                          <option key={service} value={service}>{service}</option>
-                        ))}
-                      </select>
                     </div>
 
                     <div>
@@ -375,9 +347,9 @@ export default function Contact() {
                     Call (651) 472-2736
                   </button>
                 </a>
-                <a href="/quote" className="flex-1 flex">
-                  <button className="w-full bg-transparent border-2 border-slate-600 text-white font-bold py-4 px-8 rounded-xl hover:border-white hover:bg-white/5 transition-all duration-300">
-                    Get Free Quote
+                <a href="/contact" className="flex-1 flex">
+                  <button className="w-full bg-transparent border-2 border-white/30 text-white font-bold py-4 px-8 rounded-xl hover:bg-white hover:text-slate-900 hover:border-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                    Contact Us
                   </button>
                 </a>
               </div>

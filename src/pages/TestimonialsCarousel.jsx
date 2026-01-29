@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const TestimonialsCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [slideDirection, setSlideDirection] = useState('next');
+    const [isVisible, setIsVisible] = useState(true);
 
     const testimonials = [
         {
@@ -100,48 +102,66 @@ const TestimonialsCarousel = () => {
 
     const testimonialsPerPage = 3;
     const totalPages = Math.ceil(testimonials.length / testimonialsPerPage);
+    const transitionDuration = 500;
+
+    const animateTransition = useCallback((newIndex, direction) => {
+        if (isAnimating) return;
+
+        setIsAnimating(true);
+        setSlideDirection(direction);
+        setIsVisible(false);
+
+        setTimeout(() => {
+            setCurrentIndex(newIndex);
+            setTimeout(() => {
+                setIsVisible(true);
+                setTimeout(() => {
+                    setIsAnimating(false);
+                }, transitionDuration);
+            }, 50);
+        }, transitionDuration);
+    }, [isAnimating]);
+
+    const handleNext = useCallback(() => {
+        const newIndex = (currentIndex + 1) % totalPages;
+        animateTransition(newIndex, 'next');
+    }, [currentIndex, totalPages, animateTransition]);
+
+    const handlePrev = useCallback(() => {
+        const newIndex = (currentIndex - 1 + totalPages) % totalPages;
+        animateTransition(newIndex, 'prev');
+    }, [currentIndex, totalPages, animateTransition]);
+
+    const handleDotClick = (index) => {
+        if (index === currentIndex) return;
+        const direction = index > currentIndex ? 'next' : 'prev';
+        animateTransition(index, direction);
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
-            handleNext();
-        }, 6000);
+            if (!isAnimating) {
+                handleNext();
+            }
+        }, 7000);
 
         return () => clearInterval(interval);
-    }, [currentIndex]);
-
-    const handleNext = () => {
-        if (!isAnimating) {
-            setIsAnimating(true);
-            setTimeout(() => {
-                setCurrentIndex((prev) => (prev + 1) % totalPages);
-                setIsAnimating(false);
-            }, 400);
-        }
-    };
-
-    const handlePrev = () => {
-        if (!isAnimating) {
-            setIsAnimating(true);
-            setTimeout(() => {
-                setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-                setIsAnimating(false);
-            }, 400);
-        }
-    };
-
-    const handleDotClick = (index) => {
-        if (!isAnimating && index !== currentIndex) {
-            setIsAnimating(true);
-            setTimeout(() => {
-                setCurrentIndex(index);
-                setIsAnimating(false);
-            }, 400);
-        }
-    };
+    }, [handleNext, isAnimating]);
 
     const getCurrentTestimonials = () => {
         const start = currentIndex * testimonialsPerPage;
         return testimonials.slice(start, start + testimonialsPerPage);
+    };
+
+    const getSlideStyles = () => {
+        const translateX = slideDirection === 'next' ? '-30px' : '30px';
+        const exitTranslateX = slideDirection === 'next' ? '30px' : '-30px';
+
+        return {
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateX(0)' : `translateX(${isVisible ? translateX : exitTranslateX})`,
+            transition: `opacity ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${transitionDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+        };
     };
 
     return (
@@ -156,9 +176,34 @@ const TestimonialsCarousel = () => {
                 </p>
             </div>
 
-            {/* Testimonials Grid */}
+            {/* Testimonials Grid with Navigation */}
             <div className="relative mb-10">
-                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-400 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+                {/* Navigation Buttons - Outside overflow container */}
+                <button
+                    onClick={handlePrev}
+                    disabled={isAnimating}
+                    className="absolute left-0 lg:-left-14 top-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full shadow-md hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center disabled:opacity-40 disabled:hover:scale-100 border border-slate-200 z-20 group"
+                    aria-label="Previous testimonials"
+                    style={{ marginLeft: '-6px' }}
+                >
+                    <span style={{ fontSize: '20px', fontWeight: '600', color: '#334155', lineHeight: 1 }}>‹</span>
+                </button>
+                <button
+                    onClick={handleNext}
+                    disabled={isAnimating}
+                    className="absolute right-0 lg:-right-14 top-1/2 -translate-y-1/2 w-11 h-11 bg-white rounded-full shadow-md hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 ease-out flex items-center justify-center disabled:opacity-40 disabled:hover:scale-100 border border-slate-200 z-20 group"
+                    aria-label="Next testimonials"
+                    style={{ marginRight: '-6px' }}
+                >
+                    <span style={{ fontSize: '20px', fontWeight: '600', color: '#334155', lineHeight: 1 }}>›</span>
+                </button>
+
+                {/* Grid container */}
+                <div className="px-8 lg:px-0 overflow-hidden">
+                <div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    style={getSlideStyles()}
+                >
                     {getCurrentTestimonials().map((testimonial, index) => {
                         const colors = [
                             'rgba(0,168,227,1)',
@@ -207,40 +252,20 @@ const TestimonialsCarousel = () => {
                     );
                     })}
                 </div>
-
-                {/* Navigation Buttons */}
-                <button
-                    onClick={handlePrev}
-                    disabled={isAnimating}
-                    className="absolute left-2 lg:-left-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center disabled:opacity-50 border border-slate-200 z-20"
-                    aria-label="Previous testimonials"
-                >
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button
-                    onClick={handleNext}
-                    disabled={isAnimating}
-                    className="absolute right-2 lg:-right-14 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center disabled:opacity-50 border border-slate-200 z-20"
-                    aria-label="Next testimonials"
-                >
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#334155" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
+                </div>
             </div>
 
             {/* Dots Navigation */}
-            <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-2.5">
                 {[...Array(totalPages)].map((_, index) => (
                     <button
                         key={index}
                         onClick={() => handleDotClick(index)}
-                        className={`transition-all duration-300 rounded-full ${
+                        disabled={isAnimating}
+                        className={`rounded-full transition-all duration-500 ease-out disabled:cursor-not-allowed ${
                             index === currentIndex
-                                ? 'w-6 h-2 bg-secondary-500'
-                                : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                                ? 'w-8 h-2.5 bg-secondary-500 shadow-sm'
+                                : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400 hover:scale-125'
                         }`}
                         aria-label={`Go to page ${index + 1}`}
                     />

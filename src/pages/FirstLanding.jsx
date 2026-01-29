@@ -59,7 +59,7 @@ const FirstLanding = () => {
     ];
 
     const valueProps = [
-        "Experience going back 53 years",
+        "Experience going back 50+ years",
         "Highest square footage capacity in the industry",
         "No additional charges for pretreating or spot removal",
         "Precise scheduling — no windows",
@@ -83,13 +83,13 @@ const FirstLanding = () => {
 
                 <div className="container-wide relative z-10 py-12 lg:py-20">
                     {/* Main Hero Content */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center mb-24">
                         {/* Left Column - Text Content */}
                         <div className={`space-y-8 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
                             {/* Hero Headline */}
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-slate-900 leading-[1.1] tracking-tight">
-                                <span className="block">53 Years of</span>
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight">
+                                <span className="block">50+ Years of</span>
                                 <span className="block">Cleaning Excellence</span>
                                 <span className="block text-2xl sm:text-3xl lg:text-4xl text-slate-500 font-normal mt-3">
                                     Transform Your Living Space
@@ -149,11 +149,6 @@ const FirstLanding = () => {
 
                         {/* Right Column - Personal Message Video */}
                         <div className={`relative transition-all duration-1000 ease-out delay-200 ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                            {/* Ghost Number Background */}
-                            <div className="absolute -top-8 -right-4 text-[180px] font-bold leading-none select-none pointer-events-none hidden lg:block" style={{ color: 'rgba(198,25,73,0.03)' }}>
-                                53
-                            </div>
-
                             {/* Card wrapper */}
                             <div className="bg-white rounded-3xl border border-slate-200 shadow-lg p-6 lg:p-8">
                                 {/* Header */}
@@ -161,7 +156,7 @@ const FirstLanding = () => {
                                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-3 bg-slate-100 text-slate-600">
                                         A Personal Message
                                     </div>
-                                    <h2 className="text-xl lg:text-2xl font-semibold text-slate-900">
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">
                                         From Our Founder
                                     </h2>
                                 </div>

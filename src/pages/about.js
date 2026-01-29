@@ -95,7 +95,7 @@ export default function About() {
     <>
       <Head>
         <title>About Us | Spiess Carpet Cleaning - Twin Cities' Most Trusted</title>
-        <meta name="description" content="Learn about Spiess Carpet Cleaning, a family-owned business serving the Twin Cities since 1972. 53 years of experience, 40,000+ satisfied customers." />
+        <meta name="description" content="Learn about Spiess Carpet Cleaning, a family-owned business serving the Twin Cities since 1972. 50+ years of experience, 40,000+ satisfied customers." />
         <meta name="keywords" content="about Spiess Carpet Cleaning, family business, Twin Cities carpet cleaner, Jeff Spiess" />
         <meta property="og:title" content="About Us | Spiess Carpet Cleaning" />
         <meta property="og:description" content="Five decades of carpet cleaning excellence in the Twin Cities. Family-owned, locally trusted." />
@@ -103,7 +103,7 @@ export default function About() {
 
       <div className="bg-gradient-to-b from-stone-50 via-slate-50/80 to-stone-50 min-h-screen">
         {/* Hero Section */}
-        <section className="py-20 pt-22 relative overflow-hidden">
+        <section className="pt-8 md:pt-16 pb-16 md:pb-20 relative overflow-hidden">
           <div className="container-wide relative z-10">
             {/* Header with entrance animation */}
             <div className={`text-center mb-16 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
