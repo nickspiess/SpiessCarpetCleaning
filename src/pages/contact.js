@@ -339,7 +339,7 @@ export default function Contact() {
               </h2>
 
               <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-                Experience the difference that 40+ years of expertise makes.
+                Experience the difference that 50+ years of expertise makes.
                 Contact us today for your free consultation.
               </p>
 

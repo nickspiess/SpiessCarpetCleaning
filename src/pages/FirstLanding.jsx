@@ -102,8 +102,8 @@ const FirstLanding = () => {
                                 </span>
                             </h1>
 
-                            {/* Subheadline - Hidden on small mobile, visible on larger */}
-                            <p className="hidden sm:block text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
+                            {/* Subheadline */}
+                            <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
                                 Five decades of professional carpet cleaning experience. The Twin Cities' most trusted family-owned cleaning service since 1972.
                             </p>
 
@@ -117,8 +117,8 @@ const FirstLanding = () => {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                                 </svg>
                                             </div>
-                                            <div>
-                                                <p className="text-[10px] md:text-xs font-semibold text-slate-500 uppercase tracking-wider">Call or Text</p>
+                                            <div className="leading-tight">
+                                                <p className="text-xs md:text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Call or Text</p>
                                                 <a href="tel:6514722736" className="text-lg md:text-xl font-bold text-slate-900 hover:opacity-70 transition-opacity">
                                                     (651) 472-2736
                                                 </a>

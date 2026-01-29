@@ -93,7 +93,7 @@ export default function Home() {
     <>
       <Head>
         <title>Spiess Carpet Cleaning - #1 Carpet Cleaning Service in Twin Cities</title>
-        <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Metro and Western Wisconsin Areas. Get an instant quote and book our trusted cleaners today. 40+ years of excellence." />
+        <meta name="description" content="The Most Experienced Carpet Cleaner in the Twin Cities Metro and Western Wisconsin Areas. Get an instant quote and book our trusted cleaners today. 50+ years of excellence." />
         <meta name="keywords" content="carpet cleaning Twin Cities, professional carpet cleaner Minneapolis, St Paul carpet cleaning, upholstery cleaning, air duct cleaning Minnesota" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="Spiess Carpet Cleaning - Twin Cities' Most Trusted" />

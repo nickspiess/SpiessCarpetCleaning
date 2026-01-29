@@ -149,7 +149,7 @@ const Footer = () => {
                                 © {currentYear} Spiess Carpet Cleaning. All Rights Reserved.
                             </p>
                             <p className="text-slate-500 text-sm mt-1">
-                                Licensed · Insured · 40+ Years Experience · 100% Satisfaction Guaranteed
+                                Licensed · Insured · 50+ Years Experience · 100% Satisfaction Guaranteed
                             </p>
                         </div>
 

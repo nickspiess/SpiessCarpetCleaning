@@ -57,7 +57,7 @@ const Navbar = () => {
             <div className="w-10 lg:hidden"></div>
 
             {/* Logo - Centered on mobile, left on desktop */}
-            <Link href="/" className="lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0 flex items-center transition-transform duration-300 hover:scale-105">
+            <Link href="/" className="lg:static absolute left-1/2 -translate-x-1/2 lg:translate-x-0 flex items-center transition-transform duration-300 hover:scale-105 z-10">
               <div className="relative w-44 sm:w-48 h-12 sm:h-14">
                 <Image
                   src={logo}
