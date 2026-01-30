@@ -279,7 +279,7 @@ const FirstLanding = () => {
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <div
-                                    className="rounded-xl md:rounded-2xl p-[1px] h-full transition-all duration-300 md:hover:-translate-y-1"
+                                    className="rounded-xl md:rounded-2xl p-[1px] h-full"
                                     style={{
                                         background: `linear-gradient(135deg, ${stat.color.replace('1)', '0.15)')}, transparent 60%, ${stat.color.replace('1)', '0.08)')})`,
                                     }}

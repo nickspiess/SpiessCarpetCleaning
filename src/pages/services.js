@@ -69,7 +69,7 @@ export default function Services() {
       features: [
         'Deep steam extraction',
         'BridgePoint system equipment',
-        'Fast drying (2-4 hours)',
+        'Fast drying',
         'Pet odor elimination',
         'Stain protection available',
         'High-powered portable equipment'
