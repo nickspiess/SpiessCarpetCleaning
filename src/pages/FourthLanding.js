@@ -25,7 +25,6 @@ const FourthLanding = () => {
     }, []);
 
     const features = [
-        "Fully Bonded & Insured",
         "100% Money-Back Guarantee",
         "Eco-Friendly Cleaning",
         "Best Equipment in Industry"
