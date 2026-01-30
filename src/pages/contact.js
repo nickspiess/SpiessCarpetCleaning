@@ -105,7 +105,7 @@ export default function Contact() {
             {/* Quick Contact Cards */}
             <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-200 ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Phone Card */}
-              <div className="relative bg-white rounded-2xl p-5 pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
+              <div className="relative bg-white rounded-2xl pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
                 <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'rgba(0,168,227,1)' }}></div>
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(0,168,227,0.1)' }}>
                   <svg className="w-5 h-5" style={{ color: 'rgba(0,168,227,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -113,13 +113,13 @@ export default function Contact() {
                   </svg>
                 </div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Call or Text</p>
-                <a href="tel:6514722736" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity">
+                <a href="tel:6514722736" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity pt-2">
                   (651) 472-2736
                 </a>
               </div>
 
               {/* Email Card */}
-              <div className="relative bg-white rounded-2xl p-5 pt-6 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
+              <div className="relative bg-white rounded-2xl p-5 pt-6 pb-0 border border-slate-200 text-center group overflow-hidden flex flex-col items-center">
                 <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: 'rgba(198,25,73,1)' }}></div>
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: 'rgba(198,25,73,0.1)' }}>
                   <svg className="w-5 h-5" style={{ color: 'rgba(198,25,73,1)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -127,7 +127,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Email</p>
-                <a href="mailto:sales@spiesscarpet.com" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity">
+                <a href="mailto:sales@spiesscarpet.com" className="text-base font-bold text-slate-900 hover:opacity-70 transition-opacity pt-2">
                   sales@spiesscarpet.com
                 </a>
               </div>
@@ -141,8 +141,8 @@ export default function Contact() {
                   </svg>
                 </div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">Hours</p>
-                <p className="text-base font-bold text-slate-900">Mon–Fri 7a–5p</p>
-                <p className="text-xs text-slate-500 mt-0.5">Sat by Appointment</p>
+                <p className="text-base font-bold text-slate-900 pt-2">Mon–Fri 7a–5p</p>
+                <p className="text-xs text-slate-500">Sat by Appointment</p>
               </div>
             </div>
           </div>
