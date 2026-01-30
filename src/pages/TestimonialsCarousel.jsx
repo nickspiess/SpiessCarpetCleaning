@@ -172,7 +172,7 @@ const TestimonialsCarousel = () => {
                     What Our Customers Are Saying
                 </h3>
                 <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                    Real testimonials from real customers who've experienced the Spiess difference
+                    Real testimonials from real customers who've experienced the Spiess Carpet Cleaning difference
                 </p>
             </div>
 

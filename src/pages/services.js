@@ -65,14 +65,14 @@ export default function Services() {
       image: '/images/carpetCleaning.jpeg',
       color: 'rgba(0, 168, 227, 1)',
       colorLight: 'rgba(0, 168, 227, 0.1)',
-      description: 'State-of-the-art, truck-mounted steam cleaning designed to restore your carpets to like-new condition. Using the BridgePoint system — the highest quality equipment in the industry — our advanced cleaning process removes deep-seated dirt, allergens, and stains.',
+      description: 'State-of-the-art, portable steam cleaning designed to restore your carpets to like-new condition. Using the BridgePoint system — the highest quality equipment in the industry — our advanced cleaning process removes deep-seated dirt, allergens, and stains.',
       features: [
         'Deep steam extraction',
         'BridgePoint system equipment',
         'Fast drying (2-4 hours)',
         'Pet odor elimination',
         'Stain protection available',
-        'Truck-mounted equipment'
+        'High-powered portable equipment'
       ]
     },
     {
@@ -244,12 +244,21 @@ export default function Services() {
                   <div className={`grid grid-cols-1 lg:grid-cols-5 lg:h-full transition-all duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
                     {/* Left - Image Panel */}
                     <div className="relative h-64 lg:h-full lg:col-span-2 overflow-hidden group/image">
-                      <Image
-                        src={currentService.image}
-                        alt={currentService.title}
-                        fill
-                        className="object-cover transition-transform duration-1000 group-hover/image:scale-105"
-                      />
+                      {/* Preload all service images */}
+                      {services.map((service) => (
+                        <Image
+                          key={service.id}
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          priority
+                          className={`object-cover transition-all duration-500 ${
+                            service.id === displayedService
+                              ? 'opacity-100 scale-100'
+                              : 'opacity-0 scale-105'
+                          }`}
+                        />
+                      ))}
 
                       {/* Shadow casting from content side for depth */}
                       <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/[0.08] to-transparent pointer-events-none"></div>
@@ -322,12 +331,8 @@ export default function Services() {
           <div className="container-wide relative z-10">
             {/* Header */}
             <div className={`text-center mb-16 transition-all duration-1000 ease-out ${visibleSections.difference ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-              <div className="inline-flex items-center gap-2 bg-secondary-50 text-secondary-700 px-4 py-2 rounded-full text-sm font-medium border border-secondary-100 mb-6">
-                <span className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse"></span>
-                Why Choose Us
-              </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-5">
-                The Spiess Difference
+                The Spiess Carpet Difference
               </h2>
               <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
                 Five decades of innovation and expertise sets us apart

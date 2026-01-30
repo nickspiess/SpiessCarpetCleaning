@@ -31,7 +31,7 @@ const SecondLanding = () => {
         {
             icon: CarpetLogo,
             title: 'Carpet Cleaning',
-            description: 'State-of-the-art, truck-mounted steam cleaning designed to restore your carpets to like-new condition. Since 1972, we\'ve perfected our deep extraction process.',
+            description: 'State-of-the-art, portable steam cleaning designed to restore your carpets to like-new condition. Since 1972, we\'ve perfected our deep extraction process.',
             features: ['Deep Steam Extraction', 'Fast Drying', 'Pet Odor Removal', 'Stain Protection'],
             color: 'rgba(198,25,73,1)',
             colorLight: 'rgba(198,25,73,0.1)'
