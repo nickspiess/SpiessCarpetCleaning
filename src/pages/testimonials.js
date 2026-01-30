@@ -43,19 +43,19 @@ const Testimonials = () => {
         <StructuredData data={structuredData} />
 
         {/* Page Header */}
-        <section className="pt-8 md:pt-16 pb-8 bg-gradient-to-b from-stone-50 via-slate-50/80 to-white">
+        <section className="pt-12 md:pt-16 pb-2 md:pb-4 bg-gradient-to-b from-stone-50 via-slate-50/80 to-white">
             <div className="container-wide text-center">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 leading-tight">
-                    Customer Reviews
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 leading-tight">
+                    Trusted by Thousands of Twin Cities Families
                 </h1>
-                <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-                    See why Twin Cities families trust us with their homes
+                <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto">
+                    Don't just take our word for it — hear from homeowners who've experienced the difference.
                 </p>
             </div>
         </section>
 
         {/* Testimonials Carousel Section */}
-        <section className="py-12 md:py-20 bg-gradient-to-b from-white via-stone-50/50 to-white">
+        <section className="py-8 md:py-12 bg-gradient-to-b from-white via-stone-50/50 to-white">
             <div className="container-wide">
                 <TestimonialsCarousel />
             </div>

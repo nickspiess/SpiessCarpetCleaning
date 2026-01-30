@@ -249,13 +249,13 @@ export default function About() {
                   style={{ transitionDelay: `${200 + index * 100}ms` }}
                 >
                   <div
-                    className="rounded-2xl p-[1px] h-full transition-all duration-300 hover:-translate-y-2"
+                    className="rounded-2xl p-[1px] h-full"
                     style={{
                       background: `linear-gradient(135deg, ${value.color.replace('1)', '0.15)')}, transparent 60%, ${value.color.replace('1)', '0.08)')})`,
                       boxShadow: `0 15px 30px -10px ${value.color.replace('1)', '0.08)')}, 0 4px 15px -5px rgba(0,0,0,0.06)`
                     }}
                   >
-                    <div className="bg-white rounded-2xl p-6 h-full relative overflow-hidden group">
+                    <div className="bg-white rounded-2xl p-6 h-full relative overflow-hidden group cursor-pointer">
                       {/* Corner accent gradient */}
                       <div
                         className="absolute top-0 right-0 w-40 h-40 opacity-[0.05] transition-opacity duration-300 group-hover:opacity-[0.08]"
@@ -267,7 +267,7 @@ export default function About() {
 
                       {/* Icon */}
                       <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-110"
                         style={{ backgroundColor: value.colorLight, color: value.color }}
                       >
                         {value.icon}
@@ -280,9 +280,9 @@ export default function About() {
                         {value.description}
                       </p>
 
-                      {/* Bottom accent */}
+                      {/* Bottom accent - grows on hover */}
                       <div
-                        className="absolute bottom-0 left-0 right-0 h-1 transition-all duration-300"
+                        className="absolute bottom-0 left-0 right-0 h-1 group-hover:h-1.5 transition-all duration-500"
                         style={{ backgroundColor: value.color }}
                       ></div>
                     </div>

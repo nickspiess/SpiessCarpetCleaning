@@ -347,12 +347,12 @@ export default function Services() {
                   className={`group transition-all duration-1000 ease-out ${visibleSections.difference ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
                   style={{ transitionDelay: `${200 + index * 150}ms` }}
                 >
-                  <div className="relative h-full bg-white rounded-2xl p-8 border border-slate-200/80 shadow-lg shadow-slate-200/30 hover:shadow-xl hover:shadow-slate-300/40 hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                    {/* Colored accent line */}
+                  <div className="relative h-full bg-white rounded-2xl p-8 border border-slate-200/80 shadow-lg shadow-slate-200/30 overflow-hidden cursor-pointer">
+                    {/* Top accent line */}
                     <div className={`absolute top-0 left-0 right-0 h-1 ${feature.accent}`}></div>
 
                     {/* Icon */}
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${feature.color} group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${feature.color} group-hover:scale-110 transition-transform duration-500`}>
                       {feature.icon}
                     </div>
 
@@ -362,6 +362,9 @@ export default function Services() {
                     <p className="text-slate-600 leading-relaxed">
                       {feature.description}
                     </p>
+
+                    {/* Bottom accent - grows on hover */}
+                    <div className={`absolute bottom-0 left-0 right-0 h-1 group-hover:h-1.5 transition-all duration-500 ${feature.accent}`}></div>
                   </div>
                 </div>
               ))}
