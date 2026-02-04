@@ -21,6 +21,8 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [saveData, setSaveData] = useState(false);
 
   const paymentMethods = [
     { name: 'Visa' },
@@ -61,25 +63,29 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Submit to API
-      const response = await fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          source: 'contact_form',
-          submittedAt: new Date().toISOString(),
-        }),
-      });
+      // Only save to database if user consented
+      if (saveData) {
+        // Generate a quote number (timestamp-based for uniqueness)
+        const quoteNumber = Math.floor(Date.now() / 1000);
 
-      if (!response.ok) {
-        throw new Error('Failed to submit');
+        // Submit to API
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone.replace(/\D/g, ''), // Strip non-digits
+            quoteNumber: quoteNumber,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit');
+        }
       }
 
       // Show success notification
@@ -89,13 +95,15 @@ export default function Contact() {
       setFormData({
         firstName: '', lastName: '', email: '', phone: '', message: ''
       });
+      setSaveData(false);
 
       // Auto-hide after 5 seconds
       setTimeout(() => setShowSuccess(false), 5000);
 
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Something went wrong. Please try again or call us directly at (651) 472-2736.');
+      setShowError(true);
+      setTimeout(() => setShowError(false), 8000);
     } finally {
       setIsSubmitting(false);
     }
@@ -144,6 +152,60 @@ export default function Contact() {
                 {/* Close button */}
                 <button
                   onClick={() => setShowSuccess(false)}
+                  className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Error Notification */}
+        <div
+          className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md transition-all duration-500 ease-out ${
+            showError
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl border border-red-200 overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600"></div>
+
+            <div className="p-4 md:p-5">
+              <div className="flex items-start gap-4">
+                {/* Error icon */}
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-red-100 flex items-center justify-center">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                  </svg>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base md:text-lg font-bold text-slate-900 mb-1">
+                    Something went wrong
+                  </h3>
+                  <p className="text-sm md:text-base text-slate-600 mb-2">
+                    Please try again or contact us directly:
+                  </p>
+                  <a
+                    href="tel:6514722736"
+                    className="inline-flex items-center gap-2 text-sm md:text-base font-semibold text-red-600 hover:text-red-700 transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                    (651) 472-2736
+                  </a>
+                </div>
+
+                {/* Close button */}
+                <button
+                  onClick={() => setShowError(false)}
                   className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center transition-colors"
                 >
                   <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -299,6 +361,35 @@ export default function Contact() {
                         placeholder="Tell us about your cleaning needs..."
                       />
                       {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                    </div>
+
+                    {/* Data consent checkbox */}
+                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                      <label className="flex items-start gap-3 cursor-pointer group">
+                        <div className="relative flex-shrink-0 mt-0.5">
+                          <input
+                            type="checkbox"
+                            checked={saveData}
+                            onChange={(e) => setSaveData(e.target.checked)}
+                            className="sr-only peer"
+                          />
+                          <div className="w-5 h-5 border-2 border-slate-300 rounded transition-all peer-checked:border-secondary-500 peer-checked:bg-secondary-500 group-hover:border-slate-400 peer-checked:group-hover:border-secondary-600 peer-checked:group-hover:bg-secondary-600">
+                            <svg
+                              className={`w-full h-full text-white p-0.5 transition-opacity ${saveData ? 'opacity-100' : 'opacity-0'}`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={3}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="text-sm text-slate-600 leading-relaxed">
+                          I agree to have my contact information saved so Spiess Carpet Cleaning can respond to my inquiry.
+                          Your information will never be shared with third parties.
+                        </span>
+                      </label>
                     </div>
 
                     <button
