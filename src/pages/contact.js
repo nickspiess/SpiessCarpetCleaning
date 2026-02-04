@@ -20,6 +20,7 @@ export default function Contact() {
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const paymentMethods = [
     { name: 'Visa' },
@@ -60,21 +61,41 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Here you would normally send to your API
-      console.log('Form data:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      alert('Thank you! Your message has been sent. We\'ll contact you soon!');
-      
+      // Submit to API
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          source: 'contact_form',
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
+      // Show success notification
+      setShowSuccess(true);
+
       // Reset form
       setFormData({
         firstName: '', lastName: '', email: '', phone: '', message: ''
       });
-      
+
+      // Auto-hide after 5 seconds
+      setTimeout(() => setShowSuccess(false), 5000);
+
     } catch (error) {
-      alert('Something went wrong. Please try again.');
+      console.error('Submission error:', error);
+      alert('Something went wrong. Please try again or call us directly at (651) 472-2736.');
     } finally {
       setIsSubmitting(false);
     }
@@ -89,6 +110,51 @@ export default function Contact() {
       </Head>
 
       <div className="bg-gradient-to-b from-stone-50 via-slate-50/80 to-white min-h-screen">
+        {/* Success Notification */}
+        <div
+          className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-md transition-all duration-500 ease-out ${
+            showSuccess
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-1 bg-gradient-to-r from-green-400 via-green-500 to-emerald-500"></div>
+
+            <div className="p-4 md:p-5">
+              <div className="flex items-start gap-4">
+                {/* Success icon */}
+                <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-100 flex items-center justify-center">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base md:text-lg font-bold text-slate-900 mb-1">
+                    Thank you!
+                  </h3>
+                  <p className="text-sm md:text-base text-slate-600">
+                    Your message has been sent. We'll contact you soon!
+                  </p>
+                </div>
+
+                {/* Close button */}
+                <button
+                  onClick={() => setShowSuccess(false)}
+                  className="flex-shrink-0 w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Hero Section */}
         <section className="pb-12 md:pb-16 pt-8 md:pt-12 relative overflow-hidden">
           <div className="container-wide relative z-10">
