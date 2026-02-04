@@ -1,6 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import emailjs from 'emailjs-com';
+
+const EMAILJS_SERVICE_ID = "service_5e4f1be";
+const EMAILJS_TEMPLATE_ID = "template_rfah2ei";
+const EMAILJS_USER_ID = "VPkdzprTCBDdiUbQI";
 
 export default function Contact() {
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -23,6 +28,7 @@ export default function Contact() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [saveData, setSaveData] = useState(false);
+  const formRef = useRef(null);
 
   const paymentMethods = [
     { name: 'Visa' },
@@ -63,6 +69,14 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
+      // Send email via EmailJS
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_USER_ID
+      );
+
       // Only save to database if user consented
       if (saveData) {
         // Generate a quote number (timestamp-based for uniqueness)
@@ -84,7 +98,7 @@ export default function Contact() {
         });
 
         if (!response.ok) {
-          throw new Error('Failed to submit');
+          console.error('Database save failed, but email was sent');
         }
       }
 
@@ -288,12 +302,13 @@ export default function Contact() {
                     Fill out the form below and we'll get back to you as soon as possible with a personalized quote.
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
                         <input
                           type="text"
+                          name="firstName"
                           value={formData.firstName}
                           onChange={(e) => handleInputChange('firstName', e.target.value)}
                           className={`w-full px-4 py-3 rounded-lg border transition-colors ${
@@ -308,6 +323,7 @@ export default function Contact() {
                         <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
                         <input
                           type="text"
+                          name="lastName"
                           value={formData.lastName}
                           onChange={(e) => handleInputChange('lastName', e.target.value)}
                           className={`w-full px-4 py-3 rounded-lg border transition-colors ${
@@ -324,6 +340,7 @@ export default function Contact() {
                         <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
                         <input
                           type="email"
+                          name="email"
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           className={`w-full px-4 py-3 rounded-lg border transition-colors ${
@@ -338,6 +355,7 @@ export default function Contact() {
                         <label className="block text-sm font-medium text-slate-700 mb-2">Phone</label>
                         <input
                           type="tel"
+                          name="phone"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           className={`w-full px-4 py-3 rounded-lg border transition-colors ${
@@ -353,6 +371,7 @@ export default function Contact() {
                       <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
                       <textarea
                         rows="4"
+                        name="message"
                         value={formData.message}
                         onChange={(e) => handleInputChange('message', e.target.value)}
                         className={`w-full px-4 py-3 rounded-lg border transition-colors resize-vertical ${
