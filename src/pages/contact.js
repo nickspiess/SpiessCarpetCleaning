@@ -77,45 +77,36 @@ export default function Contact() {
         EMAILJS_USER_ID
       );
 
-      // Only save to database if user consented
-      if (saveData) {
-        // Generate a quote number (timestamp-based for uniqueness)
-        const quoteNumber = Math.floor(Date.now() / 1000);
-
-        // Submit to API
-        const response = await fetch('/api/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            phone: formData.phone.replace(/\D/g, ''), // Strip non-digits
-            quoteNumber: quoteNumber,
-          }),
-        });
-
-        if (!response.ok) {
-          console.error('Database save failed, but email was sent');
-        }
-      }
-
-      // Show success notification
+      // Email sent successfully - show success immediately
       setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000);
 
       // Reset form
       setFormData({
         firstName: '', lastName: '', email: '', phone: '', message: ''
       });
+
+      // Only save to database if user consented (fire and forget - don't block UI)
+      if (saveData) {
+        const quoteNumber = Math.floor(Date.now() / 1000);
+
+        // Don't await - let it happen in background
+        fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone.replace(/\D/g, ''),
+            quoteNumber: quoteNumber,
+          }),
+        }).catch(err => console.error('Database save failed:', err));
+      }
       setSaveData(false);
 
-      // Auto-hide after 5 seconds
-      setTimeout(() => setShowSuccess(false), 5000);
-
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error('Email send error:', error);
       setShowError(true);
       setTimeout(() => setShowError(false), 8000);
     } finally {

@@ -1,19 +1,22 @@
 import { insertDataIntoDatabase } from '../../utils/databaseUtils';
 
 export default async function handler(req, res) {
-  console.log('in submit api');
-  if (req.method === 'POST') {
-    const quoteData = req.body;
-    console.log('in if');
-    try {
-      console.log('in try');
-      // Insert data into the database
-      await insertDataIntoDatabase(quoteData);
-    } catch (error) {
-      console.error('Error handling quote submission:', error);
-      res.status(500).json({ error: 'Something went wrong.' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const quoteData = req.body;
+
+  try {
+    const success = await insertDataIntoDatabase(quoteData);
+
+    if (success) {
+      return res.status(200).json({ message: 'Data saved successfully' });
+    } else {
+      return res.status(500).json({ error: 'Failed to save data' });
     }
-  } else {
-    res.status(405).end();
+  } catch (error) {
+    console.error('Error handling submission:', error);
+    return res.status(500).json({ error: 'Something went wrong' });
   }
 }
