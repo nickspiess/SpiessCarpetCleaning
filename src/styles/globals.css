@@ -1,207 +1,705 @@
+/* Font Pairing: Nunito + DM Sans */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,400;1,500;1,700;1,800&display=swap');
-@import url('https://fonts.cdnfonts.com/css/souvenir');
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@font-face {
-    src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,400;1,500;1,700;1,800&display=swap');
-    font-family: 'Montserrat';
-    font-weight: normal;
-    font-style: normal;
-  }
+:root {
+  /* Typography - Font Stacks */
+  --font-display: "Nunito", sans-serif;
+  --font-body: "DM Sans", sans-serif;
 
+  /* Brand Colors - 60-30-10 Rule */
+  --primary: #e85d5d;
+  --primary-dark: #d73c3c;
+  --primary-light: #f28585;
+  --secondary: #00A3E0;
+  --secondary-dark: #0084c2;
+  --secondary-light: #36b9fa;
+  --accent: #F5A623;
+  --accent-dark: #d97706;
+  --accent-light: #fbbf24;
+
+  /* Text Hierarchy - Georgia Pro needs sufficient contrast */
+  --text-primary: #171717;
+  --text-secondary: #444444; /* Minimum contrast for Georgia Pro serifs */
+  --text-light: #666666;
+  --text-muted: #888888;
+  --text-inverse: #ffffff;
+
+  /* Backgrounds - Warm, refined tones for depth */
+  --bg-primary: #fafafa;
+  --bg-secondary: #f7f7f5;
+  --bg-tertiary: #f3f2ef;
+  --bg-warm: #faf9f7;
+  --bg-cream: #fdfcfa;
+  --bg-stone: #f5f4f2;
+
+  /* Borders */
+  --border-light: #e5e5e5;
+  --border-medium: #d4d4d4;
+  --border-subtle: #f0f0f0;
+
+  /* Enhanced Shadow System - Three Depth Levels */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12);
+
+  /* Accent Glows (use sparingly) */
+  --glow-primary: 0 0 30px rgba(232, 93, 93, 0.15);
+  --glow-secondary: 0 0 30px rgba(0, 163, 224, 0.15);
+  --glow-accent: 0 0 30px rgba(245, 166, 35, 0.2);
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Smooth Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Spacing Scale (8px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --max-width: 1280px;
+  --header-height: 80px;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================
+   TYPOGRAPHY SYSTEM
+   Display & Headlines: Arial Rounded MT Bold
+   Body & Supporting: Georgia Pro
+   ===================================================== */
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  background-color: var(--bg-warm);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Display & Headline Typography - Arial Rounded MT Bold */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Hero Title: 48-56px desktop, 36px mobile */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 48px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 56px;
+  }
+}
+
+/* H1: 36-40px desktop, 28px mobile */
+h1 {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+}
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+/* H2: 28-32px */
+h2 {
+  font-size: 24px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 32px;
+  }
+}
+
+/* H3: 22-24px */
+h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1024px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+
+/* H4-H6 for smaller headings */
+h4 {
+  font-size: 18px;
+  line-height: 1.35;
+}
+h5 {
+  font-size: 16px;
+  line-height: 1.4;
+}
+h6 {
+  font-size: 14px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Button Text: 16-18px */
+.btn-text, button, .btn {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+@media (min-width: 768px) {
+  .btn-text, button, .btn {
+    font-size: 18px;
+  }
+}
+
+/* Nav Links: 16px */
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* =====================================================
+   BODY & SUPPORTING TEXT - Georgia Pro
+   ===================================================== */
+
+/* Body (default): 17-18px */
+p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  p {
+    font-size: 18px;
+  }
+}
+
+/* Body Large (Lead paragraphs, intros): 20px */
+.body-large, .lead {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-secondary);
+}
+
+/* Body Small (Secondary info): 15px */
+.body-small, .text-small {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-light);
+}
+
+/* Blockquotes (Testimonials, quotes): 20px italic */
+blockquote, .blockquote {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-secondary);
+}
+
+/* Captions: 14px */
+.caption, figcaption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--text-light);
+}
+
+/* Footer Text: 14-15px */
+.footer-text, footer {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+@media (min-width: 768px) {
+  .footer-text, footer {
+    font-size: 15px;
+  }
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+button, .btn {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  @apply bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-secondary-500 text-white hover:bg-secondary-600 hover:shadow-lg active:scale-95;
+}
+
+.btn-accent {
+  @apply bg-accent-500 text-white hover:bg-accent-600 hover:shadow-lg active:scale-95;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-500 text-primary-500 bg-transparent hover:bg-primary-500 hover:text-white;
+}
+
+.btn-ghost {
+  @apply bg-transparent text-primary-500 hover:bg-primary-50;
+}
+
+.container-custom {
+  @apply w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16;
+}
+
+.container-wide {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-20;
+}
+
+.container-narrow {
+  @apply w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-16 md:py-20 lg:py-24;
+}
+
+.card {
+  @apply bg-white rounded-xl p-6 shadow-soft hover:shadow-medium transition-shadow duration-300;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 rounded-lg border border-neutral-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-200;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-neutral-700 mb-2;
+}
+
+.form-group {
+  @apply mb-6;
+}
+
+.error-message {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.success-message {
+  @apply text-green-500 text-sm mt-1;
+}
+
+.overlay {
+  @apply fixed inset-0 bg-black/50 z-40;
+}
+
+.modal {
+  @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-xl z-50 max-w-lg w-full p-6;
+}
+
+.loading-spinner {
+  @apply inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin;
+}
+
+.divider {
+  @apply w-full h-px bg-neutral-200 my-8;
+}
+
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary-100 text-primary-700;
+}
+
+.badge-secondary {
+  @apply bg-secondary-100 text-secondary-700;
+}
+
+.badge-accent {
+  @apply bg-accent-100 text-accent-700;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
   }
   
-  .content-wrapper {
-    position: relative;
-    /* add any other styles you need */
+  .container-custom {
+    @apply px-4;
+  }
+  
+  .section {
+    @apply py-12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 
+  .animate-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
 
-.main_container {
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+  }
+
+  /* Enhanced Card Styles */
+  .card-elevated {
+    @apply bg-white rounded-2xl border border-slate-100;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: transparent;
+  }
+
+  /* Subtle Lift Effect */
+  .hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Button Enhancements */
+  .btn-glow-primary:hover {
+    box-shadow: var(--shadow-lg), var(--glow-primary);
+  }
+
+  .btn-glow-secondary:hover {
+    box-shadow: var(--shadow-lg), var(--glow-secondary);
+  }
+
+  .btn-glow-accent:hover {
+    box-shadow: var(--shadow-lg), var(--glow-accent);
+  }
+
+  /* Eyebrow/Label Style */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-wider;
+    letter-spacing: 0.1em;
+  }
+
+  /* Section Divider */
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent;
+  }
+
+  /* Smooth Underline Animation */
+  .animated-underline {
+    position: relative;
+  }
+
+  .animated-underline::after {
+    content: '';
     position: absolute;
-}
-
-
-
-div.body div.wrapper {
-    margin: 0;
-    position:relative;
-    z-index:-5;
-    color:white;
-    background-color: white;
-}
-
-.dot_container {
-    display: flex;
-}
-
-.help {
-    color: black;
-}
-
-.form-check {
-    display: flex;
-    margin-left: -5px;
-}
-
-
-.wrapper div {
-    padding: 0px;
-}
-
-.head {
-    margin-bottom: 0;
-    padding: 0;
-    height: 30px;
-}
-
-.founder-header {
-    text-align: center;
-    margin: 80px 0px 0px 0px;
-    color: black;
-}
-
-
-input {
-    text-align: center;
-}
-
-.rooms {
-    display: inline-block;
-}
-
-label {
-    color: black;
-    text-shadow: 0 0 4px white, 0 0 2px white;
-    margin-bottom: 0px;
-}
-
-.landing {
-    display: flex;
-}
-
-.prop_type {
-    text-align: left;
-    align-items: left;
-    margin-left: 40px;
-    width: 47%;
-}
-
-small {
-    color: black;
-    text-shadow: 0 0 4px white, 0 0 2px white;
-}
-
-
-#one {
-    margin-top: 80px;
-    margin-left: 60px;
-    width: 40%;
-}
-
-
-.quote_header {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.quote_row {
-    display: inline-block;
-    text-align: center;
-    margin: 0px 30px 0px 0px;
-    margin-top: 0;
-    margin-bottom: 0px;
-    padding: 0;
+    bottom: -2px;
+    left: 0;
     width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--transition-base);
+  }
+
+  .animated-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Ghost Text (Large background numbers/text at low opacity) */
+  .ghost-text {
+    @apply absolute text-8xl md:text-9xl font-bold pointer-events-none select-none;
+    color: rgba(0, 163, 224, 0.04);
+    letter-spacing: -0.05em;
+  }
+
+  /* Subtle Pattern Overlay - refined, barely visible */
+  .pattern-dots {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Professional background textures */
+  .bg-refined {
+    background: linear-gradient(180deg, #faf9f7 0%, #f7f6f4 50%, #faf9f7 100%);
+  }
+
+  .bg-refined-alt {
+    background: linear-gradient(180deg, #f7f6f4 0%, #faf9f7 100%);
+  }
+
+  /* Fade Edges for sections */
+  .fade-edges::before,
+  .fade-edges::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .fade-edges::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  .fade-edges::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
 }
 
-
-.title_cont {
-    margin-bottom: -5px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-
-@media screen and (max-width: 1250px) {
-    .quote_row {
-        display: block;
-        text-align: center;
-        margin: 0px;
-        margin-top: 0;
-    }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media screen and (max-width: 400px) {
-    #one { 
-    float: none;
-    margin-right:0;
-    width:auto;
-    border:0;
-      
-    }
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Second Landing */
-
-.columns {
-    display: flex;
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-.landing_body {
-
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
-.landing_container {
-    display: inline; 
-    justify-content: center;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-.info_one {
-    border: solid black .5px;
-    height: 350px;
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
-.info_one_body {
-    border: solid black .5px;
-    color: black;
-    height: 325px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 150px;
+.skeleton {
+  @apply animate-pulse bg-neutral-200 rounded;
 }
 
-.info_two {
-    border: solid black .5px;
-    height: 300px;
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2;
 }
 
-.info_two_body {
-    border: solid black .5px;
-    height: 275px;
-    color: black;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.info_three {
-    border: solid black .5px;
-    height: 300px;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.info_three_body {
-    border: solid black .5px;
-    height: 275px;
-    color: black;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right);
 }

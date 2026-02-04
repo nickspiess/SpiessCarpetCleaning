@@ -1,25 +1,10 @@
-import React, { useState } from 'react';
-import styles from '../styles/testimonials.module.css'
-//<div className="elfsight-app-d6a85cb1-597d-45da-a58c-4e8d1fd40337"></div>
+import React from 'react';
 import Head from 'next/head'
-import {TailSpin} from "react-loader-spinner";
 import StructuredData from 'src/pages/StructuredData';
+import TestimonialsCarousel from './TestimonialsCarousel';
 
 const Testimonials = () => {
-
-    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
-
-    const handleIframeLoad = () => {
-        setIsLoading(false); // Set isLoading to false when iframe is loaded
-      };
-      const LoadingIcon = () => (
-        <div className={styles.loadingContainer}>
-          <TailSpin type="Oval" color="#000000" height={50} width={50} />
-        </div>
-      );
-
-
-    const structuredData =  {
+    const structuredData = {
         "@context": "https://schema.org",
         "@type": "HomeAndConstructionBusiness",
         "name": "Testimonials | Spiess Carpet Cleaning",
@@ -27,11 +12,11 @@ const Testimonials = () => {
         "description": "We are the most experienced carpet cleaner in the Twin Cities, see what our customers have to say.",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "301 Quentin Ave N",
-            "addressLocality": "Lakeland",
+            "streetAddress": "2042 Wooddale Dr Ste 145",
+            "addressLocality": "Woodbury",
             "addressRegion": "MN",
-            "postalCode": "55043",
-            "addressCountry": "US",
+            "postalCode": "55125",
+            "addressCountry": "US"
         },
         "telephone": "+1-651-472-2736", 
         "openingHours": "Mo-Fr 07:00-17:00",
@@ -56,19 +41,25 @@ const Testimonials = () => {
             <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
         </Head>
         <StructuredData data={structuredData} />
-        <div className={styles.container}>
-            <h2 className={styles.header}><strong>At Spiess Carpet Cleaning, Our Customers Always Come First</strong></h2>
-            <div className={styles.reviewContainer}>
-                    <div className={`elfsight-app-d6a85cb1-597d-45da-a58c-4e8d1fd40337 ${styles.reviewDiv}`} />
-            <iframe
-                className={!isLoading ? styles.reviewIframe : styles.hidden}
-                title="Testimonials"
-                width="100%"
-                height="100%"
-                onLoad={handleIframeLoad}
-            ></iframe>
+
+        {/* Page Header */}
+        <section className="pt-12 md:pt-16 pb-2 md:pb-4 bg-gradient-to-b from-stone-50 via-slate-50/80 to-white">
+            <div className="container-wide text-center">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 leading-tight">
+                    Trusted by Thousands of Twin Cities Families
+                </h1>
+                <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto">
+                    From Woodbury to across the Twin Cities — hear from homeowners who've experienced the difference.
+                </p>
             </div>
-        </div>
+        </section>
+
+        {/* Testimonials Carousel Section */}
+        <section className="py-8 md:py-12 bg-gradient-to-b from-white via-stone-50/50 to-white">
+            <div className="container-wide">
+                <TestimonialsCarousel />
+            </div>
+        </section>
         </>
     );
 };

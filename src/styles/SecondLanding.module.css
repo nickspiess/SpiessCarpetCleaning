@@ -1,357 +1,357 @@
 
 
-    .head {
-    text-align: center;
-    color: #333333;
-    margin-top: 20px;
-    
-    }
+.head {
+  text-align: center;
+  color: #333333;
+  margin-top: 20px;
+  
+  }
 
-    .headText {
-        font-size: 1.6em;
-        color: black;
-        letter-spacing: 0.7px;
-        font-weight: 600;
-    }
+  .headText {
+      font-size: 1.6em;
+      color: black;
+      letter-spacing: 0.7px;
+      font-weight: 600;
+  }
 
-    .box {
-      border-radius: 10px;
-    }
-    .clipping h5 {
-      font-size: 1.4em;
-      color: white;
-      letter-spacing: 0.1px;
-      text-shadow: 0px 2px 8px rgb(0, 0, 0), 0 -2px 8px black;
-      font-weight: 500;
-    }
-    .imgContainer {
-      margin-bottom: auto;
-      height: 100px;
-    }
-    .image {
-      margin-top: auto;
-    }
-    .carpet_image {
-      margin-top: auto;
-    }
-    
-    .couch_image {
+  .box {
+    border-radius: 10px;
+  }
+  .clipping h5 {
+    font-size: 1.4em;
+    color: white;
+    letter-spacing: 0.1px;
+    text-shadow: 0px 2px 8px rgb(0, 0, 0), 0 -2px 8px black;
+    font-weight: 500;
+  }
+  .imgContainer {
+    margin-bottom: auto;
+    height: 100px;
+  }
+  .image {
     margin-top: auto;
-    }
-    
-    .duct_image {
-      margin-top: 10px;
-    }
-    
-    .dots {
-    display: inline-block;
-    position: relative;
+  }
+  .carpet_image {
+    margin-top: auto;
+  }
+  
+  .couch_image {
+  margin-top: auto;
+  }
+  
+  .duct_image {
     margin-top: 10px;
-    margin-bottom: 10px;
-    justify-content: center;
+  }
+  
+  .dots {
+  display: inline-block;
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  }
+  
+  .info_one_body {
+  display: flex;
+  width: 100%;
+  }
+  
+  .info_one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .second_ban {
+    color: white;
+      font-size: 2.1em;
+      font-style: oblique;
+      letter-spacing: .7px;
+  }
+  
+  .second_banner {
+      text-align: center;
+      background: linear-gradient(to right bottom, #555555, #000000);
+      padding: 2rem;
+      height: 95px; /* Change the height to auto */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem; /* Add margin-bottom */
     }
-    
-    .info_one_body {
-    display: flex;
-    width: 100%;
+
+    .pTag {
+      width: 90%;
+      min-height: 100px;
     }
+
+    .buttonContainer {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .scheduleButton {
+      background: #be0505;
+    }
+
+    .learnButton {
+      background: #0583ad;
+    }
+
+    .learnButton, .scheduleButton {
+      text-shadow: 2px 1px 12px black;
+      border-radius: 10px;
+      padding: 6px;
+      color: white;
+      border: solid rgb(51, 70, 104) 1px;
+      box-shadow: 
+      0px 3px 5px 1px rgb(154, 153, 153);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      font-style:oblique;
+      font-weight: 600;
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.6s;
+      transition: background-color 0.6s;
+    }
+
+    .learnButton:hover, .scheduleButton:hover {
+      background-color: #334668;
+    }
+
+
     
-    .info_one {
+  .landing_body {
+    background: linear-gradient(0deg, #ffffff 0%, #bac2d2 40%, #bac2d2 60%, #ffffff 100%);
+      margin-top: -28px;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+  }
+  .link {
+    text-decoration: none;
+  }
+
+  .specialsHeader {
+    background: linear-gradient(to bottom, rgb(210, 102, 102), rgb(195, 24, 24), rgb(210, 102, 102));
+    border: solid white 2px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    }
+    height: 80px;
+    margin-top: 15vh;
+  }
 
-    .second_ban {
-      color: white;
-        font-size: 2.1em;
-        font-style: oblique;
-        letter-spacing: .7px;
-    }
-    
-    .second_banner {
-        text-align: center;
-        background: linear-gradient(to right bottom, #555555, #000000);
-        padding: 2rem;
-        height: 95px; /* Change the height to auto */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem; /* Add margin-bottom */
-      }
-
-      .pTag {
-        width: 90%;
-        min-height: 100px;
-      }
-
-      .buttonContainer {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .scheduleButton {
-        background: #be0505;
-      }
-
-      .learnButton {
-        background: #0583ad;
-      }
-
-      .learnButton, .scheduleButton {
-        text-shadow: 2px 1px 12px black;
-        border-radius: 10px;
-        padding: 6px;
-        color: white;
-        border: solid rgb(51, 70, 104) 1px;
-        box-shadow: 
-        0px 3px 5px 1px rgb(154, 153, 153);
-        font-size: 15px;
-        letter-spacing: 0.5px;
-        font-style:oblique;
-        font-weight: 600;
-        -webkit-transition: ease-out 0.4s;
-        -moz-transition: ease-out 0.4s;
-        transition: ease-out 0.6s;
-        transition: background-color 0.6s;
-      }
-
-      .learnButton:hover, .scheduleButton:hover {
-        background-color: #334668;
-      }
-
-
-      
-    .landing_body {
-      background: linear-gradient(0deg, #ffffff 0%, #bac2d2 40%, #bac2d2 60%, #ffffff 100%);
-        margin-top: -28px;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .link {
-      text-decoration: none;
-    }
-
-    .specialsHeader {
-      background: linear-gradient(to bottom, rgb(210, 102, 102), rgb(195, 24, 24), rgb(210, 102, 102));
-      border: solid white 2px;
-      border-radius: 15px;
+  
+  .landing_header {
+      border: none;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+  }
+  
+  .service_container {
+    margin-top: 17.5vh;
+    margin-bottom: 17.5vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      width: 90%;
+  }
+  
+  .text {
+      color: #333333;
+      font-weight:600;
+      font-size: 18px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 80px;
-      margin-top: 15vh;
-    }
+      flex-direction: column;
+      margin-top: auto;
+  }
 
-    
-    .landing_header {
-        border: none;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    
+  
+  .service {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      text-align: center;
+      width: 300px;
+      border: solid #d8d8d8 2px;
+      border-radius: 20px;
+      background: #ffffff;
+      box-shadow: 
+      0px 0px 10px 1px rgb(0,0,0);
+      transition: transform 0.3s ease-in-out;
+      min-height: 425px;
+  }
+  
+  .service:hover {
+      transform: translateY(-5px);
+  }
+  
+  .service img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  @media only screen and (min-width: 1600px) {
+  .headText {
+      font-size: 1.7em;
+  }
+
+  }
+
+  @media (max-width: 1250px) {
     .service_container {
-      margin-top: 17.5vh;
-      margin-bottom: 17.5vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 50px;
-        width: 90%;
+      gap: 50px;
     }
-    
-    .text {
-        color: #333333;
-        font-weight:600;
-        font-size: 18px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: auto;
+  }
+
+  @media (max-width: 945px) {
+    .learnButton, .scheduleButton {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 2.5px;
+      padding-left: 2.5px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .service_container {
+      gap: 25px;
+    }
+  }
+  
+  @media only screen and (max-width: 800px) {
+
+    .specialsContainer {
+      margin-bottom: 10vh;
+    }
+    .clippingContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    
-    .service {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-        text-align: center;
-        width: 300px;
-        border: solid #d8d8d8 2px;
-        border-radius: 20px;
-        background: #ffffff;
-        box-shadow: 
-        0px 0px 10px 1px rgb(0,0,0);
-        transition: transform 0.3s ease-in-out;
-        min-height: 425px;
+    .specialsHeader {
+      display:  flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5vh;
+      margin-bottom: 7.5vh;
+      height: auto;
+      padding: 10px;
     }
-    
-    .service:hover {
-        transform: translateY(-5px);
+    .specialsHeaderText {
+      display:  flex;
+      justify-content: center;
+      align-items: center;
     }
-    
-    .service img {
-        max-width: 100%;
-        height: auto;
+    .learnButton, .scheduleButton {
+
+      padding: 10px;
     }
 
-    @media only screen and (min-width: 1600px) {
-    .headText {
-        font-size: 1.7em;
+    .clipping {
+      margin-bottom: 5vh;
     }
 
+    .buttonContainer {
+      margin-top: 0;
+      gap: 5vw;
     }
 
-    @media (max-width: 1250px) {
+    .duct_image {
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+
+    .clipping h5{
+      font-size: 1.3em;
+      margin-top: 1vh;
+
+    }
       .service_container {
-        gap: 50px;
-      }
-    }
-
-    @media (max-width: 945px) {
-      .learnButton, .scheduleButton {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-right: 2.5px;
-        padding-left: 2.5px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .service_container {
-        gap: 25px;
-      }
-    }
-    
-    @media only screen and (max-width: 800px) {
-
-      .specialsContainer {
-        margin-bottom: 10vh;
-      }
-      .clippingContainer {
-        display: flex;
         flex-direction: column;
-        gap: 20px;
+        width:60%;
       }
-
-      .specialsHeader {
-        display:  flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 5vh;
-        margin-bottom: 7.5vh;
+    
+      .service {
+        width: 100%;
         height: auto;
-        padding: 10px;
-      }
-      .specialsHeaderText {
-        display:  flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .learnButton, .scheduleButton {
+        margin-bottom: 20px;
 
-        padding: 10px;
+      }
+    
+      .landing_body {
+        height: 100%;
+      }
+    
+      .service:first-child {
+        margin-top: 0px;
+      }
+    
+      .service:last-child {
+        margin-bottom: 50px;
+      }
+    
+      .head {
+        font-size: 1rem;
+      }
+    
+      .text {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .pTag {
+        margin-bottom: 5px;
       }
 
-      .clipping {
-        margin-bottom: 5vh;
-      }
-
-      .buttonContainer {
-        margin-top: 0;
-        gap: 5vw;
+    
+      .carpet_image {
+          margin-top: 5
       }
 
       .duct_image {
-        margin-bottom: 20px;
-        margin-top: 40px;
-      }
-
-      .clipping h5{
-        font-size: 1.3em;
-        margin-top: 1vh;
-
-      }
-        .service_container {
-          flex-direction: column;
-          width:60%;
-        }
-      
-        .service {
-          width: 100%;
-          height: auto;
-          margin-bottom: 20px;
-
-        }
-      
-        .landing_body {
-          height: 100%;
-        }
-      
-        .service:first-child {
-          margin-top: 0px;
-        }
-      
-        .service:last-child {
-          margin-bottom: 50px;
-        }
-      
-        .head {
-          font-size: 1rem;
-        }
-      
-        .text {
-          font-size: 1.2em;
-          margin-bottom: 20px;
-        }
-        .pTag {
-          margin-bottom: 5px;
-        }
-
-      
-        .carpet_image {
-            margin-top: 5
-        }
-
-        .duct_image {
-            margin-top: 10px;
-        }
-
-        .couch_image {
-          margin-bottom: -5px;
-        }
-
-        .dots {
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-      }
-      
-      @media only screen and (max-width: 500px) {
-
-        .learnButton, .scheduleButton {
-          font-size: 14px;
-          padding: 10px;
-        }
-
-        .dots {
           margin-top: 10px;
-          margin-bottom: 10px;
       }
 
-        .service_container {
-          width: 70%;
-        }
-        .pTag {
+      .couch_image {
+        margin-bottom: -5px;
+      }
+
+      .dots {
+          margin-top: 10px;
           margin-bottom: 20px;
-        }
-
       }
+    }
+    
+    @media only screen and (max-width: 500px) {
+
+      .learnButton, .scheduleButton {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .dots {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+      .service_container {
+        width: 70%;
+      }
+      .pTag {
+        margin-bottom: 20px;
+      }
+
+    }
