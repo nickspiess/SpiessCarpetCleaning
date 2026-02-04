@@ -6,11 +6,23 @@ const FirstLanding = () => {
     const router = useRouter();
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const [pageLoaded, setPageLoaded] = useState(false);
+    const [showStickyButton, setShowStickyButton] = useState(false);
 
     // Page entrance animation
     useEffect(() => {
         const timer = setTimeout(() => setPageLoaded(true), 100);
         return () => clearTimeout(timer);
+    }, []);
+
+    // Show sticky button only after scrolling past hero CTA
+    useEffect(() => {
+        const handleScroll = () => {
+            // Show after scrolling 400px (past the hero buttons)
+            setShowStickyButton(window.scrollY > 400);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const handleButtonClick = () => {
@@ -87,8 +99,8 @@ const FirstLanding = () => {
                         {/* Left Column - Text Content */}
                         <div className={`space-y-5 md:space-y-8 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
-                            {/* Location badge */}
-                            <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/80 backdrop-blur-sm border border-slate-200/50 text-slate-600 shadow-sm">
+                            {/* Location badge - hidden on mobile */}
+                            <div className="hidden sm:inline-flex items-center gap-3 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/80 backdrop-blur-sm border border-slate-200/50 text-slate-600 shadow-sm">
                                 <span className="flex items-center gap-1.5">
                                     <svg className="w-3 h-3" style={{ color: 'rgba(198,25,73,1)' }} fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -102,22 +114,20 @@ const FirstLanding = () => {
                                 </span>
                             </div>
 
-                            {/* Hero Headline - Better mobile sizing */}
-                            <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 tracking-tight">
+                            {/* Hero Headline */}
+                            <h1 className="text-[2.25rem] leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 tracking-tight">
                                 <span className="block">50+ Years of</span>
-                                <span className="block bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text">Cleaning Excellence</span>
-                                <span className="block text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-slate-500 font-medium mt-2 md:mt-3">
-                                    Transform Your Living Space
-                                </span>
+                                <span className="block">Cleaning Excellence</span>
                             </h1>
 
-                            {/* Subheadline */}
+                            {/* Subheadline - shorter on mobile */}
                             <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
-                                Five decades of professional carpet cleaning experience. The Twin Cities' most trusted family-owned cleaning service since 1972.
+                                <span className="sm:hidden">Twin Cities' most trusted carpet cleaning since 1972.</span>
+                                <span className="hidden sm:inline">Five decades of professional carpet cleaning experience. The Twin Cities' most trusted family-owned cleaning service since 1972.</span>
                             </p>
 
-                            {/* Mobile-optimized Contact Card */}
-                            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                            {/* Contact Card - hidden on mobile, shown on tablet+ */}
+                            <div className="hidden sm:block bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
                                 <div className="p-4 md:p-5">
                                     <div className="flex items-center justify-between gap-4">
                                         <div className="flex items-center gap-3">
@@ -331,11 +341,18 @@ const FirstLanding = () => {
 
             </section>
 
-            {/* Floating Mobile CTA - Only visible on mobile when scrolled */}
-            <div className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-white via-white to-transparent md:hidden pointer-events-none">
+            {/* Floating Mobile CTA - Only visible on mobile after scrolling */}
+            <div
+                className={`fixed left-0 right-0 z-40 px-4 pb-2 md:hidden transition-all duration-300 ${
+                    showStickyButton
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-full pointer-events-none'
+                }`}
+                style={{ bottom: 'env(safe-area-inset-bottom, 8px)' }}
+            >
                 <a
                     href="tel:6514722736"
-                    className="pointer-events-auto flex items-center justify-center gap-2 w-full py-4 text-white font-bold text-base rounded-xl shadow-xl transition-all active:scale-[0.98]"
+                    className="flex items-center justify-center gap-2 w-full py-3.5 text-white font-bold text-base rounded-xl shadow-xl transition-all active:scale-[0.98]"
                     style={{ backgroundColor: 'rgba(198,25,73,1)' }}
                 >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
