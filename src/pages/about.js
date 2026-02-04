@@ -111,7 +111,7 @@ export default function About() {
                 A Legacy of Excellence
               </h1>
               <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                The Twin Cities' most trusted carpet cleaning service. Five decades of exceptional quality, professional service, and satisfied customers.
+                Based in Woodbury, proudly serving the Twin Cities for over five decades with exceptional quality, professional service, and thousands of satisfied customers.
               </p>
             </div>
 

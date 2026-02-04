@@ -98,7 +98,7 @@ export default function Contact() {
                 Contact Us
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                Ready to transform your space? Contact us today for a free consultation.
+                Based in Woodbury, serving the entire Twin Cities metro. Contact us for a free consultation.
               </p>
             </div>
 

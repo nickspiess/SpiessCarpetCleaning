@@ -49,7 +49,7 @@ const Testimonials = () => {
                     Trusted by Thousands of Twin Cities Families
                 </h1>
                 <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto">
-                    Don't just take our word for it — hear from homeowners who've experienced the difference.
+                    From Woodbury to across the Twin Cities — hear from homeowners who've experienced the difference.
                 </p>
             </div>
         </section>

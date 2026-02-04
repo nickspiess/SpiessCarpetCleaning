@@ -185,7 +185,7 @@ export default function Services() {
             {/* Header with entrance animation */}
             <div className={`max-w-3xl mx-auto text-center mb-14 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <p className="text-sm font-semibold text-secondary-600 uppercase tracking-wider mb-4">
-                Professional Services Since 1972
+                Woodbury-Based · Serving the Twin Cities Since 1972
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 Complete Cleaning Solutions

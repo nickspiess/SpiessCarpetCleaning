@@ -87,10 +87,19 @@ const FirstLanding = () => {
                         {/* Left Column - Text Content */}
                         <div className={`space-y-5 md:space-y-8 transition-all duration-1000 ease-out ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
-                            {/* Mobile-first badge */}
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/80 backdrop-blur-sm border border-slate-200/50 text-slate-600 shadow-sm">
-                                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(0,168,227,1)' }}></span>
-                                Twin Cities' Most Trusted Since 1972
+                            {/* Location badge */}
+                            <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/80 backdrop-blur-sm border border-slate-200/50 text-slate-600 shadow-sm">
+                                <span className="flex items-center gap-1.5">
+                                    <svg className="w-3 h-3" style={{ color: 'rgba(198,25,73,1)' }} fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                    </svg>
+                                    Based in Woodbury
+                                </span>
+                                <span className="w-px h-3 bg-slate-300"></span>
+                                <span className="flex items-center gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(0,168,227,1)' }}></span>
+                                    Serving the Twin Cities Since 1972
+                                </span>
                             </div>
 
                             {/* Hero Headline - Better mobile sizing */}
