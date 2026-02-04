@@ -33,12 +33,12 @@ const Testimonials = () => {
             <meta name="keywords" content="carpet cleaning, professional cleaners, Twin Cities, trusted service, testimonials" />
             <meta property="og:title" content="Testimonials | Spiess Carpet Cleaning" />
             <meta property="og:description" content="We are the most experienced carpet cleaner in the Twin Cities, see what our customers have to say." />
-            <meta property="og:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <meta property="og:image" content="https://www.spiesscarpet.com/images/logo.png" />
             <meta property="og:url" content="https://www.spiesscarpet.com" />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content="Testimonials | Spiess Carpet Cleaning" />
             <meta name="twitter:description" content="We are the most experienced carpet cleaner in the Twin Cities, see what our customers have to say." />
-            <meta name="twitter:image" content="https://www.spiesscarpet.com/public/images/logo.png" />
+            <meta name="twitter:image" content="https://www.spiesscarpet.com/images/logo.png" />
         </Head>
         <StructuredData data={structuredData} />
 
