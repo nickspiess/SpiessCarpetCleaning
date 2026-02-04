@@ -111,7 +111,7 @@ export default function Home() {
       </Head>
 
       <StructuredData data={structuredData} />
-      
+
       <main className="min-h-screen bg-white">
         <FirstLanding />
         <SecondLanding />
