@@ -167,11 +167,27 @@ const FirstLanding = () => {
 
                         {/* Right Column - Personal Message Video */}
                         <div className={`relative transition-all duration-1000 ease-out delay-200 ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                            {/* Gradient border wrapper */}
+                            <div
+                                className="rounded-2xl md:rounded-3xl p-[1px]"
+                                style={{
+                                    background: 'linear-gradient(135deg, rgba(247,167,25,0.25), transparent 50%, rgba(247,167,25,0.12))'
+                                }}
+                            >
                             {/* Card wrapper - Mobile optimized */}
-                            <div className="bg-white rounded-2xl md:rounded-3xl border border-slate-200/80 shadow-lg p-4 md:p-6 lg:p-8">
+                            <div className="bg-white rounded-2xl md:rounded-3xl shadow-lg p-4 md:p-6 lg:p-8 relative overflow-hidden">
+                                {/* Top accent bar */}
+                                <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, rgba(198,25,73,1), rgba(198,25,73,0.6))' }}></div>
+
+                                {/* Subtle corner accent */}
+                                <div
+                                    className="absolute top-0 right-0 w-32 h-32 opacity-[0.05]"
+                                    style={{ background: 'radial-gradient(circle at top right, rgba(247,167,25,1), transparent 70%)' }}
+                                ></div>
+
                                 {/* Header */}
-                                <div className="mb-4 md:mb-6">
-                                    <div className="inline-flex items-center gap-2 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-2 md:mb-3 bg-slate-100 text-slate-600">
+                                <div className="mb-4 md:mb-6 relative">
+                                    <div className="inline-flex items-center gap-2 px-2.5 py-1 md:px-3 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-2 md:mb-3" style={{ backgroundColor: 'rgba(0,168,227,0.1)', color: 'rgba(0,168,227,1)' }}>
                                         A Personal Message
                                     </div>
                                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">
@@ -212,6 +228,7 @@ const FirstLanding = () => {
                                         </div>
                                     ))}
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
