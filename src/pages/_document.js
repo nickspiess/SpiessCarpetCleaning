@@ -16,6 +16,17 @@ export default function Document() {
         <meta name="geo.position" content="44.9239;-92.9594" />
         <meta name="ICBM" content="44.9239, -92.9594" />
 
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PVDLPJC8');`,
+          }}
+        />
+
         {/* Google Analytics 4 + Google Ads Conversion Tracking */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYXMGD7W9W"></script>
         <script
@@ -42,6 +53,15 @@ export default function Document() {
         />
       </Head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PVDLPJC8"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <Main />
         <NextScript />
       </body>
