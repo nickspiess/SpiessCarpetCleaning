@@ -117,7 +117,7 @@ const FirstLanding = () => {
                             {/* Hero Headline */}
                             <h1 className="text-[2.25rem] leading-[1.1] sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 tracking-tight">
                                 <span className="block">50+ Years of</span>
-                                <span className="block">Cleaning Excellence</span>
+                                <span className="block">Carpet Cleaning Excellence</span>
                             </h1>
 
                             {/* Subheadline - shorter on mobile */}

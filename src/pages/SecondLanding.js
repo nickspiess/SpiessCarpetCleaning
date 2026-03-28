@@ -108,9 +108,9 @@ const SecondLanding = () => {
 
                                     {/* Content */}
                                     <div className="text-center mb-6">
-                                        <h3 className="text-xl lg:text-2xl font-semibold text-slate-900 mb-3">
+                                        <h2 className="text-xl lg:text-2xl font-semibold text-slate-900 mb-3">
                                             {service.title}
-                                        </h3>
+                                        </h2>
                                         <p className="text-slate-600 text-sm leading-relaxed">
                                             {service.description}
                                         </p>

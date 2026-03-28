@@ -415,6 +415,23 @@ export default function Contact() {
 
               {/* Contact Info & Additional Details */}
               <div className={`space-y-8 transition-all duration-1000 ease-out delay-500 ${pageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                {/* Google Map */}
+                <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-4 md:mb-6">Our Location</h3>
+                  <div className="rounded-xl overflow-hidden shadow-md">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2825.1980514030524!2d-92.9747273!3d44.9193078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f7e009daa1a48f%3A0xa93175225f3fa9a0!2sSpiess%20Carpet%20Cleaning!5e0!3m2!1sen!2sus!4v1774734699309!5m2!1sen!2sus"
+                      width="100%"
+                      height="300"
+                      style={{ border: 0 }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Spiess Carpet Cleaning Location"
+                    ></iframe>
+                  </div>
+                </div>
+
                 {/* Service Areas */}
                 <div className="bg-slate-50 rounded-2xl p-8">
                   <h3 className="text-2xl font-bold text-slate-900 mb-6">Service Areas</h3>
@@ -425,7 +442,8 @@ export default function Contact() {
                     {[
                       'Minneapolis', 'St. Paul', 'Bloomington', 'Plymouth',
                       'Minnetonka', 'Edina', 'Burnsville', 'Eagan',
-                      'Woodbury', 'Maple Grove', 'Lakeville', 'Roseville'
+                      'Woodbury', 'Maple Grove', 'Lakeville', 'Roseville',
+                      'Cottage Grove'
                     ].map((city) => (
                       <div key={city} className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span>

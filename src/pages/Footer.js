@@ -142,11 +142,18 @@ const Footer = () => {
                         {[
                             'Minneapolis', 'St. Paul', 'Bloomington', 'Eden Prairie',
                             'Minnetonka', 'Woodbury', 'Lakeville', 'Burnsville',
-                            'Apple Valley', 'Eagan', 'St. Louis Park', 'Maplewood'
+                            'Apple Valley', 'Eagan', 'St. Louis Park', 'Maplewood',
+                            'Cottage Grove'
                         ].map((city) => (
                             <div key={city} className="flex items-center gap-2 text-slate-600">
                                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
-                                <span className="font-medium text-sm">{city}</span>
+                                {city === 'Cottage Grove' ? (
+                                    <Link href="/carpet-cleaning-cottage-grove-mn" className="font-medium text-sm transition-colors hover:opacity-80" style={{ color: 'rgba(0,168,227,1)' }}>
+                                        {city}
+                                    </Link>
+                                ) : (
+                                    <span className="font-medium text-sm">{city}</span>
+                                )}
                             </div>
                         ))}
                     </div>

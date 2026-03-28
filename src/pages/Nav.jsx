@@ -12,6 +12,7 @@ const Navbar = () => {
   const navLinks = [
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/contact', label: 'Contact' },
     { href: '/testimonials', label: 'Reviews' },
   ];
