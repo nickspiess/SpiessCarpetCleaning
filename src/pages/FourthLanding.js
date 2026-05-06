@@ -77,9 +77,10 @@ const FourthLanding = () => {
                         </h3>
 
                         <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                            Since 1972, we've been the Twin Cities' most trusted carpet cleaning service.
-                            Our commitment to innovation, quality, and customer satisfaction has made us
-                            the preferred choice for thousands of homeowners.
+                            Since 1972, we've been the Twin Cities' most trusted carpet cleaning service,
+                            proudly serving Cottage Grove, MN and surrounding areas. Our commitment to
+                            innovation, quality, and customer satisfaction has made us the preferred choice
+                            for thousands of homeowners.
                         </p>
 
                         {/* Features Grid */}

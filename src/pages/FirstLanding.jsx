@@ -123,7 +123,7 @@ const FirstLanding = () => {
                             {/* Subheadline - shorter on mobile */}
                             <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
                                 <span className="sm:hidden">Twin Cities' most trusted carpet cleaning since 1972.</span>
-                                <span className="hidden sm:inline">Five decades of professional carpet cleaning experience. The Twin Cities' most trusted family-owned cleaning service since 1972.</span>
+                                <span className="hidden sm:inline">Five decades of professional carpet cleaning experience. The Twin Cities' most trusted family-owned cleaning service since 1972, proudly serving Woodbury, MN, Cottage Grove, and surrounding areas.</span>
                             </p>
 
                             {/* Contact Card - hidden on mobile, shown on tablet+ */}
